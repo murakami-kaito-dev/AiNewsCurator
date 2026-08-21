@@ -1,0 +1,68 @@
+{
+  "updated": "2026.08.22",
+  "issues": [
+    {
+      "version": "v2026.08.22",
+      "date": "2026年8月22日(創刊号 — 2026年2月〜8月の総まとめ)",
+      "headline": "エージェントの年、後半戦へ",
+      "items": [
+        {
+          "title": "Anthropic、最上位「Mythosクラス」を新設 — Fable 5 / Mythos 5",
+          "category": "モデル",
+          "summary": "2026年6月、AnthropicはOpusの上に新しいフロンティア層を追加した。Fable 5は追加セーフガード付きで一般提供、Mythos 5は同一モデルながら制限層なしのため承認組織限定。7月にはOpus 5、6月末にはSonnet 5も登場し、中位モデルが前世代最上位に約半額で追いつく構図が続く。",
+          "why": "「安全層の有無」でモデルの提供範囲を分けるという、フロンティアAIの新しい配布戦略の転換点。",
+          "source": "https://www.anthropic.com/news/claude-fable-5-mythos-5"
+        },
+        {
+          "title": "OpenAIは約2ヶ月周期の高速リリースへ — GPT-5.5がデフォルト、5.6は3バリアント",
+          "category": "モデル",
+          "summary": "2月のGPT-5.3-Codexから、3月に5.4、5月に5.5(ChatGPT新デフォルト)、7月に5.6と、ほぼ2ヶ月ごとのリリースが常態化。GPT-5.6は能力順にLuna / Terra / Solの3バリアント構成で、コーディング・科学研究・サイバーセキュリティへの特化が明確。",
+          "why": "「年1回の大型発表」の時代は終わり、モデル選定は継続的な意思決定になった。",
+          "source": "https://en.wikipedia.org/wiki/GPT-5.6"
+        },
+        {
+          "title": "オープンモデルの主役交代 — Meta初のクローズドモデル、中国勢が台頭",
+          "category": "モデル",
+          "summary": "Metaは4月に初のプロプライエタリモデルMuse Sparkを発表し「オープンのMeta」から戦略転換。一方でDeepSeek V4(7月GA)とQwen 3.6系が躍進し、QwenはHugging Face累計ダウンロードでLlamaを逆転した。",
+          "why": "オープンウェイトの勢力図が米国から中国へ。ローカルLLMを選ぶ基準が変わった。",
+          "source": "https://www.digitalapplied.com/blog/open-weight-models-h1-2026-retrospective-deepseek-qwen-llama"
+        },
+        {
+          "title": "MCPはLinux Foundation管理の「業界インフラ」に",
+          "category": "エコシステム",
+          "summary": "SDK月間ダウンロードは約9,700万(ローンチ時の約970倍)、公開サーバーは約9,400。2026-07-28版仕様でステートレスアーキテクチャに進化し、エンタープライズ展開の摩擦を削減。NSAがセキュリティガイダンスを出すほどの普及度。",
+          "why": "「AIにツールを繋ぐ方法」の標準戦争は事実上決着。学ぶなら今が回収期。",
+          "source": "https://blog.modelcontextprotocol.io/posts/2026-07-28/"
+        },
+        {
+          "title": "「ハーネスエンジニアリング」「ループエンジニアリング」が定着",
+          "category": "概念",
+          "summary": "2月にMitchell Hashimotoが提唱したハーネスエンジニアリング(Agent = Model + Harness — モデルの外側を工学する)に続き、6月にはループエンジニアリング(エージェントを回すループ自体を設計する)が命名・普及。LangChainも解説を公開。",
+          "why": "改善の主戦場が「モデルをどう賢くするか」から「環境とループをどう設計するか」へ移った。プロンプト→コンテキスト→ハーネス→ループという系譜。",
+          "source": "https://www.langchain.com/blog/the-art-of-loop-engineering"
+        },
+        {
+          "title": "日本発の実験「週刊少年バカゲー」— AI編集部が毎週ゲームを連載",
+          "category": "事例",
+          "summary": "AIエージェントだけで自律運営される「編集部」が、毎週新作ブラウザゲームを連載するプロジェクト。人気スコアで連載順位を更新し、下位は打ち切り。cron定例会議・サブエージェント編集部・git永続メモリなどループエンジニアリングの6要素を実装。人間の介在はPRマージのみ。",
+          "why": "ループ/ハーネスエンジニアリングの「動く実例」。読むだけで自律運用の設計パターンが学べる。",
+          "source": "https://qiita.com/onaka_yurusugi/items/1c16ff9e3942e870e02c"
+        },
+        {
+          "title": "コーディングエージェントは「多層化」へ — Claude Codeのネストサブエージェント、Cursor 3のエージェントファーストUI",
+          "category": "ツール",
+          "summary": "Claude Codeは3階層のネストサブエージェント、フォーク、スコープ付き権限、コスト集計などを追加し「多層エージェントシステムの運用基盤」に。Cursor 3はIDEをフォールバック扱いに格下げしエージェント中心UIへ全面刷新。旧WindsurfのCascadeは7月にEOL。",
+          "why": "「補完してくれるIDE」から「指揮するエージェント群」へ。開発者の仕事はコーディングからオーケストレーションに寄っていく。",
+          "source": "https://www.sitepoint.com/claude-code-june-2026-10-new-features-devs-need-to-know/"
+        },
+        {
+          "title": "自律作業時間は「2労働日」を突破 — 倍増周期は4.3ヶ月に加速",
+          "category": "能力境界",
+          "summary": "METRの計測で、最上位エージェントが50%の信頼性でこなせる作業時間ホライズンが2労働日を超えた(Claude Mythosは16時間以上)。ホライズンの倍増周期は7ヶ月から約4.3ヶ月に短縮。ただし制約要因は判断力・戦略的推論・信頼性のまま。",
+          "why": "「何分の作業を任せられるか」がモデル比較の主要指標になった。伸びの速さは業務設計の前提を変える。",
+          "source": "https://metr.org/blog/2026-05-19-frontier-risk-report/"
+        }
+      ]
+    }
+  ]
+}
