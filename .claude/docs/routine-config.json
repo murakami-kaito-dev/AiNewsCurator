@@ -1,0 +1,30 @@
+{
+  "_note": "2週間ごとの定期更新ルーチン(クラウドエージェント)の設定。GitHubリポジトリ作成後に RemoteTrigger {action:'create', body:この内容} で作成する。cron は UTC 0:00 の 1日・15日 = JST 9:00。",
+  "name": "ANTENNA 定期受信 (2週間ごとのAIトレンド更新)",
+  "cron_expression": "0 0 1,15 * *",
+  "enabled": true,
+  "job_config": {
+    "ccr": {
+      "environment_id": "env_01GNp3sMzitjCoNNZGHbSTr6",
+      "session_context": {
+        "model": "claude-sonnet-5",
+        "sources": [{ "git_repository": { "url": "https://github.com/murakami-kaito-dev/AiNewsCurator" } }],
+        "allowed_tools": ["Bash", "Read", "Write", "Edit", "Glob", "Grep", "WebSearch", "WebFetch"]
+      },
+      "events": [
+        {
+          "data": {
+            "uuid": "3f6a1c2e-8b4d-4e0a-9c7f-5d2e8a1b6c4d",
+            "session_id": "",
+            "type": "user",
+            "parent_tool_use_id": null,
+            "message": {
+              "role": "user",
+              "content": "あなたは「ANTENNA」(AI/LLMトレンドを自動受信するキュレーションPWA)の定期更新エージェントです。このリポジトリの CLAUDE.md と .claude/docs/update-runbook.md を最初に読み、ランブックに厳密に従って作業してください。\n\n手順の要約(詳細はランブックが正):\n1. WebSearch/WebFetchで直近2週間のAI/LLM動向を日英両方でリサーチする(新モデル、コーディングエージェント/ツール、MCP/A2A等エコシステム、新概念・用語、現場活用事例、能力境界の変化、萌芽概念)。\n2. content/trends.json の issues 配列の先頭に新しい号を追加する(version は実行日の vYYYY.MM.DD、5〜8記事、各記事に必ず why=なぜ重要か を日本語で添える。source URLも)。updated フィールドも更新。\n3. 必要に応じて glossary.json(新用語)、capability-map.json(境界の移動)、radar.json(STAGE昇格降格)、history.json(歴史的出来事)、in-practice.json(新事例)を差分更新。mechanism.json と roadmap.json は原則触らない。\n4. 全JSONを python3 -m json.tool で検証し、1つでもNGなら修正するまでpushしない。シェル(HTML/CSS/JS)は変更しない。\n5. .claude/docs/release-log.md の先頭に号のエントリを追記する。\n6. main に直接コミットしてpushする(push=GitHub Pagesへの自動デプロイ。この定期更新のcommit/pushはユーザーが事前承認済み)。コミットメッセージは『receive vYYYY.MM.DD — <号のheadline>』とし、末尾に Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com> を付ける。mainへの直接pushがこの環境で許可されていない場合のみ、ブランチを作りPRを開いて終了する。\n\n重要: 事実(日付・名称・数値)は検索結果に基づくこと。不確かな情報は書かないか「未確認」と明記。重要ニュースが少ない期でも号は出す(2〜3記事でも可)。成功条件は「JSONが妥当で、新しい号がpushされ、release-logに記録があること」。"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
