@@ -84,9 +84,11 @@ if len(versions) != len(set(versions)):
     errors.append("trends: version が重複している")
 for i in trends["issues"]:
     for item in i["items"]:
-        for key in ("title", "category", "summary", "why"):
+        for key in ("title", "category", "lead", "explanation", "source"):
             if key not in item:
                 errors.append(f"trends[{i['version']}]: 記事に {key} がない: {item.get('title', '?')[:20]}")
+        if "briefing" in item and not isinstance(item["briefing"], list):
+            errors.append(f"trends[{i['version']}]: briefing は配列であること: {item.get('title','?')[:20]}")
 
 if errors:
     print(f"NG: {len(errors)}件")

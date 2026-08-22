@@ -303,30 +303,60 @@ async function renderArticle(section, slug) {
 
 /* ---------- トレンド ---------- */
 function renderIssueItems(host, issue) {
-  for (const item of issue.items) {
-    const c = el("article", "card");
-    c.appendChild(chip(item.category));
-    c.appendChild(el("h3", null, item.title));
-    c.appendChild(pRich(null, item.summary));
-    const w = el("div", "why");
-    w.appendChild(el("b", null, "なぜ重要か"));
-    w.appendChild(richText(item.why));
-    c.appendChild(w);
-    if (item.source) {
-      const a = el("a", "src", item.source);
-      a.href = item.source; a.target = "_blank"; a.rel = "noopener";
-      c.appendChild(a);
-    }
-    host.appendChild(c);
+  const list = el("div", "news-list");
+  issue.items.forEach((item, i) => {
+    const a = el("a", "news-card");
+    a.href = `#/trends/${issue.version}/${i}`;
+    a.appendChild(chip(item.category));
+    a.appendChild(el("h3", "news-card-title", item.title));
+    a.appendChild(pRich("news-card-lead", item.lead || item.summary || ""));
+    a.appendChild(el("span", "news-more", "詳しく →"));
+    list.appendChild(a);
+  });
+  host.appendChild(list);
+}
+
+function renderNewsDetail(issue, item, idx) {
+  breadcrumb(contentEl, [
+    ["トレンド", "#/trends"],
+    [issue.version, `#/trends/${issue.version}`],
+    [item.title.length > 16 ? item.title.slice(0, 16) + "…" : item.title, null],
+  ]);
+  contentEl.appendChild(el("p", "updated-line", `${item.category} ・ ${issue.version} ・ ${issue.date}`));
+  contentEl.appendChild(el("h1", "tab-title", item.title));
+  contentEl.appendChild(pRich("news-lead", item.lead || item.summary || ""));
+  if (item.body) contentEl.appendChild(pRich("doc-p", item.body));
+  if (item.briefing && item.briefing.length) {
+    contentEl.appendChild(el("h2", "doc-h2", "Briefing"));
+    const ul = el("ul", "doc-list");
+    for (const b of item.briefing) { const li = el("li"); li.appendChild(richText(b)); ul.appendChild(li); }
+    contentEl.appendChild(ul);
   }
+  if (item.explanation || item.why) {
+    contentEl.appendChild(el("h2", "doc-h2", "解説"));
+    contentEl.appendChild(pRich("doc-p", item.explanation || item.why));
+  }
+  if (item.source) {
+    contentEl.appendChild(el("h2", "doc-h2", "出典"));
+    const a = el("a", "src", item.source);
+    a.href = item.source; a.target = "_blank"; a.rel = "noopener";
+    contentEl.appendChild(a);
+  }
+  const nav = el("div", "prevnext");
+  const prev = issue.items[idx - 1], next = issue.items[idx + 1];
+  if (prev) { const x = el("a", "pn pn-prev"); x.href = `#/trends/${issue.version}/${idx - 1}`; x.appendChild(el("span", "pn-dir", "← 前の記事")); x.appendChild(el("span", "pn-title", prev.title)); nav.appendChild(x); }
+  else nav.appendChild(el("span"));
+  if (next) { const x = el("a", "pn pn-next"); x.href = `#/trends/${issue.version}/${idx + 1}`; x.appendChild(el("span", "pn-dir", "次の記事 →")); x.appendChild(el("span", "pn-title", next.title)); nav.appendChild(x); }
+  contentEl.appendChild(nav);
 }
 
 async function renderTrends(sub) {
   const data = await loadJSON("content/trends.json");
   const fu = document.getElementById("footer-updated");
   if (fu) fu.textContent = `LAST RECEIVED: ${data.updated || "—"}`;
+  const parts = sub ? sub.split("/").filter(Boolean) : [];
 
-  if (sub === "archive") {
+  if (parts[0] === "archive") {
     breadcrumb(contentEl, [["トレンド", "#/trends"], ["アーカイブ", null]]);
     header(contentEl, "アーカイブ", "これまでの全号。新しい順に並んでいます。");
     const grid = el("div", "card-grid");
@@ -336,8 +366,17 @@ async function renderTrends(sub) {
     contentEl.appendChild(grid);
     return;
   }
-  if (sub) {
-    const issue = data.issues.find(i => i.version === sub);
+  if (parts.length >= 2) {
+    const issue = data.issues.find(i => i.version === parts[0]);
+    if (!issue) return renderNotFound();
+    const idx = parseInt(parts[1], 10);
+    const item = issue.items[idx];
+    if (!item) return renderNotFound();
+    renderNewsDetail(issue, item, idx);
+    return;
+  }
+  if (parts.length === 1) {
+    const issue = data.issues.find(i => i.version === parts[0]);
     if (!issue) return renderNotFound();
     breadcrumb(contentEl, [["トレンド", "#/trends"], ["アーカイブ", "#/trends/archive"], [issue.version, null]]);
     header(contentEl, issue.headline, issue.date, issue.version);
@@ -445,9 +484,19 @@ async function buildSearchIndex() {
   }
   const tr = await loadJSON("content/trends.json");
   for (const issue of tr.issues) {
-    for (const item of issue.items) {
-      idx.push({ href: `#/trends/${issue.version}`, section: `トレンド ${issue.version}`, title: item.title, summary: stripLinks(item.summary).slice(0, 60), text: (item.title + " " + item.summary + " " + item.why + " " + item.category).toLowerCase(), raw: item.summary });
-    }
+    issue.items.forEach((item, i) => {
+      const lead = item.lead || item.summary || "";
+      const bf = (item.briefing || []).join(" ");
+      const expl = item.explanation || item.why || "";
+      idx.push({
+        href: `#/trends/${issue.version}/${i}`,
+        section: `トレンド ${issue.version}`,
+        title: item.title,
+        summary: stripLinks(lead).slice(0, 60),
+        text: (item.title + " " + lead + " " + (item.body || "") + " " + bf + " " + expl + " " + item.category).toLowerCase(),
+        raw: lead,
+      });
+    });
   }
   SEARCH_INDEX = idx;
   return idx;
