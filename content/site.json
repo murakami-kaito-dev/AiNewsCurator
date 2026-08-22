@@ -1,6 +1,6 @@
 {
   "newsletter": { "enabled": true },
-  "affiliate": { "amazonTag": "" },
+  "affiliate": { "amazonTag": "antennaai-22" },
   "sections": [
     { "id": "trends", "label": "トレンド", "type": "trends",
       "lede": "毎週月曜に自動更新されるAIニュースのキュレーション。過去号もすべて読めます。" },
