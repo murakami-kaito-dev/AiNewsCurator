@@ -18,6 +18,8 @@ AI/LLM のキャッチアップを自動化するドキュメント型 PWA。ユ
 
 ## 情報の地図
 - 要件定義: `.claude/docs/requirements.md`
+- **バックログ(今後やるべき対応): `.claude/docs/backlog.md`**(配信+ダブルオプトイン等の積み残し)
+- マネタイズ運用: `.claude/docs/monetization.md`
 - **コンテンツ様式ガイド: `.claude/docs/content-guide.md`**(スキーマ・文体・専門用語ルールの正)
 - 定期更新の実行手順: `.claude/docs/update-runbook.md`
 - リリースログ: `.claude/docs/release-log.md`
