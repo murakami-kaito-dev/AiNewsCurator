@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:gais.jp)",
+      "Bash(python3 -)",
+      "Bash(git rm *)",
+      "Bash(python3 -m json.tool content/glossary.json)",
+      "Bash(python3 -c ' *)",
+      "Bash(python3 tools/validate.py)",
+      "Bash(python3 -m http.server 8766 --bind 127.0.0.1)",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless --disable-gpu --window-size=390,1500 --hide-scrollbars --virtual-time-budget=6000 --screenshot=/private/tmp/claude-501/-Users-kaitomurakami-Dev-Products-AiNewsCurator/f4d4fc8d-2055-4d3f-b203-c08a2c81633b/scratchpad/v2-token.png 'http://127.0.0.1:8766/#/basics/token')",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless --disable-gpu --window-size=390,900 --hide-scrollbars --virtual-time-budget=6000 --screenshot=/private/tmp/claude-501/-Users-kaitomurakami-Dev-Products-AiNewsCurator/f4d4fc8d-2055-4d3f-b203-c08a2c81633b/scratchpad/v2-landing.png 'http://127.0.0.1:8766/#/basics')",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless --disable-gpu --window-size=390,900 --hide-scrollbars --virtual-time-budget=6000 --screenshot=/private/tmp/claude-501/-Users-kaitomurakami-Dev-Products-AiNewsCurator/f4d4fc8d-2055-4d3f-b203-c08a2c81633b/scratchpad/v2-archive.png 'http://127.0.0.1:8766/#/trends/archive')",
+      "Bash(git add *)",
+      "Bash(git commit -q -m 'v2: ドキュメント型IAへ全面改訂 — オカン基準28ページ+用語辞典75語+週次トレンド+サイト内検索 *)",
+      "Bash(git push *)",
+      "Bash(pkill -f \"http.server 8766\")"
+    ]
+  }
+}

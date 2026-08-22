@@ -346,6 +346,105 @@ main { flex: 1; }
 .step-item h3 { font-size: 14px; font-weight: 700; }
 .step-item p { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
 
+/* ---- docs layout v2 ---- */
+.breadcrumb {
+  font-family: var(--mono); font-size: 11.5px; color: var(--muted);
+  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px;
+}
+.breadcrumb a { color: var(--muted); }
+.breadcrumb a:hover { color: var(--wave); text-decoration: none; }
+.bc-here { color: var(--signal); }
+
+.doc-h2 {
+  font-family: var(--serif); font-weight: 600; font-size: 21px;
+  margin: 34px 0 12px; line-height: 1.5;
+}
+.doc-p { font-size: 15px; margin-bottom: 12px; }
+.doc-list { margin: 0 0 14px 1.3em; font-size: 14.5px; }
+.doc-list li { margin-bottom: 6px; }
+
+.term-link {
+  color: var(--wave);
+  text-decoration: underline dotted color-mix(in srgb, var(--wave) 55%, transparent);
+  text-underline-offset: 3px;
+}
+.term-link:hover { text-decoration-style: solid; }
+
+.analogy {
+  margin: 4px 0 18px; padding: 14px 16px;
+  border-left: 3px solid var(--wave);
+  background: color-mix(in srgb, var(--wave) 8%, transparent);
+  border-radius: 0 10px 10px 0;
+  font-size: 14.5px;
+}
+.analogy b {
+  color: var(--wave); font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.12em; display: block; margin-bottom: 4px;
+}
+.analogy p { margin: 0; }
+
+.table-wrap { overflow-x: auto; margin: 4px 0 16px; }
+.doc-table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+.doc-table th, .doc-table td {
+  border: 1px solid var(--line); padding: 8px 12px; text-align: left;
+  vertical-align: top; line-height: 1.7;
+}
+.doc-table th { background: var(--surface-2); font-weight: 700; white-space: nowrap; }
+
+.card-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin: 8px 0 14px; }
+@media (min-width: 640px) { .card-grid { grid-template-columns: 1fr 1fr; } }
+.page-card {
+  position: relative; display: block;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 16px 40px 16px 18px;
+  color: var(--ink);
+  transition: border-color 0.2s;
+}
+.page-card:hover { border-color: var(--wave); text-decoration: none; }
+.page-card h3 { font-size: 15px; font-weight: 700; margin: 2px 0 4px; }
+.page-card p { font-size: 12.5px; color: var(--muted); line-height: 1.7; }
+.card-arrow {
+  position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+  color: var(--muted); font-family: var(--mono);
+}
+.page-card:hover .card-arrow { color: var(--wave); }
+
+.next-steps { margin-top: 30px; }
+.prevnext {
+  display: flex; justify-content: space-between; gap: 10px;
+  margin-top: 36px; padding-top: 20px; border-top: 1px dashed var(--line);
+}
+.pn { display: flex; flex-direction: column; gap: 2px; max-width: 48%; }
+.pn:hover { text-decoration: none; }
+.pn-next { text-align: right; margin-left: auto; }
+.pn-dir { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+.pn-title { font-size: 13.5px; font-weight: 700; color: var(--wave); }
+
+.term-reading { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+
+/* tokenize demo */
+.tok-row { display: flex; flex-wrap: wrap; gap: 4px; margin: 12px 0; min-height: 2em; }
+.tok-box {
+  font-family: var(--mono); font-size: 13px;
+  padding: 3px 7px; border-radius: 5px;
+  animation: tok-in 0.3s ease both;
+}
+.tok-meta { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-top: 6px; }
+.tok-meta b { color: var(--signal); }
+.demo-tabs { display: flex; gap: 6px; margin-bottom: 4px; flex-wrap: wrap; }
+.demo-tab {
+  background: none; border: 1px solid var(--line); border-radius: 999px;
+  color: var(--muted); font-size: 12px; padding: 4px 12px;
+}
+.demo-tab[aria-pressed="true"] { background: var(--wave); border-color: var(--wave); color: var(--bg); font-weight: 700; }
+
+/* temperature demo */
+.temp-slider-row { display: flex; align-items: center; gap: 12px; margin: 14px 0; }
+.temp-slider-row input[type="range"] { flex: 1; accent-color: var(--signal); }
+.temp-value { font-family: var(--mono); font-size: 13px; color: var(--signal); width: 4.5em; }
+.temp-out { font-family: var(--mono); font-size: 13px; margin-top: 10px; min-height: 1.6em; overflow-wrap: anywhere; }
+.temp-out .tok { background: color-mix(in srgb, var(--signal) 18%, transparent); border-radius: 4px; padding: 0 4px; margin: 1px; display: inline-block; animation: tok-in 0.3s ease; }
+
 /* ---- footer ---- */
 .site-footer {
   border-top: 1px solid var(--line);

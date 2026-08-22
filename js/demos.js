@@ -115,6 +115,105 @@ window.DEMOS["attention"] = function (frame) {
   select(4); // 初期状態:「口座」
 };
 
+/* ---------- 4. トークン分割 ---------- */
+window.DEMOS["tokenize"] = function (frame) {
+  const SAMPLES = {
+    "日本語": ["今日", "は", "いい", "天気", "です", "ね", "。", "散歩", "に", "行き", "ましょう", "。"],
+    "English": ["The", " quick", " brown", " fox", " jumps", " over", " the", " lazy", " dog", "."],
+    "コード": ["def", " hello", "():", "\\n", "    ", "print", "(", "\"", "こんにちは", "\"", ")"],
+  };
+  const PALETTE_ALPHA = [0.22, 0.14, 0.30];
+  frame.insertAdjacentHTML("beforeend", `
+    <p class="demo-title">DEMO — 文章はどう「トークン」に刻まれるか</p>
+    <div class="demo-tabs"></div>
+    <div class="tok-row"></div>
+    <p class="tok-meta"></p>
+    <p class="demo-hint">同じ長さの文章でも、日本語は英語よりトークン数が多くなりがち。AIの料金も「読める量」も、文字数ではなくこのトークン数で数えられています。</p>
+  `);
+  const tabsEl = frame.querySelector(".demo-tabs");
+  const rowEl = frame.querySelector(".tok-row");
+  const metaEl = frame.querySelector(".tok-meta");
+  function show(name) {
+    tabsEl.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.textContent === name)));
+    rowEl.innerHTML = "";
+    const toks = SAMPLES[name];
+    toks.forEach((t, i) => {
+      const box = document.createElement("span");
+      box.className = "tok-box";
+      box.textContent = t.replace(/ /g, "␣").replace(/\\n/g, "⏎");
+      box.style.background = `color-mix(in srgb, var(--wave) ${PALETTE_ALPHA[i % 3] * 100}%, transparent)`;
+      box.style.animationDelay = REDUCED ? "0s" : (i * 0.06) + "s";
+      rowEl.appendChild(box);
+    });
+    const chars = toks.join("").replace(/\\n/g, " ").length;
+    metaEl.innerHTML = `文字数 ${chars} → <b>トークン数 ${toks.length}</b>(1トークン ≒ 日本語1〜2文字、英語は単語の断片)`;
+  }
+  for (const name of Object.keys(SAMPLES)) {
+    const b = document.createElement("button");
+    b.className = "demo-tab";
+    b.textContent = name;
+    b.addEventListener("click", () => show(name));
+    tabsEl.appendChild(b);
+  }
+  show("日本語");
+};
+
+/* ---------- 5. temperature ---------- */
+window.DEMOS["temperature"] = function (frame) {
+  const CANDS = [["予測", 3.0], ["生成", 2.2], ["理解", 1.4], ["料理", 0.4], ["削除", 0.2]];
+  frame.insertAdjacentHTML("beforeend", `
+    <p class="demo-title">DEMO — temperature:「かたい答え」と「意外な答え」のつまみ</p>
+    <p class="doc-p" style="font-size:13.5px">文脈「AIは次の単語を___」に続く候補の選ばれやすさが、temperatureでどう変わるかを見てみます。</p>
+    <div class="temp-slider-row">
+      <span class="temp-value"></span>
+      <input type="range" min="10" max="200" value="100" step="5" aria-label="temperature">
+    </div>
+    <div class="nt-cands"></div>
+    <button class="demo-btn">この設定で10回選ばせる</button>
+    <p class="temp-out"></p>
+    <p class="demo-hint">低いと最有力ばかり選ぶ「かたい」出力に、高いと下位候補も選ばれる「ゆらぐ」出力になります。同じ質問でも答えが変わるのはこのランダム性のためです。</p>
+  `);
+  const slider = frame.querySelector("input");
+  const valEl = frame.querySelector(".temp-value");
+  const candsEl = frame.querySelector(".nt-cands");
+  const btn = frame.querySelector(".demo-btn");
+  const outEl = frame.querySelector(".temp-out");
+
+  function probs(T) {
+    const exps = CANDS.map(([, s]) => Math.exp(s / T));
+    const sum = exps.reduce((a, b) => a + b, 0);
+    return exps.map(e => e / sum);
+  }
+  function render() {
+    const T = slider.value / 100;
+    valEl.textContent = "T = " + T.toFixed(2);
+    const p = probs(T);
+    candsEl.innerHTML = "";
+    CANDS.forEach(([word], i) => {
+      const row = document.createElement("div");
+      row.className = "nt-cand" + (i === 0 ? " win" : "");
+      const pct = Math.round(p[i] * 100);
+      row.innerHTML = `<span class="lbl">${word}</span><span class="bar-track"><span class="bar" style="width:${pct}%"></span></span><span class="pct">${pct}%</span>`;
+      candsEl.appendChild(row);
+    });
+  }
+  slider.addEventListener("input", render);
+  btn.addEventListener("click", () => {
+    const p = probs(slider.value / 100);
+    outEl.innerHTML = "選ばれた10回: ";
+    for (let n = 0; n < 10; n++) {
+      let r = Math.random(), i = 0;
+      while (r > p[i] && i < p.length - 1) { r -= p[i]; i++; }
+      const s = document.createElement("span");
+      s.className = "tok";
+      s.textContent = CANDS[i][0];
+      s.style.animationDelay = REDUCED ? "0s" : (n * 0.08) + "s";
+      outEl.appendChild(s);
+    }
+  });
+  render();
+};
+
 /* ---------- 3. 学習パイプライン ---------- */
 window.DEMOS["training"] = function (frame) {
   const stages = [

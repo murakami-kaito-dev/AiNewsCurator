@@ -3,61 +3,194 @@
   "issues": [
     {
       "version": "v2026.08.22",
-      "date": "2026年8月22日(創刊号 — 2026年2月〜8月の総まとめ)",
+      "date": "2026年8月17日〜8月22日",
+      "headline": "黒字化するAIラボ、1兆ドルのIPO",
+      "items": [
+        {
+          "title": "AnthropicがQ2売上でOpenAIを逆転、主要AIラボ初の黒字化",
+          "category": "企業・業界",
+          "summary": "AnthropicのQ2売上は116億ドル(前四半期の47.3億ドルから倍増超)で、調整後営業黒字5.59億ドルを計上。OpenAIはQ2売上67億ドルで営業損失が123億ドルに拡大した。",
+          "why": "「AIラボは構造的に赤字」という業界の前提を崩し、エンタープライズ/API中心のビジネスモデルの収益性を初めて実証した。",
+          "source": "https://qz.com/anthropic-surpasses-openai-revenue-q2-2026-081926"
+        },
+        {
+          "title": "OpenAI、評価額最大1兆ドルで9月IPO準備との報道",
+          "category": "企業・業界",
+          "summary": "S-1は6月にSECへ非公開提出済みで、主幹事はGoldman SachsとMorgan Stanley。2026年は約140億ドルの損失見込みのままの上場準備となる。CROにDali Rajicを任命(8月17日)するなど収益体制の強化も並行。",
+          "why": "実現すれば史上最大級のテックIPO。AIバブル論争と業界の資金調達構造に決定的な影響を与える。",
+          "source": "https://stocktwits.com/news-articles/markets/equity/open-ai-is-laying-groundwork-for-a-1-trillion-september-ipo-reports/cZXxdmURenZ"
+        },
+        {
+          "title": "Cerebras、GPU比最大30倍の推論速度を謳う「CS-4」発表",
+          "category": "ツール・サービス",
+          "summary": "8月18日、初のマルチウェハーシステムCS-4を発表。4兆トランジスタの新プロセッサWSE-3Tを3基搭載し、GPT-OSS-120Bで毎秒4,400トークン超/ユーザーを主張する。",
+          "why": "エージェント時代の競争軸は推論の速さとコストに移っており、NVIDIA一強の推論ハードに現実的な対抗が現れつつある。",
+          "source": "https://www.globenewswire.com/news-release/2026/08/19/3347356/0/en/cerebras-unveils-cs-4-up-to-30-times-faster-than-gpu-based-solutions.html"
+        },
+        {
+          "title": "新ベンチマーク「Reconstruction」— フロンティアAIの研究アイデア復元はわずか3〜15%",
+          "category": "研究・論文",
+          "summary": "参考文献リストだけから元論文の研究アイデアを復元するブラインドタスクで、単体LLMの成功率は3〜15%に留まった。一方マルチエージェントのトーナメント設計では42%まで向上した。",
+          "why": "SWE-bench等の主要ベンチマークが飽和する中、「仮説を生み出す力」というAIの構造的弱点を定量化した数少ない評価。マルチエージェント化で伸びる点も示唆的。",
+          "source": "https://www.techtimes.com/articles/324932/20260819/blind-benchmark-catches-frontier-ai-just-three-percent-research-idea-recovery.htm"
+        },
+        {
+          "title": "AI分散処理基盤Rayの重大脆弱性、CISAが3日以内の修正を指示",
+          "category": "規制・倫理",
+          "summary": "8月17日、CISAはRayのRCE脆弱性CVE-2025-62593を悪用済み脆弱性カタログ(KEV)に追加し、米連邦民間機関に異例の3日間での修正を指示した。",
+          "why": "AIの学習・推論を支えるインフラ自体が現実の攻撃対象になっている。AIを組み込む側にも基盤のセキュリティ管理が問われる時代。",
+          "source": "https://convergences.substack.com/p/the-weekly-signal-convergences-intelligence"
+        },
+        {
+          "title": "Gemma累計10億ダウンロード突破",
+          "category": "ツール・サービス",
+          "summary": "8月20日、Google DeepMindはオープンウェイトモデルGemmaの累計ダウンロードが10億件を超え、開発者による派生バリアントが10万種を超えたと発表した。",
+          "why": "オープンウェイトのエコシステム規模が公式数値で示された。ローカルLLMはニッチではなく主要な選択肢になっている。",
+          "source": "https://blog.google/innovation-and-ai/technology/developers-tools/gemma-one-billion-downloads/"
+        }
+      ]
+    },
+    {
+      "version": "v2026.08.16",
+      "date": "2026年8月10日〜8月16日",
+      "headline": "値下げ恒久化と500Kコンテキスト",
+      "items": [
+        {
+          "title": "Anthropic、Claude Sonnet 5の導入価格を恒久化(実質値下げ)",
+          "category": "ツール・サービス",
+          "summary": "8月11日、9月に予定していた値上げ($3/$15)を撤回し、導入価格の入力$2/出力$10(100万トークンあたり)を恒久化すると発表した。",
+          "why": "主力中位モデルの実質値下げ。API利用者のコスト計画に直結し、ベンダー間の価格競争がまだ続くことを示す。",
+          "source": "https://explainx.ai/blog/anthropic-sonnet-5-permanent-pricing-august-2026"
+        },
+        {
+          "title": "xAI「Grok 4.6」— コンテキスト500Kと二段階課金",
+          "category": "新モデル",
+          "summary": "8月12日リリース(日付は集約サイト情報で未確認)。コンテキストウィンドウを50万トークンに拡大し、20万トークン超のリクエストは価格が倍になる二段階課金を導入した。",
+          "why": "長文脈の処理コストは実際に高い。それを価格に直接反映する課金モデルは、今後他社にも波及しうる。",
+          "source": "https://blog.mean.ceo/grok-x-ai-news-august-2026/"
+        },
+        {
+          "title": "Alibaba、最上位「Qwen3.8-Max」のウェイトを公開",
+          "category": "新モデル",
+          "summary": "8月12日(未確認)、Maxティアとしては初のオープンウェイト公開。ただしライセンスはApache 2.0ではなく独自ライセンスで、「オープン」の定義を巡る議論も呼んでいる。",
+          "why": "最上位クラスのモデルまでオープン化する流れの画期。中国勢がオープンウェイト競争を主導する構図が続く。",
+          "source": "https://llmgateway.io/timeline"
+        },
+        {
+          "title": "Claude Codeに「auto-continue」— 利用上限リセットで自動再開",
+          "category": "ツール・サービス",
+          "summary": "8月14日、デスクトップ版に、使用量上限のウィンドウがリセットされた瞬間に停止中のセッションを自動再開する機能が追加された。",
+          "why": "レート制限で止まる長時間エージェント作業の中断コストを下げる、自律運用時代らしい実務直結の改善。",
+          "source": "https://releasebot.io/updates/anthropic/claude-code"
+        },
+        {
+          "title": "Anthropic、Claude出力へのウォーターマーク埋め込みを表明",
+          "category": "規制・倫理",
+          "summary": "8月2日以降のClaude製品に機械可読の不可視マークを実装し、EU AI法第50条(2)の透明性義務に対応すると報じられた(8月13日報道)。",
+          "why": "EU AI法の執行開始が、主要ラボの製品仕様を実際に変えた具体例。「AI生成かどうかを判別できるインフラ」の整備が始まった。",
+          "source": "https://www.artificiallawyer.com/2026/08/13/anthropic-will-embed-watermarks-in-ai-outputs/"
+        },
+        {
+          "title": "Made by Google 2026 — Pixel 11とGemini新機能",
+          "category": "企業・業界",
+          "summary": "8月12日開催。Pixel 11シリーズの発表と合わせ、端末上で動くGeminiの新機能が多数発表された。教育向けにはGemini in Classroomが全年齢の児童・生徒に開放された(8月10日)。",
+          "why": "AIはクラウドの向こうではなく手元の端末と教室に入り込みつつある。「オンデバイスAI」はハードウェア差別化の中核になった。",
+          "source": "https://techcrunch.com/2026/08/12/google-unveils-pixel-11-lineup-new-airtag-rival-and-gemini-features-at-made-by-google-2026/"
+        }
+      ]
+    },
+    {
+      "version": "v2026.08.09",
+      "date": "2026年8月1日〜8月9日",
+      "headline": "未解決問題を解くAI、動き出したEU AI法",
+      "items": [
+        {
+          "title": "OpenAI次期モデル「Astra」、数学の未解決問題10件を解決と発表",
+          "category": "新モデル",
+          "summary": "8月1日、未公開の次期フロンティアモデルAstraが数学・理論計算機科学の未解決問題10件を解いたと発表。Lean 4による機械検証可能な証明(未検証ステップゼロ)をApache 2.0で公開した。推論コストは1問あたり約2,000ドルと推定される。",
+          "why": "「既知問題で高得点」から「人類の未解決問題を解く」への節目。機械検証つきなので反論の余地がなく、次世代モデルの能力水準を示唆する。",
+          "source": "https://the-decoder.com/openai-announces-its-next-major-model-astra-by-dropping-ten-previously-unsolved-math-solutions/"
+        },
+        {
+          "title": "EU AI法、汎用AIモデルへの執行が本格開始",
+          "category": "規制・倫理",
+          "summary": "8月2日から、欧州委員会のAI Officeが汎用AIモデル提供者への文書提出要求、モデル評価のためのアクセス要求、市場からの回収命令などの権限を行使可能になった。制裁金は全世界売上高の3%または1,500万ユーロの高い方まで。",
+          "why": "フロンティアAIに対する世界初の本格的な行政執行体制。EU域外の企業にも透明性・ウォーターマーク等の実務対応を事実上強制する。",
+          "source": "https://www.taylorwessing.com/en/insights-and-events/insights/2026/08/gpai-obligations-under-the-eu-ai-act"
+        },
+        {
+          "title": "Alibaba「Qwen3.8-Max」公開 — 総パラメータ2.4兆",
+          "category": "新モデル",
+          "summary": "8月3日(集約サイト情報で日付未確認)、総パラメータ2.4兆・アクティブ95Bの最上位モデルを公開。価格は入力$2/出力$6と米フロンティア勢と同価格帯。",
+          "why": "中国勢の最上位ティアが価格でも性能でも米国勢と正面から競合する時代になった。",
+          "source": "https://llmgateway.io/timeline"
+        },
+        {
+          "title": "AI資金は「学習」から「推論インフラ」へ — フォトニックチップに3.12億ドル",
+          "category": "企業・業界",
+          "summary": "英OLIX Computingが光技術によるAI推論チップでシリーズB 3.12億ドルを調達(評価額33億ドル、日付未確認)。H1 2026のAIスタートアップ調達総額は4,070億ドルで、既に2025年通年を超えた。",
+          "why": "投資の重心が「モデルを作る」から「モデルを安く速く動かす」へ移っている。推論コストが次の主戦場。",
+          "source": "https://thebusinessperspective.com/ai-startups-that-raised-funding-in-august-2026/"
+        }
+      ]
+    },
+    {
+      "version": "v2026.02-07",
+      "date": "2026年2月〜7月の総まとめ(創刊特別号)",
       "headline": "エージェントの年、後半戦へ",
       "items": [
         {
           "title": "Anthropic、最上位「Mythosクラス」を新設 — Fable 5 / Mythos 5",
-          "category": "モデル",
+          "category": "新モデル",
           "summary": "2026年6月、AnthropicはOpusの上に新しいフロンティア層を追加した。Fable 5は追加セーフガード付きで一般提供、Mythos 5は同一モデルながら制限層なしのため承認組織限定。7月にはOpus 5、6月末にはSonnet 5も登場し、中位モデルが前世代最上位に約半額で追いつく構図が続く。",
           "why": "「安全層の有無」でモデルの提供範囲を分けるという、フロンティアAIの新しい配布戦略の転換点。",
           "source": "https://www.anthropic.com/news/claude-fable-5-mythos-5"
         },
         {
           "title": "OpenAIは約2ヶ月周期の高速リリースへ — GPT-5.5がデフォルト、5.6は3バリアント",
-          "category": "モデル",
+          "category": "新モデル",
           "summary": "2月のGPT-5.3-Codexから、3月に5.4、5月に5.5(ChatGPT新デフォルト)、7月に5.6と、ほぼ2ヶ月ごとのリリースが常態化。GPT-5.6は能力順にLuna / Terra / Solの3バリアント構成で、コーディング・科学研究・サイバーセキュリティへの特化が明確。",
           "why": "「年1回の大型発表」の時代は終わり、モデル選定は継続的な意思決定になった。",
           "source": "https://en.wikipedia.org/wiki/GPT-5.6"
         },
         {
           "title": "オープンモデルの主役交代 — Meta初のクローズドモデル、中国勢が台頭",
-          "category": "モデル",
+          "category": "新モデル",
           "summary": "Metaは4月に初のプロプライエタリモデルMuse Sparkを発表し「オープンのMeta」から戦略転換。一方でDeepSeek V4(7月GA)とQwen 3.6系が躍進し、QwenはHugging Face累計ダウンロードでLlamaを逆転した。",
           "why": "オープンウェイトの勢力図が米国から中国へ。ローカルLLMを選ぶ基準が変わった。",
           "source": "https://www.digitalapplied.com/blog/open-weight-models-h1-2026-retrospective-deepseek-qwen-llama"
         },
         {
           "title": "MCPはLinux Foundation管理の「業界インフラ」に",
-          "category": "エコシステム",
+          "category": "ツール・サービス",
           "summary": "SDK月間ダウンロードは約9,700万(ローンチ時の約970倍)、公開サーバーは約9,400。2026-07-28版仕様でステートレスアーキテクチャに進化し、エンタープライズ展開の摩擦を削減。NSAがセキュリティガイダンスを出すほどの普及度。",
           "why": "「AIにツールを繋ぐ方法」の標準戦争は事実上決着。学ぶなら今が回収期。",
           "source": "https://blog.modelcontextprotocol.io/posts/2026-07-28/"
         },
         {
           "title": "「ハーネスエンジニアリング」「ループエンジニアリング」が定着",
-          "category": "概念",
+          "category": "研究・論文",
           "summary": "2月にMitchell Hashimotoが提唱したハーネスエンジニアリング(Agent = Model + Harness — モデルの外側を工学する)に続き、6月にはループエンジニアリング(エージェントを回すループ自体を設計する)が命名・普及。LangChainも解説を公開。",
           "why": "改善の主戦場が「モデルをどう賢くするか」から「環境とループをどう設計するか」へ移った。プロンプト→コンテキスト→ハーネス→ループという系譜。",
           "source": "https://www.langchain.com/blog/the-art-of-loop-engineering"
         },
         {
           "title": "日本発の実験「週刊少年バカゲー」— AI編集部が毎週ゲームを連載",
-          "category": "事例",
+          "category": "企業・業界",
           "summary": "AIエージェントだけで自律運営される「編集部」が、毎週新作ブラウザゲームを連載するプロジェクト。人気スコアで連載順位を更新し、下位は打ち切り。cron定例会議・サブエージェント編集部・git永続メモリなどループエンジニアリングの6要素を実装。人間の介在はPRマージのみ。",
           "why": "ループ/ハーネスエンジニアリングの「動く実例」。読むだけで自律運用の設計パターンが学べる。",
           "source": "https://qiita.com/onaka_yurusugi/items/1c16ff9e3942e870e02c"
         },
         {
           "title": "コーディングエージェントは「多層化」へ — Claude Codeのネストサブエージェント、Cursor 3のエージェントファーストUI",
-          "category": "ツール",
+          "category": "ツール・サービス",
           "summary": "Claude Codeは3階層のネストサブエージェント、フォーク、スコープ付き権限、コスト集計などを追加し「多層エージェントシステムの運用基盤」に。Cursor 3はIDEをフォールバック扱いに格下げしエージェント中心UIへ全面刷新。旧WindsurfのCascadeは7月にEOL。",
           "why": "「補完してくれるIDE」から「指揮するエージェント群」へ。開発者の仕事はコーディングからオーケストレーションに寄っていく。",
           "source": "https://www.sitepoint.com/claude-code-june-2026-10-new-features-devs-need-to-know/"
         },
         {
           "title": "自律作業時間は「2労働日」を突破 — 倍増周期は4.3ヶ月に加速",
-          "category": "能力境界",
+          "category": "研究・論文",
           "summary": "METRの計測で、最上位エージェントが50%の信頼性でこなせる作業時間ホライズンが2労働日を超えた(Claude Mythosは16時間以上)。ホライズンの倍増周期は7ヶ月から約4.3ヶ月に短縮。ただし制約要因は判断力・戦略的推論・信頼性のまま。",
           "why": "「何分の作業を任せられるか」がモデル比較の主要指標になった。伸びの速さは業務設計の前提を変える。",
           "source": "https://metr.org/blog/2026-05-19-frontier-risk-report/"

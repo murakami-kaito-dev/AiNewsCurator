@@ -4,7 +4,7 @@
  * オフライン時のみ最後に受信したものを見せる。シェル更新時にこのファイルの
  * 変更は不要(キャッシュはリクエスト単位で上書きされる)。
  */
-const CACHE = "antenna-v1";
+const CACHE = "antenna-v2";
 
 self.addEventListener("install", (e) => {
   e.waitUntil(
@@ -15,7 +15,11 @@ self.addEventListener("install", (e) => {
 });
 
 self.addEventListener("activate", (e) => {
-  e.waitUntil(self.clients.claim());
+  e.waitUntil(
+    caches.keys()
+      .then((keys) => Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k))))
+      .then(() => self.clients.claim())
+  );
 });
 
 self.addEventListener("fetch", (e) => {

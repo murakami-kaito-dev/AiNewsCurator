@@ -1,0 +1,52 @@
+{
+  "sections": [
+    { "id": "trends", "label": "トレンド", "type": "trends",
+      "lede": "毎週月曜に自動更新されるAIニュースのキュレーション。過去号もすべて読めます。" },
+    { "id": "basics", "label": "AIの基礎", "type": "docs",
+      "lede": "AIを何も知らない状態から、ニュースが読める状態へ。ここが土台です。",
+      "pages": [
+        { "slug": "roadmap", "title": "学習ロードマップ", "summary": "どの順で読めばいいか。このサイトの歩き方。" },
+        { "slug": "ai-ml-dl", "title": "AI・機械学習・深層学習の違い", "summary": "3つの言葉の関係を1枚の図のように整理する。" },
+        { "slug": "neural-network", "title": "ニューラルネットワークの直感的理解", "summary": "「脳を真似た計算」の正体を、数式なしで。" },
+        { "slug": "llm", "title": "LLM(大規模言語モデル)とは", "summary": "ChatGPTの中身。何が「大規模」なのか。" },
+        { "slug": "generative-ai", "title": "生成AIとは", "summary": "従来のAIと何が違うのか。文章・画像・音声の共通原理。" },
+        { "slug": "token", "title": "トークンとコンテキストウィンドウ", "summary": "AIの「読める量」と「料金」を決める最重要概念。" },
+        { "slug": "parameter", "title": "パラメータとは何の数か", "summary": "「1750億パラメータ」の1750億個は何を数えている?" },
+        { "slug": "transformer", "title": "Transformerという発明", "summary": "2017年に生まれ、すべてを変えた仕組み。GPUと相性が良い理由まで。" },
+        { "slug": "attention", "title": "Attention — 文脈を読む仕組み", "summary": "単語が他の単語を「見る」とはどういうことか。触って分かるデモ付き。" },
+        { "slug": "generation", "title": "文章が生まれる瞬間", "summary": "次トークン予測とtemperature。同じ質問で答えが変わる理由。" },
+        { "slug": "training", "title": "LLMができるまで — 学習の3段階", "summary": "事前学習・SFT・RLHF。各段階で何が行われているのか。" },
+        { "slug": "capability", "title": "できること・できないこと", "summary": "2026年時点の能力の境界線。仕事を任せる判断基準に。" }
+      ] },
+    { "id": "use", "label": "AIを使う", "type": "docs",
+      "lede": "AIを道具として使いこなすためのスキル。今日から使える実践知識。",
+      "pages": [
+        { "slug": "prompt-engineering", "title": "プロンプトエンジニアリング", "summary": "AIへの頼み方で結果が変わる。基本の型と落とし穴。" },
+        { "slug": "services", "title": "主要サービスの使い分け", "summary": "ChatGPT・Claude・Gemini。何がどう違い、どれを選ぶか。" },
+        { "slug": "ai-coding", "title": "AIコーディング支援", "summary": "Copilot・Claude Code・Cursor。「補完」から「任せる」への進化。" },
+        { "slug": "media-generation", "title": "画像・音声の生成ツール", "summary": "言葉から絵と声が生まれる仕組みと、代表的なツール。" }
+      ] },
+    { "id": "build", "label": "AIを組み込む", "type": "docs",
+      "lede": "自分のアプリ・業務システムにAIを組み込むための技術。エンジニアの主戦場。",
+      "pages": [
+        { "slug": "api", "title": "各社APIの始め方", "summary": "OpenAI・Anthropic・Google。アプリからAIを呼ぶ第一歩。" },
+        { "slug": "rag", "title": "RAG — AIに自社の知識を持たせる", "summary": "検索してから答えさせる、企業導入の定番パターン。" },
+        { "slug": "vector-db", "title": "ベクトルDB", "summary": "「意味が近い文書」を探せるデータベース。RAGの心臓部。" },
+        { "slug": "fine-tuning", "title": "ファインチューニング", "summary": "モデルを自分のデータで追加学習させる。使い所の見極めが9割。" },
+        { "slug": "agent", "title": "エージェント", "summary": "AIが自分で考えて手を動かす仕組み。2026年の主役を正面から解説。" },
+        { "slug": "mcp", "title": "MCP — AIとツールをつなぐ標準", "summary": "「AI界のUSB-C」。なぜ標準規格が必要で、どう使うのか。" },
+        { "slug": "frameworks", "title": "フレームワーク", "summary": "LangChain等。自前実装とフレームワーク利用の分かれ目。" }
+      ] },
+    { "id": "context", "label": "周辺知識", "type": "docs",
+      "lede": "技術そのものの外側 — 歴史、規制、セキュリティ、業界の力学。",
+      "pages": [
+        { "slug": "history", "title": "AIの歴史", "summary": "1950年から現在まで。ブームと冬を繰り返して今がある。" },
+        { "slug": "ethics", "title": "倫理・著作権・規制", "summary": "EU AI法、著作権論争、日本のルール。作る側が知るべき線引き。" },
+        { "slug": "security", "title": "AIのセキュリティ", "summary": "プロンプトインジェクション等、AI特有の攻撃と守り方。" },
+        { "slug": "industry", "title": "主要企業と業界地図・次に来るもの", "summary": "プレイヤーの勢力図と、萌芽期の技術レーダー。" },
+        { "slug": "certification", "title": "資格 — G検定・E資格", "summary": "日本のAI資格の位置づけと、取る価値の判断材料。" }
+      ] },
+    { "id": "glossary", "label": "用語辞典", "type": "glossary",
+      "lede": "本文中のリンクの行き先。専門用語をここで一つずつ潰せます。" }
+  ]
+}

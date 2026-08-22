@@ -1,197 +1,985 @@
 {
-  "updated": "2026.08.22",
+  "updated": "2026.08.23",
   "terms": [
     {
+      "slug": "ai",
+      "term": "AI (人工知能)",
+      "reading": "えーあい",
+      "category": "基礎",
+      "definition": "人間の知的な作業(理解・判断・生成など)をコンピュータに行わせる技術の総称。ルールを人間が書いて動かす古典的な方式から、データから規則を学ぶ[[glossary:machine-learning|機械学習]]まで幅広く含みます。2020年代に「AI」と呼ばれているものの多くは、[[glossary:llm|LLM]]をはじめとする[[glossary:generative-ai|生成AI]]です。",
+      "context": "1956年のダートマス会議で命名された歴史ある分野だが、2022年のChatGPT登場で一気に日常語になった。",
+      "related": [
+        "machine-learning",
+        "generative-ai",
+        "llm"
+      ]
+    },
+    {
+      "slug": "machine-learning",
+      "term": "機械学習 (machine learning)",
+      "reading": "きかいがくしゅう",
+      "category": "基礎",
+      "definition": "人間がルールを1つずつ書く代わりに、大量のデータから規則性をコンピュータ自身に見つけさせる手法の総称。「猫とは何か」を定義で教えるのではなく、猫の写真を大量に見せて特徴を掴ませるイメージです。[[glossary:deep-learning|ディープラーニング]]はその有力な一分野です。",
+      "context": "迷惑メールフィルタや商品のおすすめなど、生成AIブーム以前から実務を支えてきた土台技術。",
+      "related": [
+        "deep-learning",
+        "neural-network",
+        "ai"
+      ]
+    },
+    {
+      "slug": "deep-learning",
+      "term": "ディープラーニング (deep learning)",
+      "reading": "でぃーぷらーにんぐ",
+      "category": "基礎",
+      "definition": "[[glossary:neural-network|ニューラルネットワーク]]を何層にも深く重ねた機械学習の手法。層が深いほど「線→形→顔」のように、単純な特徴から複雑な概念まで段階的に捉えられます。画像認識・音声認識からLLMまで、現代AIの中核はほぼこれです。",
+      "context": "2012年の画像認識コンテスト(ImageNet)での圧勝でブレイクし、第3次AIブームの起点になった。",
+      "related": [
+        "neural-network",
+        "machine-learning",
+        "gpu"
+      ]
+    },
+    {
+      "slug": "neural-network",
+      "term": "ニューラルネットワーク (neural network)",
+      "reading": "にゅーらるねっとわーく",
+      "category": "基礎",
+      "definition": "脳の神経細胞のつながりを大まかに真似た計算の仕組み。たくさんの単純な計算ユニットを網の目のようにつなぎ、つながりの強さ([[glossary:weight|重み]])を学習で調整することで、入力から出力への複雑な変換を覚えます。",
+      "context": "アイデア自体は1950年代からあり、計算力とデータが揃った2010年代に本領を発揮した。",
+      "related": [
+        "weight",
+        "parameter",
+        "deep-learning"
+      ]
+    },
+    {
+      "slug": "weight",
+      "term": "重み (weight)",
+      "reading": "おもみ",
+      "category": "基礎",
+      "definition": "ニューラルネットワーク内の「つながりの強さ」を表す数値。学習とは、出力が正解に近づくようにこの数値を少しずつ調整していく作業のことです。[[glossary:parameter|パラメータ]]とほぼ同義で使われます。",
+      "context": "「オープンウェイト」のように、モデルの実体そのものを指す言葉としても登場する。",
+      "related": [
+        "parameter",
+        "neural-network",
+        "open-weight"
+      ]
+    },
+    {
+      "slug": "parameter",
+      "term": "パラメータ (parameter)",
+      "reading": "ぱらめーた",
+      "category": "基礎",
+      "definition": "モデルが学習で獲得した数値([[glossary:weight|重み]]など)の総称で、モデルの「知識」の実体です。「70Bモデル」の70Bはパラメータ数700億の意味で、モデルの規模を表す最も一般的な指標として使われます。",
+      "context": "スケーリング則の時代、パラメータ数は性能と費用の目安として常に語られる数字。",
+      "related": [
+        "weight",
+        "scaling-laws",
+        "llm"
+      ]
+    },
+    {
+      "slug": "gpu",
+      "term": "GPU",
+      "reading": "じーぴーゆー",
+      "category": "基礎",
+      "definition": "もともとゲームの画像描画用に作られた、単純な計算を大量に並列実行するのが得意な半導体。ニューラルネットワークの学習・推論は中身が「大量のかけ算と足し算」なのでGPUと相性が抜群で、AI開発の必須インフラになりました。",
+      "context": "AIブームでNVIDIAが世界最大級の企業になった理由。GPUの調達力がAI企業の競争力を左右する。",
+      "related": [
+        "deep-learning",
+        "pretraining",
+        "inference"
+      ]
+    },
+    {
+      "slug": "llm",
       "term": "LLM (大規模言語モデル)",
       "reading": "えるえるえむ",
       "category": "基礎",
-      "definition": "Web規模のテキストで「次のトークン予測」を学習した巨大ニューラルネット。ChatGPTもClaudeもGeminiも中身はこれ。「AI」と日常的に呼ばれているものの多くは正確にはLLM。",
-      "context": "2020年のGPT-3で「大きくすれば賢くなる」ことが実証され、以後の主役に。",
-      "related": ["Transformer", "トークン", "スケーリング則"]
+      "definition": "Web規模の膨大なテキストで[[glossary:next-token-prediction|次トークン予測]]を学習した巨大ニューラルネットワーク。ChatGPTもClaudeもGeminiも中身はこれです。日常で「AI」と呼ばれているものの多くは、正確にはこのLLMです。",
+      "context": "2020年のGPT-3で「大きくすれば賢くなる」ことが実証され、以後のAIの主役に。",
+      "related": [
+        "transformer",
+        "token",
+        "next-token-prediction",
+        "scaling-laws"
+      ]
     },
     {
-      "term": "トークン",
+      "slug": "generative-ai",
+      "term": "生成AI (generative AI)",
+      "reading": "せいせいえーあい",
+      "category": "基礎",
+      "definition": "文章・画像・音声・動画などを新しく「作り出す」AIの総称。従来のAIが分類や判定を得意としたのに対し、生成AIは成果物そのものを出力します。文章なら[[glossary:llm|LLM]]、画像なら拡散モデルが代表格です。",
+      "context": "2022年のStable DiffusionとChatGPTの登場で爆発的に普及し、ビジネス用語として定着した。",
+      "related": [
+        "llm",
+        "multimodal",
+        "deepfake"
+      ]
+    },
+    {
+      "slug": "foundation-model",
+      "term": "基盤モデル (foundation model)",
+      "reading": "きばんもでる",
+      "category": "モデル",
+      "definition": "膨大なデータで一度だけ大規模に[[glossary:pretraining|事前学習]]し、その後さまざまな用途に使い回す前提で作られたモデル。用途ごとにゼロから作るのではなく、1つの強力なモデルを土台(基盤)にしてプロンプトや[[glossary:fine-tuning|ファインチューニング]]で応用します。",
+      "context": "2021年にスタンフォード大学の研究者らが命名。LLMや画像モデルを含む上位概念として使われる。",
+      "related": [
+        "llm",
+        "pretraining",
+        "fine-tuning"
+      ]
+    },
+    {
+      "slug": "token",
+      "term": "トークン (token)",
       "reading": "とーくん",
       "category": "基礎",
-      "definition": "LLMが扱う文字列の最小単位。日本語なら1〜2文字、英語なら単語の断片程度。LLMの料金・コンテキスト長・生成速度はすべてトークン数で数えられる。",
-      "context": "APIの課金単位として実務者が最初に体で覚える概念。",
-      "related": ["コンテキストウィンドウ", "LLM (大規模言語モデル)"]
+      "definition": "LLMが扱う文字列の最小単位。日本語なら1〜2文字、英語なら単語の断片程度で、[[glossary:tokenizer|トークナイザー]]が文章をこの単位に分割します。LLMの料金・コンテキスト長・生成速度は、すべてトークン数で数えられます。",
+      "context": "APIの課金単位として、実務者が最初に体で覚える概念。",
+      "related": [
+        "tokenizer",
+        "context-window",
+        "next-token-prediction"
+      ]
     },
     {
+      "slug": "tokenizer",
+      "term": "トークナイザー (tokenizer)",
+      "reading": "とーくないざー",
+      "category": "基礎",
+      "definition": "文章を[[glossary:token|トークン]]の列に分割する仕組み。よく登場する文字列ほど1トークンにまとまるため、同じ内容でも英語より日本語の方がトークン数が多くなりがちで、料金や速度に差が出ます。分割の仕方はモデルごとに異なります。",
+      "context": "「文字数とトークン数は別物」という、LLM利用の最初のつまずきポイントの正体。[[page:basics/token|トークンとコンテキストウィンドウ]]のデモで体験できる。",
+      "related": [
+        "token",
+        "context-window",
+        "llm"
+      ]
+    },
+    {
+      "slug": "context-window",
+      "term": "コンテキストウィンドウ (context window)",
+      "reading": "こんてきすとうぃんどう",
+      "category": "基礎",
+      "definition": "LLMが一度に「見える」テキスト量の上限で、[[glossary:token|トークン]]数で数えます。2023年は数千トークンでしたが、いまは100万トークン(小説数冊分)級のモデルもあります。上限を超えた情報は見えなくなるため、[[glossary:rag|RAG]]やメモリ機構で補います。",
+      "context": "長文脈化が「RAG不要論」を生み、その後のメモリ設計論に発展した。",
+      "related": [
+        "token",
+        "rag",
+        "agent-memory"
+      ]
+    },
+    {
+      "slug": "transformer",
       "term": "Transformer",
       "reading": "とらんすふぉーまー",
       "category": "アーキテクチャ",
-      "definition": "2017年の論文「Attention Is All You Need」で提案された構造。文中の全単語同士の関係(注意=Attention)を並列計算できるため、GPUでの大規模学習と相性が良く、すべての現代LLMの土台になった。",
-      "context": "登場から9年経った2026年でも基本構造は置き換えられていない。",
-      "related": ["Attention", "LLM (大規模言語モデル)"]
+      "definition": "2017年の論文「Attention Is All You Need」で提案されたニューラルネットワークの構造。文中の全単語同士の関係を[[glossary:attention|Attention]]で並列に計算できるため、[[glossary:gpu|GPU]]での大規模学習と相性が良く、すべての現代LLMの土台になりました。",
+      "context": "登場から9年経った2026年でも、基本構造は置き換えられていない。",
+      "related": [
+        "attention",
+        "llm",
+        "gpu"
+      ]
     },
     {
+      "slug": "attention",
       "term": "Attention (注意機構)",
       "reading": "あてんしょん",
       "category": "アーキテクチャ",
-      "definition": "各単語が文中の他の単語に「どれだけ注目すべきか」を重みとして計算する仕組み。「銀行の口座」の「口座」は「銀行」に強く注意を向けることで意味が定まる。「LLMのしくみ」タブのDEMO 02で体験できる。",
-      "context": "Transformerの心臓部。このアプリの名前とヘッダー演出の元ネタでもある。",
-      "related": ["Transformer"]
+      "definition": "各単語が文中の他の単語に「どれだけ注目すべきか」を重みとして計算する仕組み。「銀行の口座」の「口座」は「銀行」に強く注意を向けることで意味が定まります。[[page:basics/attention|Attentionのページ]]のデモで体験できます。",
+      "context": "Transformerの心臓部。このサイトの名前とヘッダー演出の元ネタでもある。",
+      "related": [
+        "transformer",
+        "llm"
+      ]
     },
     {
-      "term": "コンテキストウィンドウ",
-      "reading": "こんてきすとうぃんどう",
-      "category": "基礎",
-      "definition": "LLMが一度に「見える」テキスト量の上限。2023年は数千トークンだったが、2026年には100万トークン(小説数冊分)が普通に。これを超えた情報は忘れるため、RAGやメモリ機構で補う。",
-      "context": "長文脈化がRAG不要論を生み、メモリ設計論に発展した。",
-      "related": ["RAG", "トークン"]
-    },
-    {
-      "term": "プロンプトエンジニアリング",
-      "reading": "ぷろんぷとえんじにありんぐ",
-      "category": "実践",
-      "definition": "LLMへの指示文(プロンプト)を工夫して出力品質を上げる技法。役割指定、例示(few-shot)、思考手順の明示など。",
-      "context": "2023年に大流行した「第1世代」のスキル。現在はコンテキスト→ハーネス→ループへと主戦場が移ったが、基礎として今も有効。",
-      "related": ["コンテキストエンジニアリング", "ハーネスエンジニアリング"]
-    },
-    {
-      "term": "コンテキストエンジニアリング",
-      "reading": "こんてきすとえんじにありんぐ",
-      "category": "実践",
-      "definition": "プロンプト単文ではなく、LLMに渡す文脈全体(ドキュメント、ツール定義、履歴、メモリ)を設計する技法。「何を伝えるか」より「何を見せるか」。",
-      "context": "2025年に「プロンプトエンジニアリングの次」として定着した第2世代。",
-      "related": ["プロンプトエンジニアリング", "ハーネスエンジニアリング", "RAG"]
-    },
-    {
-      "term": "ハーネスエンジニアリング",
-      "reading": "はーねすえんじにありんぐ",
-      "category": "実践",
-      "definition": "「Agent = Model + Harness」— モデルの外側にある実行環境(ツール、権限、メモリ、検証器、フィードバック)を工学する営み。エージェントがミスするたびに、指示ではなく環境側に恒久的な修正を入れるのが要諦。",
-      "context": "2026年2月にMitchell Hashimotoのブログが語源。数週間でOpenAI・Anthropicも追随し、第3世代のスキルとして定着。",
-      "related": ["ループエンジニアリング", "エージェント", "コンテキストエンジニアリング"]
-    },
-    {
-      "term": "ループエンジニアリング",
-      "reading": "るーぷえんじにありんぐ",
-      "category": "実践",
-      "definition": "「エージェントにプロンプトするのをやめ、エージェントにプロンプトするループを設計せよ」。トリガー(cron/イベント)、検証器、停止条件を設計し、人間が張り付かなくても回り続ける自律ループを作る技法。ハートビート型・cron型・フック型・ゴール型の4類型がある。",
-      "context": "2026年6月にAddy Osmaniのエッセイ等で命名・普及。「週刊少年バカゲー」が有名な実践例。",
-      "related": ["ハーネスエンジニアリング", "エージェント"]
-    },
-    {
-      "term": "RAG (検索拡張生成)",
-      "reading": "らぐ",
-      "category": "技術",
-      "definition": "Retrieval-Augmented Generation。質問に関連する文書を検索してLLMのコンテキストに入れてから回答させる構成。LLMが知らない社内文書や最新情報を扱う定番手法。",
-      "context": "2023〜24年の企業導入の主役。長文脈化とエージェント検索の台頭で「唯一解」ではなくなったが、依然として基本パターン。",
-      "related": ["コンテキストウィンドウ", "埋め込み (Embedding)"]
-    },
-    {
-      "term": "埋め込み (Embedding)",
+      "slug": "embedding",
+      "term": "埋め込み (embedding)",
       "reading": "うめこみ",
       "category": "技術",
-      "definition": "テキストを意味を保った数値ベクトルに変換したもの。「意味が近い文はベクトルも近い」ため、意味検索・分類・RAGの検索部分に使われる。",
+      "definition": "テキストなどを、意味を保った数値の[[glossary:vector|ベクトル]]に変換したもの。「意味が近い文はベクトルも近い」という性質があるため、[[glossary:semantic-search|意味検索]]・分類・RAGの検索部分に使われます。",
       "context": "2013年のword2vecが祖先。RAGブームで実務者の必須知識になった。",
-      "related": ["RAG"]
+      "related": [
+        "vector",
+        "semantic-search",
+        "rag"
+      ]
     },
     {
-      "term": "ファインチューニング",
-      "reading": "ふぁいんちゅーにんぐ",
+      "slug": "vector",
+      "term": "ベクトル (vector)",
+      "reading": "べくとる",
       "category": "技術",
-      "definition": "事前学習済みモデルを自分のデータで追加学習させ、口調・形式・ドメイン知識を寄せる手法。ただし新知識の注入にはRAGの方が向くことが多く、使い所の見極めが重要。",
-      "context": "「とりあえずファインチューニング」は2023年に卒業されたアンチパターン。",
-      "related": ["RAG", "RLHF"]
+      "definition": "複数の数値をひとまとまりに並べたもの(例: [0.2, -1.5, 0.8, …])。AIの世界では、言葉や画像の「意味」を数百〜数千個の数値の並びとして表現するのに使います。数値の並び同士の距離を測れるので、「意味の近さ」を計算で扱えるようになります。",
+      "context": "埋め込みやベクトルDBの土台になる、AI実務の基本語彙。",
+      "related": [
+        "embedding",
+        "vector-db",
+        "semantic-search"
+      ]
     },
     {
+      "slug": "next-token-prediction",
+      "term": "次トークン予測 (next-token prediction)",
+      "reading": "じとーくんよそく",
+      "category": "基礎",
+      "definition": "「ここまでの文章の続きとして、次に来る[[glossary:token|トークン]]は何か」を確率で予測するタスク。LLMの学習も文章生成も、この予測の繰り返しだけでできています。その単純さからは想像できないほど幅広い能力が、ここから生まれます。",
+      "context": "「AIは次の単語を当てているだけ」という説明の正体。[[page:basics/generation|文章が生まれる瞬間]]のデモで体験できる。",
+      "related": [
+        "token",
+        "llm",
+        "pretraining"
+      ]
+    },
+    {
+      "slug": "temperature",
+      "term": "温度 (temperature)",
+      "reading": "おんど",
+      "category": "技術",
+      "definition": "LLMの出力のランダムさを調節するつまみ。低くすると毎回ほぼ同じ堅実な答えに、高くすると多様で意外性のある答えになります。[[glossary:sampling|サンプリング]]時の確率分布の尖り方を変えることで実現しています。事実の抽出は低め、アイデア出しは高めが定番です。",
+      "context": "API利用時に最初に触ることになる代表的パラメータ。[[page:basics/generation|文章が生まれる瞬間]]のデモで体験できる。",
+      "related": [
+        "sampling",
+        "inference",
+        "api"
+      ]
+    },
+    {
+      "slug": "sampling",
+      "term": "サンプリング (sampling)",
+      "reading": "さんぷりんぐ",
+      "category": "技術",
+      "definition": "LLMが計算した「次のトークンの確率分布」から、実際に出力する1つを選ぶ工程。常に確率最大のものを選ぶのではなく、[[glossary:temperature|温度]]などの設定に応じてくじ引きのように選ぶため、同じ質問でも答えが毎回変わります。",
+      "context": "「なぜ出力が毎回違うのか」を説明できるかどうかは、LLMを理解しているかの試金石。",
+      "related": [
+        "temperature",
+        "next-token-prediction",
+        "inference"
+      ]
+    },
+    {
+      "slug": "pretraining",
+      "term": "事前学習 (pretraining)",
+      "reading": "じぜんがくしゅう",
+      "category": "技術",
+      "definition": "Web規模の膨大なテキストで[[glossary:next-token-prediction|次トークン予測]]をひたすら解かせ、言葉と世界の知識をモデルに詰め込む工程。数か月の時間と巨額の計算費用がかかる、LLM作りの最初で最大の段階です。",
+      "context": "この後に続くSFT・RLHFという「しつけ」の工程と対で語られる。",
+      "related": [
+        "next-token-prediction",
+        "sft",
+        "scaling-laws",
+        "gpu"
+      ]
+    },
+    {
+      "slug": "sft",
+      "term": "SFT (教師ありファインチューニング)",
+      "reading": "えすえふてぃー",
+      "category": "技術",
+      "definition": "事前学習済みモデルに「指示と模範回答」のペアを学習させ、指示に従う振る舞いを教える工程。Supervised Fine-Tuningの略です。[[glossary:pretraining|事前学習]]が「知識の詰め込み」なら、SFTは「受け答えのしつけ」の第一歩です。",
+      "context": "ChatGPT系モデルの標準工程「事前学習→SFT→RLHF」の真ん中を担う。",
+      "related": [
+        "pretraining",
+        "rlhf",
+        "fine-tuning"
+      ]
+    },
+    {
+      "slug": "rlhf",
       "term": "RLHF",
       "reading": "あーるえるえいちえふ",
       "category": "技術",
-      "definition": "人間のフィードバックからの強化学習。人間が「どちらの回答が好ましいか」を比較評価したデータで報酬モデルを作り、LLMを「好ましい答え方」に寄せる。ChatGPTを「ただの次単語予測機」から「対話相手」に変えた立役者。",
+      "definition": "人間のフィードバックからの強化学習(Reinforcement Learning from Human Feedback)。人間が「どちらの回答が好ましいか」を比較評価したデータで[[glossary:reward-model|報酬モデル]]を作り、LLMを「好ましい答え方」に寄せます。ChatGPTを「ただの次単語予測機」から「対話相手」に変えた立役者です。",
       "context": "2022年のChatGPT成功の技術的核心。AIが評価する版はRLAIFと呼ぶ。",
-      "related": ["ファインチューニング", "アライメント"]
+      "related": [
+        "reward-model",
+        "sft",
+        "alignment"
+      ]
     },
     {
-      "term": "エージェント",
-      "reading": "えーじぇんと",
-      "category": "エージェント",
-      "definition": "LLMがツール(コード実行、ファイル操作、Web検索など)を使いながら、自分で計画・実行・修正のループを回して目標を達成するシステム。「質問に答えるAI」との違いは、複数ステップの行動を自律的に続けること。",
-      "context": "2025〜26年の主役。2026年のエンタープライズアプリの80%が何らかのエージェントを内蔵。",
-      "related": ["ハーネスエンジニアリング", "MCP", "マルチエージェント"]
+      "slug": "reward-model",
+      "term": "報酬モデル (reward model)",
+      "reading": "ほうしゅうもでる",
+      "category": "技術",
+      "definition": "「この回答は人間にとってどれくらい好ましいか」を点数で予測する、採点係のモデル。人間の比較評価データで訓練し、[[glossary:rlhf|RLHF]]では本体のモデルがこの点数を最大化するように学習します。",
+      "context": "採点係の穴を突いて点数だけ稼ぐ「報酬ハッキング」という失敗モードとセットで語られる。",
+      "related": [
+        "rlhf",
+        "alignment",
+        "sft"
+      ]
     },
     {
-      "term": "MCP (Model Context Protocol)",
-      "reading": "えむしーぴー",
-      "category": "エージェント",
-      "definition": "AIモデルと外部ツール・データ源を接続するオープン標準プロトコル。「AI界のUSB-C」。一度MCPサーバーを作れば、対応するどのAIクライアントからも使える。",
-      "context": "2024年11月にAnthropicが公開、2025年12月からLinux Foundation管理。SDK月間DL約9,700万、OpenAI/Google/Microsoftも対応済みで事実上の標準に。",
-      "related": ["エージェント", "A2A"]
+      "slug": "fine-tuning",
+      "term": "ファインチューニング (fine-tuning)",
+      "reading": "ふぁいんちゅーにんぐ",
+      "category": "技術",
+      "definition": "事前学習済みモデルを自分のデータで追加学習させ、口調・形式・ドメイン知識を寄せる手法。ただし新しい知識の注入には[[glossary:rag|RAG]]の方が向くことが多く、使い所の見極めが重要です。",
+      "context": "「とりあえずファインチューニング」は2023年に卒業されたアンチパターン。",
+      "related": [
+        "rag",
+        "sft",
+        "pretraining"
+      ]
     },
     {
-      "term": "A2A (Agent2Agent)",
-      "reading": "えーつーえー",
-      "category": "エージェント",
-      "definition": "エージェント同士が互いを発見し、通信するためのプロトコル。MCPが「エージェント↔ツール」なら、A2Aは「エージェント↔エージェント」。",
-      "context": "Google発、現在はLinux Foundation管理でv1.0到達。150以上の組織が支持するが、実装普及はMCPほどではない(2026年8月時点)。",
-      "related": ["MCP", "マルチエージェント"]
+      "slug": "inference",
+      "term": "推論 (inference)",
+      "reading": "すいろん",
+      "category": "技術",
+      "definition": "学習済みモデルを実際に動かして出力を得ること。ChatGPTに質問して答えが返ってくるのは推論です。学習と違ってモデル自体は変化せず、その代わり利用のたびに[[glossary:gpu|GPU]]の計算コストがかかります。",
+      "context": "AIサービスの運営費の主役。推論を速く安くする技術(量子化・キャッシュなど)が一大分野になっている。",
+      "related": [
+        "pretraining",
+        "gpu",
+        "api"
+      ]
     },
     {
-      "term": "マルチエージェント / オーケストレーション",
-      "reading": "まるちえーじぇんと",
-      "category": "エージェント",
-      "definition": "1体の万能エージェントではなく、オーケストレーター(指揮役)が専門サブエージェント群に仕事を振り分ける構成。レビュー役・実装役・検証役を分けると品質が上がることが多い。",
-      "context": "2026年のエージェント設計の主流。Claude Codeのネストサブエージェントなどツール側の支援も充実。",
-      "related": ["エージェント", "A2A", "ループエンジニアリング"]
+      "slug": "scaling-laws",
+      "term": "スケーリング則 (scaling laws)",
+      "reading": "すけーりんぐそく",
+      "category": "基礎",
+      "definition": "モデル・データ・計算量を増やすと、性能が予測可能に伸びるという経験則。「賢さは規模から買える」ことを示し、2020年代前半のAI投資競争の科学的根拠になりました。",
+      "context": "2026年現在、「スケールだけでは足りない」領域(継続学習・世界モデル)への関心が高まりつつある。",
+      "related": [
+        "llm",
+        "emergence",
+        "world-model"
+      ]
     },
     {
-      "term": "推論モデル (Reasoning Model)",
-      "reading": "すいろんもでる",
-      "category": "モデル",
-      "definition": "回答の前に「考える」時間(思考トークン)を使うモデル。数学・科学・複雑なコーディングで劇的に性能が上がる。思考の長さを費用と相談で調節できるものが多い。",
-      "context": "2024年末のOpenAI o1で市民権を得て、2026年には主要モデルの標準機能に。",
-      "related": ["LLM (大規模言語モデル)"]
+      "slug": "emergence",
+      "term": "創発 (emergence)",
+      "reading": "そうはつ",
+      "category": "基礎",
+      "definition": "モデルを大きくしていくと、ある規模を超えたところで、明示的に教えていない能力(翻訳、算数、段階的な推論など)が突然できるようになったように見える現象。[[glossary:scaling-laws|スケーリング則]]の時代を象徴する言葉です。「測り方の問題で実際は連続的に伸びている」という反論もあります。",
+      "context": "「大きくすると何が起きるか分からない」という、AIへの期待と不安の両方の源泉。",
+      "related": [
+        "scaling-laws",
+        "llm"
+      ]
     },
     {
+      "slug": "hallucination",
       "term": "ハルシネーション (幻覚)",
       "reading": "はるしねーしょん",
       "category": "限界",
-      "definition": "LLMが事実でないことを自信満々に生成する現象。「知らない」と言うより「それらしく埋める」方が次トークン予測として自然なために起こる。軽減は進んだが2026年でも根絶されていない。",
+      "definition": "LLMが事実でないことを自信満々に生成する現象。「知らない」と答えるより「それらしく埋める」方が[[glossary:next-token-prediction|次トークン予測]]として自然なために起こります。軽減は進みましたが、2026年でも根絶はされていません。",
       "context": "検証器を外側に置くハーネスエンジニアリングが伸びた理由の裏返し。",
-      "related": ["ハーネスエンジニアリング", "グラウンディング"]
+      "related": [
+        "grounding",
+        "next-token-prediction",
+        "harness-engineering"
+      ]
     },
     {
-      "term": "グラウンディング",
+      "slug": "grounding",
+      "term": "グラウンディング (grounding)",
       "reading": "ぐらうんでぃんぐ",
       "category": "技術",
-      "definition": "LLMの出力を検索結果・文書・データベースなど検証可能な情報源に「接地」させること。出典を出させる、RAGで根拠を与える、などが典型。",
+      "definition": "LLMの出力を、検索結果・文書・データベースなど検証可能な情報源に「接地」させること。出典を出させる、[[glossary:rag|RAG]]で根拠を与える、などが典型です。",
       "context": "ハルシネーション対策の基本戦略として定着。",
-      "related": ["RAG", "ハルシネーション (幻覚)"]
+      "related": [
+        "rag",
+        "hallucination"
+      ]
     },
     {
-      "term": "アライメント",
-      "reading": "あらいめんと",
-      "category": "安全性",
-      "definition": "AIの目標や振る舞いを人間の意図・価値観に沿わせる研究・実践の総称。RLHFはその代表的手法。能力が上がるほど重要性が増す。",
-      "context": "2026年のAnthropic「Mythosクラス」のように、安全層の設計がモデルの提供形態まで左右する時代に。",
-      "related": ["RLHF"]
+      "slug": "multimodal",
+      "term": "マルチモーダル (multimodal)",
+      "reading": "まるちもーだる",
+      "category": "モデル",
+      "definition": "テキストだけでなく、画像・音声・動画など複数の種類(モード)の情報をまとめて理解・生成できること。「この写真の料理の作り方を教えて」のように、種類をまたいだやり取りができます。",
+      "context": "2023年のGPT-4V以降に一般化し、いまや主要モデルの標準機能。",
+      "related": [
+        "llm",
+        "generative-ai",
+        "world-model"
+      ]
     },
     {
-      "term": "スケーリング則",
-      "reading": "すけーりんぐそく",
-      "category": "基礎",
-      "definition": "モデル・データ・計算量を増やすと性能が予測可能に伸びるという経験則。2020年代前半のAI投資競争の根拠。",
-      "context": "2026年現在、「スケールだけでは足りない」領域(継続学習・世界モデル)への関心が高まりつつある。",
-      "related": ["LLM (大規模言語モデル)", "世界モデル"]
+      "slug": "reasoning-model",
+      "term": "推論モデル (reasoning model)",
+      "reading": "すいろんもでる",
+      "category": "モデル",
+      "definition": "回答の前に「考える」時間(思考トークン)を使うモデル。[[glossary:chain-of-thought|思考の連鎖]]を学習に組み込んだもので、数学・科学・複雑なコーディングで劇的に性能が上がります。思考の長さを費用と相談で調節できるものが多いです。",
+      "context": "2024年末のOpenAI o1で市民権を得て、2026年には主要モデルの標準機能に。",
+      "related": [
+        "chain-of-thought",
+        "llm",
+        "benchmark"
+      ]
     },
     {
-      "term": "世界モデル",
-      "reading": "せかいもでる",
-      "category": "萌芽",
-      "definition": "テキストの統計ではなく、物理世界の因果や状態変化を内部にシミュレーションとして持つモデル。ロボティクスや動画生成と接続し「次のブレークスルー候補」とされる。",
-      "context": "2026年が「信頼できる世界モデルのブレークスルー年」との評価も。詳しくは「次に来るもの」タブへ。",
-      "related": ["スケーリング則"]
+      "slug": "benchmark",
+      "term": "ベンチマーク (benchmark)",
+      "reading": "べんちまーく",
+      "category": "技術",
+      "definition": "モデルの性能を測るための共通テスト。数学・コーディング・知識などの問題集を解かせて点数を比べます。ただしテスト対策で点数だけ上がることもあり、「ベンチマークの点が高い=実務で使いやすい」とは限りません。",
+      "context": "新モデル発表のたびに並ぶ数字の正体。飽和(満点近づき)と汚染(問題の学習データ混入)が常に議論になる。",
+      "related": [
+        "reasoning-model",
+        "llm",
+        "scaling-laws"
+      ]
     },
     {
-      "term": "ローカルLLM / オープンウェイト",
+      "slug": "prompt",
+      "term": "プロンプト (prompt)",
+      "reading": "ぷろんぷと",
+      "category": "実践",
+      "definition": "LLMに与える指示や質問の文章のこと。同じモデルでもプロンプト次第で出力の質が大きく変わります。チャットに打ち込む一文も、開発者が仕込む長大な指示も、モデルに渡る入力はすべてプロンプトです。",
+      "context": "プロンプトエンジニアリング、プロンプトインジェクションなど派生語の親玉。",
+      "related": [
+        "prompt-engineering",
+        "system-prompt",
+        "few-shot"
+      ]
+    },
+    {
+      "slug": "prompt-engineering",
+      "term": "プロンプトエンジニアリング (prompt engineering)",
+      "reading": "ぷろんぷとえんじにありんぐ",
+      "category": "実践",
+      "definition": "LLMへの指示文([[glossary:prompt|プロンプト]])を工夫して出力品質を上げる技法。役割指定、実例の提示([[glossary:few-shot|few-shot]])、思考手順の明示などが代表です。",
+      "context": "2023年に大流行した「第1世代」のスキル。現在はコンテキスト→ハーネス→ループへと主戦場が移ったが、基礎として今も有効。",
+      "related": [
+        "context-engineering",
+        "few-shot",
+        "chain-of-thought",
+        "prompt"
+      ]
+    },
+    {
+      "slug": "system-prompt",
+      "term": "システムプロンプト (system prompt)",
+      "reading": "しすてむぷろんぷと",
+      "category": "実践",
+      "definition": "ユーザーの発言より前に、開発者がモデルへ渡しておく「役割・ルール・口調」の指示文。ユーザーからは通常見えず、チャットAIの人格や禁止事項はここで決まっています。ユーザーの[[glossary:prompt|プロンプト]]より優先される約束事として扱われます。",
+      "context": "LLMをアプリに組み込むとき最初に書くもの。プロンプトインジェクションの標的にもなる。",
+      "related": [
+        "prompt",
+        "prompt-injection",
+        "context-engineering"
+      ]
+    },
+    {
+      "slug": "few-shot",
+      "term": "フューショット (few-shot)",
+      "reading": "ふゅーしょっと",
+      "category": "実践",
+      "definition": "[[glossary:prompt|プロンプト]]に「入力→望ましい出力」の実例を数個入れて、やってほしいことをお手本で伝える技法。言葉で仕様を説明するより、例を見せる方が正確に伝わることが多いです。例が0個ならzero-shot、数個ならfew-shotと呼びます。",
+      "context": "GPT-3の論文(2020年)で注目された、プロンプト術の基本中の基本。",
+      "related": [
+        "prompt-engineering",
+        "prompt",
+        "chain-of-thought"
+      ]
+    },
+    {
+      "slug": "chain-of-thought",
+      "term": "思考の連鎖 (Chain-of-Thought)",
+      "reading": "しこうのれんさ",
+      "category": "実践",
+      "definition": "答えだけでなく途中の考え方を順番に書かせると正答率が上がる、という現象とその活用技法。「ステップバイステップで考えて」の一言が有名です。この発想をモデルの学習にまで組み込んだのが[[glossary:reasoning-model|推論モデル]]です。",
+      "context": "2022年の論文で有名になり、のちの推論モデルの源流になった。",
+      "related": [
+        "reasoning-model",
+        "prompt-engineering",
+        "few-shot"
+      ]
+    },
+    {
+      "slug": "context-engineering",
+      "term": "コンテキストエンジニアリング (context engineering)",
+      "reading": "こんてきすとえんじにありんぐ",
+      "category": "実践",
+      "definition": "プロンプト単文ではなく、LLMに渡す文脈全体(ドキュメント、ツール定義、履歴、メモリ)を設計する技法。「何を伝えるか」より「何を見せるか」。限られた[[glossary:context-window|コンテキストウィンドウ]]という席に、何を座らせるかの設計です。",
+      "context": "2025年に「プロンプトエンジニアリングの次」として定着した第2世代。",
+      "related": [
+        "prompt-engineering",
+        "harness-engineering",
+        "rag",
+        "context-window"
+      ]
+    },
+    {
+      "slug": "api",
+      "term": "API",
+      "reading": "えーぴーあい",
+      "category": "実践",
+      "definition": "プログラム同士が機能を呼び出し合うための窓口(Application Programming Interface)。AIの文脈では、自分のアプリやスクリプトからLLMをプログラム経由で使う仕組みを指します。チャット画面を使わず、リクエストを送ると応答が返る形でAIを組み込めます。",
+      "context": "「ChatGPTを使う」と「APIで組み込む」の区別は、AI活用の話の最初の分かれ道。",
+      "related": [
+        "api-key",
+        "sdk",
+        "rate-limit"
+      ]
+    },
+    {
+      "slug": "api-key",
+      "term": "APIキー (API key)",
+      "reading": "えーぴーあいきー",
+      "category": "実践",
+      "definition": "[[glossary:api|API]]を呼び出すときに使う、本人確認用の秘密の文字列。利用量の集計と課金がこのキーに紐づきます。漏らすと他人に使い込まれるため、コードに直書きしない・公開リポジトリに載せないのが鉄則です。",
+      "context": "GitHubへのキー流出事故が後を絶たず、セキュリティ教育の定番例になっている。",
+      "related": [
+        "api",
+        "rate-limit",
+        "sdk"
+      ]
+    },
+    {
+      "slug": "rate-limit",
+      "term": "レート制限 (rate limit)",
+      "reading": "れーとせいげん",
+      "category": "実践",
+      "definition": "一定時間内に[[glossary:api|API]]を呼び出せる回数や[[glossary:token|トークン]]量の上限。超えるとエラーが返り、しばらく待つ必要があります。サービス側が過負荷や暴走を防ぐための仕組みです。",
+      "context": "LLMアプリ開発で最初にぶつかる運用課題。リトライと待ち時間の設計が定番対策。",
+      "related": [
+        "api",
+        "api-key",
+        "inference"
+      ]
+    },
+    {
+      "slug": "sdk",
+      "term": "SDK",
+      "reading": "えすでぃーけー",
+      "category": "実践",
+      "definition": "あるサービスを自分のプログラムから簡単に使うための開発キット(Software Development Kit)。[[glossary:api|API]]を生のまま呼ぶ代わりに、各プログラミング言語向けに用意された部品を使って数行で書けます。",
+      "context": "各AI企業が公式SDKを提供。エージェント構築用のSDKも登場し、選定の論点になっている。",
+      "related": [
+        "api",
+        "framework",
+        "api-key"
+      ]
+    },
+    {
+      "slug": "open-weight",
+      "term": "オープンウェイト (open weight)",
+      "reading": "おーぷんうぇいと",
+      "category": "モデル",
+      "definition": "モデルの[[glossary:weight|重み]](学習済みの数値データ)が公開されていて、誰でもダウンロードして動かせること。学習データや作り方まで全公開する「オープンソース」とは区別してこう呼びます。自前のサーバーで動かせるため、機密データを外に出せない用途やコスト最適化で選ばれます。",
+      "context": "クローズドモデルとの性能差がどこまで縮まるかが、業界勢力図の焦点であり続けている。",
+      "related": [
+        "local-llm",
+        "weight",
+        "llm"
+      ]
+    },
+    {
+      "slug": "local-llm",
+      "term": "ローカルLLM (local LLM)",
       "reading": "ろーかるえるえるえむ",
       "category": "モデル",
-      "definition": "重み(パラメータ)が公開され、自分のマシンやサーバーで動かせるモデル。機密データを外に出せない用途やコスト最適化で選ばれる。",
+      "definition": "クラウドのAPIではなく、自分のPCや自社サーバー上で動かすLLM。[[glossary:open-weight|オープンウェイト]]のモデルをダウンロードして使います。データが外部に出ない・使うほど課金されない一方、性能は最先端のクラウドモデルに一歩譲ります。",
       "context": "2026年はDeepSeek・Qwenの中国勢が主導。MetaはMuse Sparkでクローズド路線に転換した。",
-      "related": ["LLM (大規模言語モデル)"]
+      "related": [
+        "open-weight",
+        "llm",
+        "inference"
+      ]
+    },
+    {
+      "slug": "rag",
+      "term": "RAG (検索拡張生成)",
+      "reading": "らぐ",
+      "category": "技術",
+      "definition": "Retrieval-Augmented Generationの略。質問に関連する文書を検索し、LLMの[[glossary:context-window|コンテキスト]]に入れてから回答させる構成です。LLMが知らない社内文書や最新情報を扱う定番手法です。",
+      "context": "2023〜24年の企業導入の主役。長文脈化とエージェント検索の台頭で「唯一解」ではなくなったが、依然として基本パターン。",
+      "related": [
+        "vector-db",
+        "embedding",
+        "chunking",
+        "grounding"
+      ]
+    },
+    {
+      "slug": "vector-db",
+      "term": "ベクトルDB (vector database)",
+      "reading": "べくとるでぃーびー",
+      "category": "技術",
+      "definition": "文書を[[glossary:embedding|埋め込み]]の状態で保存し、「意味が近いもの」を高速に探せるデータベース。普通のデータベースが完全一致や条件一致で探すのに対し、ベクトルDBは「似ている順」で探します。[[glossary:rag|RAG]]の検索部分の定番の置き場所です。",
+      "context": "2023年のRAGブームで専用製品が乱立し、その後は既存DBのベクトル対応も一般化した。",
+      "related": [
+        "embedding",
+        "rag",
+        "semantic-search"
+      ]
+    },
+    {
+      "slug": "semantic-search",
+      "term": "意味検索 (semantic search)",
+      "reading": "いみけんさく",
+      "category": "技術",
+      "definition": "キーワードの一致ではなく、意味の近さで文書を探す検索。「パソコンが遅い」で「PCの動作が重いときの対処法」がヒットします。文章を[[glossary:embedding|埋め込み]]ベクトルに変換し、ベクトル同士の距離で意味の近さを測ることで実現します。",
+      "context": "RAGの検索部分の中核。キーワード検索と併用するハイブリッド検索が実務の定番。",
+      "related": [
+        "embedding",
+        "vector-db",
+        "rag"
+      ]
+    },
+    {
+      "slug": "chunking",
+      "term": "チャンキング (chunking)",
+      "reading": "ちゃんきんぐ",
+      "category": "技術",
+      "definition": "長い文書を、検索しやすい大きさの断片(チャンク)に切り分けること。[[glossary:rag|RAG]]では文書を丸ごとではなくチャンク単位で検索するため、どこで・どの長さで切るかが回答品質を大きく左右します。",
+      "context": "「RAGの品質問題は大半がチャンキング起因」と言われるほど、地味に効く工程。",
+      "related": [
+        "rag",
+        "embedding",
+        "vector-db"
+      ]
+    },
+    {
+      "slug": "agent",
+      "term": "エージェント (agent)",
+      "reading": "えーじぇんと",
+      "category": "エージェント",
+      "definition": "LLMが[[glossary:tool-use|ツール]](コード実行、ファイル操作、Web検索など)を使いながら、自分で計画・実行・修正のループを回して目標を達成するシステム。「質問に答えるAI」との違いは、複数ステップの行動を自律的に続けることです。",
+      "context": "2025〜26年の主役。2026年のエンタープライズアプリの80%が何らかのエージェントを内蔵。",
+      "related": [
+        "tool-use",
+        "harness-engineering",
+        "mcp",
+        "orchestration"
+      ]
+    },
+    {
+      "slug": "tool-use",
+      "term": "ツール使用 (tool use)",
+      "reading": "つーるしよう",
+      "category": "エージェント",
+      "definition": "LLMが文章生成だけでなく、外部の道具(検索、電卓、コード実行、ファイル操作など)を呼び出して使うこと。モデルは「どのツールをどんな引数で使うか」を出力し、実行結果を受け取って続きを考えます。[[glossary:agent|エージェント]]の基本動作です。",
+      "context": "Function Callingとも呼ばれる。2023年に各社のAPIへ実装され、エージェント時代の土台になった。",
+      "related": [
+        "agent",
+        "mcp",
+        "api"
+      ]
+    },
+    {
+      "slug": "mcp",
+      "term": "MCP (Model Context Protocol)",
+      "reading": "えむしーぴー",
+      "category": "エージェント",
+      "definition": "AIモデルと外部ツール・データ源を接続するオープン標準プロトコル。「AI界のUSB-C」と呼ばれ、一度[[glossary:mcp-server|MCPサーバー]]を作れば、対応するどのAIクライアントからも使えます。",
+      "context": "2024年11月にAnthropicが公開、2025年12月からLinux Foundation管理。SDK月間DL約9,700万、OpenAI/Google/Microsoftも対応済みで事実上の標準に。",
+      "related": [
+        "mcp-server",
+        "a2a",
+        "tool-use",
+        "agent"
+      ]
+    },
+    {
+      "slug": "mcp-server",
+      "term": "MCPサーバー (MCP server)",
+      "reading": "えむしーぴーさーばー",
+      "category": "エージェント",
+      "definition": "[[glossary:mcp|MCP]]の規約に従って、特定のツールやデータ源(社内DB、Slack、ブラウザ操作など)をAIに提供するプログラム。AI側はサーバーに「使える道具の一覧」を尋ね、必要に応じて呼び出します。",
+      "context": "公開MCPサーバーのカタログが多数登場し、「一度作れば誰のAIからも使われる」エコシステムが成立した。",
+      "related": [
+        "mcp",
+        "tool-use",
+        "agent"
+      ]
+    },
+    {
+      "slug": "a2a",
+      "term": "A2A (Agent2Agent)",
+      "reading": "えーつーえー",
+      "category": "エージェント",
+      "definition": "[[glossary:agent|エージェント]]同士が互いを発見し、通信するためのプロトコル。[[glossary:mcp|MCP]]が「エージェント↔ツール」をつなぐなら、A2Aは「エージェント↔エージェント」をつなぎます。",
+      "context": "Google発、現在はLinux Foundation管理でv1.0到達。150以上の組織が支持するが、実装普及はMCPほどではない(2026年8月時点)。",
+      "related": [
+        "mcp",
+        "agent",
+        "orchestration"
+      ]
+    },
+    {
+      "slug": "orchestration",
+      "term": "オーケストレーション (orchestration)",
+      "reading": "おーけすとれーしょん",
+      "category": "エージェント",
+      "definition": "1体の万能エージェントに全部任せるのではなく、指揮役(オーケストレーター)が専門の[[glossary:sub-agent|サブエージェント]]群に仕事を振り分けて全体を進める構成。レビュー役・実装役・検証役を分けると品質が上がることが多いです。",
+      "context": "2026年のエージェント設計の主流。Claude Codeのネストサブエージェントなどツール側の支援も充実。",
+      "related": [
+        "sub-agent",
+        "agent",
+        "a2a",
+        "loop-engineering"
+      ]
+    },
+    {
+      "slug": "sub-agent",
+      "term": "サブエージェント (sub-agent)",
+      "reading": "さぶえーじぇんと",
+      "category": "エージェント",
+      "definition": "親エージェントから特定の仕事(調査、実装、レビューなど)を任される子のエージェント。自分専用の作業文脈を持つため、親の[[glossary:context-window|コンテキストウィンドウ]]を汚さずに大量の調べ物などを分担できます。",
+      "context": "マルチエージェント構成の基本部品。複数を並列に走らせて時間短縮する使い方も定番。",
+      "related": [
+        "orchestration",
+        "agent",
+        "context-window"
+      ]
+    },
+    {
+      "slug": "harness-engineering",
+      "term": "ハーネスエンジニアリング (harness engineering)",
+      "reading": "はーねすえんじにありんぐ",
+      "category": "実践",
+      "definition": "「Agent = Model + Harness」——モデルの外側にある実行環境(ツール、権限、メモリ、検証器、フィードバック)を工学する営み。[[glossary:agent|エージェント]]がミスするたびに、指示ではなく環境側に恒久的な修正を入れるのが要諦です。",
+      "context": "2026年2月にMitchell Hashimotoのブログが語源。数週間でOpenAI・Anthropicも追随し、第3世代のスキルとして定着。",
+      "related": [
+        "loop-engineering",
+        "context-engineering",
+        "agent"
+      ]
+    },
+    {
+      "slug": "loop-engineering",
+      "term": "ループエンジニアリング (loop engineering)",
+      "reading": "るーぷえんじにありんぐ",
+      "category": "実践",
+      "definition": "「エージェントにプロンプトするのをやめ、エージェントにプロンプトするループを設計せよ」。トリガー(cron/イベント)、検証器、停止条件を設計し、人間が張り付かなくても回り続ける自律ループを作る技法です。ハートビート型・cron型・フック型・ゴール型の4類型があります。",
+      "context": "2026年6月にAddy Osmaniのエッセイ等で命名・普及。「週刊少年バカゲー」が有名な実践例。",
+      "related": [
+        "harness-engineering",
+        "agent",
+        "orchestration"
+      ]
+    },
+    {
+      "slug": "framework",
+      "term": "フレームワーク (framework)",
+      "reading": "ふれーむわーく",
+      "category": "実践",
+      "definition": "アプリやエージェントを作るときの「土台と型」を提供するソフトウェア部品集。決まりごとに沿って書けば、会話履歴の管理やツール呼び出しの配線といった定型部分を自作せずに済みます。AI分野では[[glossary:langchain|LangChain]]などが代表です。",
+      "context": "便利さと引き換えに中身がブラックボックス化しやすく、「薄く使う・使わない」派との論争が続く。",
+      "related": [
+        "langchain",
+        "sdk",
+        "agent"
+      ]
+    },
+    {
+      "slug": "langchain",
+      "term": "LangChain",
+      "reading": "らんぐちぇーん",
+      "category": "実践",
+      "definition": "LLMアプリ開発用の代表的な[[glossary:framework|フレームワーク]]。[[glossary:rag|RAG]]やエージェントの定型パターンを部品として提供し、2023年のLLMアプリ開発ブームを牽引しました。エージェント構築に特化したLangGraphも同じ系列です。",
+      "context": "「まず名前を聞く」存在である一方、抽象化が厚すぎるという批判も根強く、採用判断の定番論点。",
+      "related": [
+        "framework",
+        "rag",
+        "agent"
+      ]
+    },
+    {
+      "slug": "alignment",
+      "term": "アライメント (alignment)",
+      "reading": "あらいめんと",
+      "category": "安全性",
+      "definition": "AIの目標や振る舞いを人間の意図・価値観に沿わせる研究・実践の総称。[[glossary:rlhf|RLHF]]はその代表的手法です。能力が上がるほど重要性が増します。",
+      "context": "2026年のAnthropic「Mythosクラス」のように、安全層の設計がモデルの提供形態まで左右する時代に。",
+      "related": [
+        "rlhf",
+        "ai-safety",
+        "reward-model"
+      ]
+    },
+    {
+      "slug": "ai-safety",
+      "term": "AI安全性 (AI safety)",
+      "reading": "えーあいあんぜんせい",
+      "category": "安全性",
+      "definition": "AIが人間や社会に害を及ぼさないようにするための研究・実践の分野全体。悪用(詐欺や危険物の手引きなど)の防止、誤作動対策から、将来のより強力なAIの制御まで幅広く含みます。[[glossary:alignment|アライメント]]はその中核テーマの1つです。",
+      "context": "各国のAI安全研究所の設立や、フロンティアモデルの公開前評価など、制度化が進んでいる。",
+      "related": [
+        "alignment",
+        "jailbreak",
+        "ai-governance"
+      ]
+    },
+    {
+      "slug": "prompt-injection",
+      "term": "プロンプトインジェクション (prompt injection)",
+      "reading": "ぷろんぷといんじぇくしょん",
+      "category": "安全性",
+      "definition": "AIが読み込む文書やWebページの中に悪意ある指示を仕込み、開発者の意図と違う行動(情報漏洩など)をさせる攻撃。LLMには「命令」と「ただのデータ」の区別が曖昧という性質があり、そこを突かれるため根本対策が難しい問題です。",
+      "context": "エージェントがメールやWebを読む時代になり、最重要のセキュリティ課題に浮上した。",
+      "related": [
+        "jailbreak",
+        "system-prompt",
+        "agent"
+      ]
+    },
+    {
+      "slug": "jailbreak",
+      "term": "ジェイルブレイク (jailbreak)",
+      "reading": "じぇいるぶれいく",
+      "category": "安全性",
+      "definition": "巧妙な言い回しでAIの安全ガードをすり抜け、本来は拒否されるはずの出力を引き出す行為。ロールプレイをさせる型が有名です。ユーザー自身がAIをだます点で、第三者がデータに指示を仕込む[[glossary:prompt-injection|プロンプトインジェクション]]と区別されます。",
+      "context": "攻撃と防御のいたちごっこが続き、モデル公開前のレッドチーム評価の定番項目になっている。",
+      "related": [
+        "prompt-injection",
+        "ai-safety",
+        "alignment"
+      ]
+    },
+    {
+      "slug": "pii",
+      "term": "PII (個人識別情報)",
+      "reading": "ぴーあいあい",
+      "category": "安全性",
+      "definition": "氏名・住所・電話番号・メールアドレスなど、個人を特定できる情報(Personally Identifiable Information)。AIの文脈では、学習データや[[glossary:prompt|プロンプト]]に混ざったPIIの扱いが問題になります。外部のAIサービスに社員が顧客情報を貼り付けてしまう、といった事故が典型です。",
+      "context": "企業のAI利用ガイドラインでほぼ必ず登場する用語。マスキング(伏せ字化)処理が定番対策。",
+      "related": [
+        "ai-governance",
+        "ai-ethics"
+      ]
+    },
+    {
+      "slug": "copyright-ai",
+      "term": "AIと著作権 (AI and copyright)",
+      "reading": "えーあいとちょさくけん",
+      "category": "規制・倫理",
+      "definition": "AIの学習に他人の著作物を使ってよいか、AIの生成物に著作権はあるか、という2大論点の総称。世界中で訴訟と法整備が進行中で、国によって答えが違います。日本は学習利用に比較的寛容な著作権法30条の4を持つことで知られます。",
+      "context": "画像生成AIの登場以降、クリエイター業界とAI業界の最大の争点であり続けている。",
+      "related": [
+        "ai-governance",
+        "eu-ai-act",
+        "generative-ai"
+      ]
+    },
+    {
+      "slug": "eu-ai-act",
+      "term": "EU AI法 (EU AI Act)",
+      "reading": "いーゆーえーあいほう",
+      "category": "規制・倫理",
+      "definition": "EUが定めた、世界初の包括的なAI規制法。AIの用途をリスクの高さで分類し、禁止(社会信用スコアリングなど)から透明性義務まで段階的な規制をかけます。2024年に成立し、義務は段階的に適用されています。EU域外の企業でも、EU向けにサービスを出すなら対象になります。",
+      "context": "「AI規制のグローバルスタンダード」を狙う存在で、各国の法整備の参照点になっている。",
+      "related": [
+        "ai-governance",
+        "copyright-ai",
+        "ai-ethics"
+      ]
+    },
+    {
+      "slug": "ai-governance",
+      "term": "AIガバナンス (AI governance)",
+      "reading": "えーあいがばなんす",
+      "category": "規制・倫理",
+      "definition": "AIを安全・適切に使うためのルール作りと運用の総称。[[glossary:eu-ai-act|EU AI法]]のような国レベルの規制から、企業内の利用ガイドライン・審査体制・監査までを含みます。「問題が起きてから謝る」のではなく「使う前に仕組みで防ぐ」ための枠組みです。",
+      "context": "エージェントが実務に入り込んだことで、権限管理・監査ログなど実装レベルの話に具体化してきた。",
+      "related": [
+        "eu-ai-act",
+        "ai-ethics",
+        "ai-safety",
+        "pii"
+      ]
+    },
+    {
+      "slug": "deepfake",
+      "term": "ディープフェイク (deepfake)",
+      "reading": "でぃーぷふぇいく",
+      "category": "規制・倫理",
+      "definition": "AIで作られた、本物そっくりの偽の画像・音声・動画。実在の人物が言っていないことを言わせる動画などが作れてしまいます。[[glossary:generative-ai|生成AI]]の負の側面の代表で、詐欺・偽情報・名誉毀損への悪用が世界的な問題になり、多くの国で規制が進んでいます。",
+      "context": "有名人の偽広告や音声なりすまし詐欺が実害として頻発し、「見たものを信じられない時代」の象徴になった。",
+      "related": [
+        "generative-ai",
+        "ai-ethics",
+        "ai-governance"
+      ]
+    },
+    {
+      "slug": "g-kentei",
+      "term": "G検定",
+      "reading": "じーけんてい",
+      "category": "業界",
+      "definition": "日本ディープラーニング協会(JDLA)が実施する、AI・[[glossary:deep-learning|ディープラーニング]]の知識を問う検定試験。エンジニアでなくても受けられる「ジェネラリスト向け」で、AIを事業に活かす側の基礎教養を証明します。",
+      "context": "日本企業のAI人材育成で広く採用される定番資格。エンジニア向けのE資格と対をなす。",
+      "related": [
+        "e-shikaku",
+        "deep-learning",
+        "ai"
+      ]
+    },
+    {
+      "slug": "e-shikaku",
+      "term": "E資格",
+      "reading": "いーしかく",
+      "category": "業界",
+      "definition": "日本ディープラーニング協会(JDLA)が実施する、エンジニア向けのAI実装資格。[[glossary:deep-learning|ディープラーニング]]の理論と実装力を問い、認定プログラムの受講が受験条件です。[[glossary:g-kentei|G検定]]が「知っている」の証明なら、E資格は「作れる」の証明です。",
+      "context": "日本のAIエンジニア求人で言及される代表的資格。",
+      "related": [
+        "g-kentei",
+        "deep-learning",
+        "machine-learning"
+      ]
+    },
+    {
+      "slug": "world-model",
+      "term": "世界モデル (world model)",
+      "reading": "せかいもでる",
+      "category": "萌芽",
+      "definition": "テキストの統計ではなく、物理世界の因果や状態変化を内部にシミュレーションとして持つモデル。ロボティクスや動画生成と接続し、「次のブレークスルー候補」とされています。",
+      "context": "2026年が「信頼できる世界モデルのブレークスルー年」との評価も。詳しくは「次に来るもの」タブへ。",
+      "related": [
+        "scaling-laws",
+        "continual-learning",
+        "multimodal"
+      ]
+    },
+    {
+      "slug": "continual-learning",
+      "term": "継続学習 (continual learning)",
+      "reading": "けいぞくがくしゅう",
+      "category": "萌芽",
+      "definition": "一度学習して固定するのではなく、使いながら新しい知識や経験を取り込み続ける能力。現在のLLMは学習終了時点で知識が止まり、以後は会話ごとに記憶がリセットされます。この壁を越えることが、次の大きな研究テーマです。",
+      "context": "「新人は仕事を覚えるのにLLMは覚えない」という企業導入現場の不満が、研究を後押ししている。",
+      "related": [
+        "agent-memory",
+        "world-model",
+        "pretraining"
+      ]
+    },
+    {
+      "slug": "agent-memory",
+      "term": "エージェントメモリ (agent memory)",
+      "reading": "えーじぇんとめもり",
+      "category": "萌芽",
+      "definition": "[[glossary:agent|エージェント]]が会話やセッションをまたいで情報を覚えておく仕組み。[[glossary:context-window|コンテキストウィンドウ]]は毎回リセットされるため、重要な学びをファイルやデータベースに書き出して次回読み込む、といった外付けの記憶が使われます。",
+      "context": "「同じ失敗を繰り返さないエージェント」の鍵として、2025年以降の設計論の中心テーマに。",
+      "related": [
+        "agent",
+        "context-window",
+        "continual-learning"
+      ]
+    },
+    {
+      "slug": "ai-ethics",
+      "term": "AI倫理 (AI ethics)",
+      "reading": "えーあいりんり",
+      "category": "規制・倫理",
+      "definition": "AIの開発・利用が人や社会に与える影響を考え、あるべき姿を問う分野。公平性(偏見や差別の防止)、透明性、プライバシー、雇用への影響などを扱います。法規制([[glossary:ai-governance|AIガバナンス]])が「守らねばならない線」なら、倫理は「そもそもどうあるべきか」の議論です。",
+      "context": "採用AIの性別バイアスなど実例が相次ぎ、企業がAI倫理指針を定めるのが一般的になった。",
+      "related": [
+        "ai-governance",
+        "deepfake",
+        "ai-safety"
+      ]
     }
   ]
 }

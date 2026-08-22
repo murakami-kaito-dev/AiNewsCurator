@@ -1,24 +1,33 @@
-# AiNewsCurator — プロジェクトルール・情報の地図
+# AiNewsCurator (ANTENNA) — プロジェクトルール・情報の地図
 
-AI/LLM のトレンドキャッチアップを自動化する PWA。ユーザー個人のためのアプリ。
+AI/LLM のキャッチアップを自動化するドキュメント型 PWA。ユーザー個人のためのアプリ。
+公開URL: https://murakami-kaito-dev.github.io/AiNewsCurator/
 
 ## これは何か
-- 静的サイト(ビルドステップなし)+ PWA。ホスティングは GitHub Pages(無料)。
-- **シェル(HTML/CSS/JS)とコンテンツ(`content/*.json`)を分離**している。
-  定期更新ではコンテンツ JSON だけを触り、シェルは原則触らない。
-- 2週間ごとにスケジュール済みクラウドエージェントが自律更新(リサーチ → JSON 更新 → commit/push)。
+- 静的サイト(ビルドステップなし)+ PWA。ホスティングは GitHub Pages(無料)。**push = デプロイ**。
+- **シェル(HTML/CSS/JS)とコンテンツ(`content/` 配下のJSON)を分離**している。
+  定期更新ではコンテンツJSONだけを触り、シェルは原則触らない。
+- 毎週月曜 9:00 JST にスケジュール済みクラウドエージェントが自律更新
+  (リサーチ → JSON更新 → 検証 → commit/push)。
+- 情報設計はドキュメント型: セクション(トレンド/AIの基礎/AIを使う/AIを組み込む/周辺知識/用語辞典)
+  → 子ページ。`content/site.json` がナビの正。
 
 ## 情報の地図
-- 要件定義: `.claude/docs/requirements.md`(タブ構成・更新フローの正)
-- リリースログ: `.claude/docs/release-log.md`(どのバージョンで何を更新したか)
-- デプロイ手順(ユーザー向け): `.claude/docs/deploy-guide.md`
-- 定期更新の実行手順(エージェント向け): `.claude/docs/update-runbook.md`
-- コンテンツ: `content/` 配下の JSON(タブ1つ = ファイル1つ)
+- 要件定義: `.claude/docs/requirements.md`
+- **コンテンツ様式ガイド: `.claude/docs/content-guide.md`**(スキーマ・文体・専門用語ルールの正)
+- 定期更新の実行手順: `.claude/docs/update-runbook.md`
+- リリースログ: `.claude/docs/release-log.md`
+- デプロイ手順: `.claude/docs/deploy-guide.md` / 定期ルーチン設定の写し: `.claude/docs/routine-config.json`
+- 検証スクリプト: `tools/validate.py`(JSON構文・リンク整合・site.json対応を一括検査)
+- コンテンツ: `content/site.json`(ナビ) / `content/pages/<section>/<slug>.json`(記事) /
+  `content/trends.json`(週次号アーカイブ) / `content/glossary.json`(用語辞典)
 
 ## 不変条件・禁忌
-- コンテンツ更新時にシェルの構造(タブ ID、JSON スキーマ)を壊さない。
-  スキーマを変えるならシェル側 JS と同時に変え、手元でプレビュー確認する。
-- 記事には必ず「なぜ重要か」を添える(要件)。日本語が主言語。
-- 定期更新の commit/push はユーザーから事前承認済み(このプロジェクトの運用として明示合意)。
-  それ以外の作業では通常ルール通り、指示があったときのみ commit/push。
-- 更新のたび release-log に記録し `vYYYY.MM.DD` タグ相当のバージョンを記す。
+- コンテンツ更新時にシェルの構造(ルート、JSONスキーマ、demo id)を壊さない。
+  スキーマを変えるならシェル側JSと content-guide.md を同時に変え、プレビュー確認する。
+- **専門用語の全数ルール**(content-guide.md): 専門用語は説明かリンクなしに登場させない。
+- 記事には必ず「なぜ重要か」を添える。日本語が主言語。
+- サイトの文言に開発経緯・運用都合のメタ表現を書かない。
+- push 前に `python3 tools/validate.py` を必ず通す。
+- 定期更新の commit/push はユーザーから事前承認済み。それ以外は指示があったときのみ。
+- 更新のたび release-log に記録する。
