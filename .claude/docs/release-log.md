@@ -3,6 +3,14 @@
 「どのバージョンに何が入っていて、今どの状態か」を新しいセッションでも即わかるようにする記録。
 静的サイトのため「ビルド」は存在せず、**push = デプロイ**(Cloudflare Workers が自動ビルド)。
 
+## feat 2026.08.22 — マネタイズの仕込み(ニュースレター土台 + アフィリエイト枠)
+- 状態: 実装・公開済み。ただし**有効化はユーザーのアカウント作業待ち**(monetization.md)。
+- ① ニュースレター(Cloudflare自前・KV): 登録フォーム+`/api/subscribe`(KV保存)を実装。
+  `site.json` の `newsletter.enabled=false` で現在は非表示。KV名前空間作成→ID受領→バインディング追加で有効化。
+- ③ アフィリエイト: 資格ページに `resources` ブロック(書籍のAmazon検索リンク)。`site.json` の
+  `affiliate.amazonTag` を設定すると全Amazonリンクに自動でタグ付与+「PR」表示(ステマ規制対応)。現在タグ空=通常リンク。
+- 詳細と残作業(KV作成 / Amazonアソシエイト登録)は `.claude/docs/monetization.md`。
+
 ## infra 2026.08.22 — ホスティングを Cloudflare へ移行(Workers 静的アセット構成)【完了】
 - 状態: **移行完了・公開確認済み**。公開URL: https://antenna-ai.km-solo-developer.workers.dev
   - 確認: トップ200 / site.json(6セクション) / 記事 / glossary(75語) / `/api/health` 疎通OK / 内部ファイルは全404(公開されず)。

@@ -445,6 +445,55 @@ main { flex: 1; }
 .temp-out { font-family: var(--mono); font-size: 13px; margin-top: 10px; min-height: 1.6em; overflow-wrap: anywhere; }
 .temp-out .tok { background: color-mix(in srgb, var(--signal) 18%, transparent); border-radius: 4px; padding: 0 4px; margin: 1px; display: inline-block; animation: tok-in 0.3s ease; }
 
+/* ---- newsletter box ---- */
+.nl-box {
+  margin: 28px 0 8px; padding: 20px;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background-image: linear-gradient(180deg, color-mix(in srgb, var(--signal) 6%, transparent), transparent);
+}
+.nl-title { font-family: var(--serif); font-weight: 600; font-size: 18px; margin-bottom: 4px; }
+.nl-desc { font-size: 13px; color: var(--muted); margin-bottom: 14px; }
+.nl-form { display: flex; gap: 8px; flex-wrap: wrap; }
+.nl-input {
+  flex: 1; min-width: 180px; padding: 10px 12px;
+  background: var(--bg); border: 1px solid var(--line); border-radius: 9px;
+  color: var(--ink); font-family: var(--sans); font-size: 15px;
+}
+.nl-input::placeholder { color: var(--muted); }
+.nl-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.nl-btn {
+  padding: 10px 22px; border: none; border-radius: 9px;
+  background: var(--signal); color: var(--signal-ink);
+  font-weight: 700; font-size: 14px;
+}
+.nl-btn:disabled { opacity: 0.5; }
+.nl-msg { font-size: 13px; margin-top: 10px; min-height: 1.2em; }
+.nl-msg.ok { color: var(--ok); }
+.nl-msg.ng { color: var(--ng); }
+.nl-priv { font-size: 11.5px; color: var(--muted); margin-top: 6px; }
+
+/* ---- resources (external / affiliate links) ---- */
+.resources { margin: 24px 0 8px; }
+.res-lead { font-size: 14px; margin-bottom: 12px; }
+.res-list { display: grid; grid-template-columns: 1fr; gap: 8px; }
+@media (min-width: 640px) { .res-list { grid-template-columns: 1fr 1fr; } }
+.res-item {
+  display: block; padding: 14px 16px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  color: var(--ink); transition: border-color 0.2s;
+}
+.res-item:hover { border-color: var(--signal); text-decoration: none; }
+.res-head { display: flex; align-items: center; gap: 8px; }
+.res-name { font-size: 14.5px; font-weight: 700; }
+.res-pr {
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.08em;
+  color: var(--muted); border: 1px solid var(--line);
+  border-radius: 4px; padding: 0 5px; flex-shrink: 0;
+}
+.res-note { font-size: 12.5px; color: var(--muted); margin-top: 3px; }
+.res-disc { font-size: 11.5px; color: var(--muted); margin-top: 10px; }
+
 /* ---- footer ---- */
 .site-footer {
   border-top: 1px solid var(--line);

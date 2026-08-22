@@ -175,8 +175,74 @@ function renderBlocks(host, blocks) {
         }
         sec.appendChild(grid); host.appendChild(sec); break;
       }
+      case "resources": {
+        // 外部リンク集(書籍・講座など)。Amazonリンクは affiliate タグ設定時に自動でタグ付与+PR表示。
+        const sec = el("div", "resources");
+        if (b.title) sec.appendChild(el("h2", "doc-h2", b.title));
+        if (b.note) sec.appendChild(el("p", "res-lead", b.note));
+        const tag = SITE.affiliate && SITE.affiliate.amazonTag;
+        let hasAffil = false;
+        const list = el("div", "res-list");
+        for (const it of b.items) {
+          let href = it.url;
+          let isAffil = false;
+          if (tag && /(^|\.)amazon\.co\.jp/.test(new URL(href).hostname)) {
+            href += (href.includes("?") ? "&" : "?") + "tag=" + encodeURIComponent(tag);
+            isAffil = true; hasAffil = true;
+          }
+          const a = el("a", "res-item");
+          a.href = href; a.target = "_blank";
+          a.rel = isAffil ? "noopener sponsored nofollow" : "noopener";
+          const head = el("div", "res-head");
+          head.appendChild(el("span", "res-name", it.label));
+          if (isAffil) head.appendChild(el("span", "res-pr", "PR"));
+          a.appendChild(head);
+          if (it.note) a.appendChild(el("p", "res-note", it.note));
+          list.appendChild(a);
+        }
+        sec.appendChild(list);
+        if (hasAffil) sec.appendChild(el("p", "res-disc", "※ 上記の一部にはアフィリエイト広告を含みます(リンク経由の購入で運営に収益が入る場合があります)。"));
+        host.appendChild(sec); break;
+      }
     }
   }
+}
+
+/* ---------- ニュースレター登録フォーム ---------- */
+function newsletterBox() {
+  const box = el("section", "nl-box");
+  box.appendChild(el("h3", "nl-title", "毎週の更新をメールで受け取る"));
+  box.appendChild(el("p", "nl-desc", "新しい号が出たらお知らせします。登録は無料で、いつでも解除できます。"));
+  const form = el("form", "nl-form");
+  const email = el("input", "nl-input");
+  email.type = "email"; email.required = true; email.placeholder = "you@example.com"; email.autocomplete = "email";
+  email.setAttribute("aria-label", "メールアドレス");
+  const hp = el("input", "nl-hp");
+  hp.type = "text"; hp.name = "company"; hp.tabIndex = -1; hp.autocomplete = "off"; hp.setAttribute("aria-hidden", "true");
+  const btn = el("button", "nl-btn", "登録"); btn.type = "submit";
+  form.append(email, hp, btn);
+  const msg = el("p", "nl-msg");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    btn.disabled = true; msg.className = "nl-msg"; msg.textContent = "送信中…";
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST", headers: { "content-type": "application/json" },
+        body: JSON.stringify({ email: email.value, company: hp.value }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.ok) { msg.className = "nl-msg ok"; msg.textContent = "登録しました。ありがとうございます。"; form.reset(); }
+      else if (data.error === "invalid_email") { msg.className = "nl-msg ng"; msg.textContent = "メールアドレスの形式が正しくないようです。"; }
+      else if (data.error === "not_configured") { msg.className = "nl-msg ng"; msg.textContent = "ただいま準備中です。少し待ってからお試しください。"; }
+      else { msg.className = "nl-msg ng"; msg.textContent = "送信に失敗しました。時間をおいて再度お試しください。"; }
+    } catch {
+      msg.className = "nl-msg ng"; msg.textContent = "送信に失敗しました。通信環境をご確認ください。";
+    }
+    btn.disabled = false;
+  });
+  box.append(form, msg);
+  box.appendChild(el("p", "nl-priv", "メールアドレスは新着号の通知にのみ使用します。"));
+  return box;
 }
 
 /* ---------- セクション描画 ---------- */
@@ -258,6 +324,7 @@ async function renderTrends(sub) {
     grid.appendChild(cardLink("#/trends/archive", "過去の号をすべて見る", `アーカイブに${data.issues.length - 1}号あります`, "ARCHIVE"));
     contentEl.appendChild(grid);
   }
+  if (SITE.newsletter && SITE.newsletter.enabled) contentEl.appendChild(newsletterBox());
 }
 
 /* ---------- 用語辞典 ---------- */
