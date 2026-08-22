@@ -1,5 +1,5 @@
 {
-  "newsletter": { "enabled": false },
+  "newsletter": { "enabled": true },
   "affiliate": { "amazonTag": "" },
   "sections": [
     { "id": "trends", "label": "トレンド", "type": "trends",

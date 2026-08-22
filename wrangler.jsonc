@@ -10,5 +10,9 @@
   "assets": {
     "directory": ".",
     "binding": "ASSETS"
-  }
+  },
+  // ニュースレター登録者を保存する KV(worker の env.SUBSCRIBERS)
+  "kv_namespaces": [
+    { "binding": "SUBSCRIBERS", "id": "71605517d80c48219d92723382968667" }
+  ]
 }
