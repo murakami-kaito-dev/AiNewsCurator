@@ -1,9 +1,9 @@
 # AiNewsCurator (ANTENNA) — プロジェクトルール・情報の地図
 
 AI/LLM のキャッチアップを自動化するドキュメント型 PWA。ユーザー個人のためのアプリ。
-ホスティング: **Cloudflare Workers(静的アセット配信)** へ移行中(リポジトリは GitHub)。
-公開URLは接続後に `antenna-ai.<アカウント名>.workers.dev` で確定。
-旧 GitHub Pages 版(移行後停止予定): https://murakami-kaito-dev.github.io/AiNewsCurator/
+ホスティング: **Cloudflare Workers(静的アセット配信)**。リポジトリは GitHub。
+公開URL: **https://antenna-ai.km-solo-developer.workers.dev**
+(旧 GitHub Pages は移行完了に伴い停止)
 
 ## これは何か
 - 静的サイト(ビルドステップなし)+ PWA。全パス相対指定なのでホスト非依存。**git push = 自動デプロイ**。

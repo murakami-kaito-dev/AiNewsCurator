@@ -1,10 +1,12 @@
 # Release Log — AiNewsCurator
 
 「どのバージョンに何が入っていて、今どの状態か」を新しいセッションでも即わかるようにする記録。
-静的サイトのため「ビルド」は存在せず、**push = デプロイ**(Cloudflare Pages が自動ビルド)。
+静的サイトのため「ビルド」は存在せず、**push = デプロイ**(Cloudflare Workers が自動ビルド)。
 
-## infra 2026.08.22 — ホスティングを Cloudflare へ移行(Workers 静的アセット構成)
-- 状態: リポジトリ側の準備完了・コミット済み。**Cloudflare への接続はユーザーのブラウザ操作待ち**(deploy-guide.md)。
+## infra 2026.08.22 — ホスティングを Cloudflare へ移行(Workers 静的アセット構成)【完了】
+- 状態: **移行完了・公開確認済み**。公開URL: https://antenna-ai.km-solo-developer.workers.dev
+  - 確認: トップ200 / site.json(6セクション) / 記事 / glossary(75語) / `/api/health` 疎通OK / 内部ファイルは全404(公開されず)。
+  - 旧 GitHub Pages は停止(重複回避)。
 - 理由: 商用利用が規約上OK / サーバーレス関数が使える。
 - 経緯: ユーザーのアカウントは新統合フロー(Workers Builds)で Pages/Workers の選択が出ないため、
   Pages ではなく **Workers の静的アセット機能** で配信する構成に決定。

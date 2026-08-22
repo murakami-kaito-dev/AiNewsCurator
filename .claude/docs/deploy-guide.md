@@ -42,7 +42,7 @@ Cloudflare の新しい統合フロー(Workers Builds)では、「Create applica
 |---|---|
 | 作成フロー | 統合フロー(Workers Builds。Pages/Workers の選択は出ない) |
 | Project name | `antenna-ai` |
-| 公開URL | デプロイ後に割り当て(例 `antenna-ai.<アカウント名>.workers.dev`)→ 確定後にここへ記録 |
+| 公開URL | **https://antenna-ai.km-solo-developer.workers.dev**(2026-08-22 デプロイ完了・確認済み) |
 | Build command | (空欄) |
 | Deploy command | `npx wrangler deploy` |
 | Non-production branch deploy command | `npx wrangler versions upload` |
