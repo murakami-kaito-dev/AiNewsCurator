@@ -53,11 +53,11 @@ git add content/ .claude/docs/
 git commit -m "receive vYYYY.MM.DD — <号のheadline>
 
 Co-Authored-By: <実行モデル名> <noreply@anthropic.com>"
-git push origin main   # push = デプロイ(GitHub Pages)
+git push origin main   # push = 自動デプロイ(Cloudflare Pages が検知してビルド)
 ```
 
 - `.claude/docs/release-log.md` の先頭に新しい号のエントリを追加:
-  バージョン / 日付 / 号のheadline / 主な更新ファイル / 「配信: GitHub Pages(push済み)」
+  バージョン / 日付 / 号のheadline / 主な更新ファイル / 「配信: Cloudflare Pages(push済み=自動デプロイ)」
 
 ## 5. 失敗時
 

@@ -1,48 +1,65 @@
-# デプロイ手順(ユーザー向け・初回のみ)
+# デプロイ手順(ユーザー向け)
 
-ホスティング: **GitHub Pages(完全無料)**。push = デプロイ。
-アカウント: `murakami-kaito-dev`(gh CLI 認証済みを確認済み)
+ホスティング: **Cloudflare Pages(無料・商用利用OK・サーバーレス関数あり)**。
+リポジトリは GitHub(`murakami-kaito-dev/AiNewsCurator`)。**git push = 自動デプロイ**。
 
-## 一番簡単な方法
+コードはすべて相対パスなので、GitHub Pages でも Cloudflare でも改修なしで動く。
 
-新しいセッションで Claude に「**AiNewsCurator をデプロイして**」と言うだけです。
-下記コマンドを Claude が実行し、権限プロンプトが出たら承認してください。
+---
 
-## 手動でやる場合(ターミナルにコピペ、2分)
+## 初回セットアップ(Cloudflare Pages への接続)
 
-```bash
-cd /Users/kaitomurakami/Dev/Products/AiNewsCurator
+⚠️ この「接続」だけは**あなたのブラウザ操作が必要**です(あなたのCloudflareアカウントと
+リポジトリを紐付けるため。Claude は代わりにログインできない)。所要3〜5分・一度きり。
 
-# 1. パブリックリポジトリを作成して push(無料のPagesはパブリックが条件)
-gh repo create AiNewsCurator --public \
-  --description "ANTENNA — AI/LLMトレンドを自動受信するキュレーションPWA" \
-  --source . --remote origin --push
+**Git連携方式**を使う。これなら以後 `git push` するだけで自動デプロイされ、
+週次自動更新エージェントの仕組みもそのまま生きる。
 
-# 2. GitHub Pages を有効化(main ブランチのルートを公開)
-gh api repos/murakami-kaito-dev/AiNewsCurator/pages \
-  -X POST -f "source[branch]=main" -f "source[path]=/"
-```
+1. **Cloudflareアカウントを作る(無料)**: https://dash.cloudflare.com/sign-up
+2. ダッシュボード左メニュー **「Workers & Pages」** → **「Create application」**
+   → **「Pages」** タブ → **「Connect to Git」**
+3. GitHub を連携(初回はGitHub側でアクセス許可)。リポジトリ **`AiNewsCurator`** を選び **「Begin setup」**
+4. ビルド設定を次の通りにする:
+   - **Project name**: 好きな名前(これが公開URL `<名前>.pages.dev` になる。例 `antenna-ai`)
+   - **Production branch**: `main`
+   - **Framework preset**: `None`
+   - **Build command**: 空欄のまま
+   - **Build output directory**: `/`
+5. **「Save and Deploy」** → 数十秒でビルド完了。**`https://<名前>.pages.dev`** で公開される。
 
-数分後に公開されます:
+公開できたら、その URL を Claude に教えてください。動作確認と、後片付け
+(GitHub Pages 側の停止、ドキュメントのURL反映)を Claude が行います。
 
-**https://murakami-kaito-dev.github.io/AiNewsCurator/**
+## スマホで「アプリ」にする(任意)
 
-## スマホで「アプリ」にする(任意・30秒)
-
-- **iPhone**: Safari で上記URLを開く → 共有ボタン → 「ホーム画面に追加」
+- **iPhone**: Safari で `pages.dev` のURLを開く → 共有 → 「ホーム画面に追加」
 - **Android**: Chrome で開く → メニュー → 「アプリをインストール」
-
-以後はホーム画面のアイコンから全画面のアプリとして起動し、
-一度読んだ号はオフラインでも読めます(Service Worker)。
 
 ## 2回目以降のデプロイ
 
-不要です。`main` に push するだけで GitHub Pages が自動で反映します
-(定期更新エージェントがこれを行います)。
+不要です。`main` に push するだけで Cloudflare が自動でビルド・反映します
+(週次更新エージェントがこれを行う)。
 
-## トラブルシューティング
+## 独自ドメインを付けるとき(任意・後日)
 
-- **404 が出る**: Pages の反映に最大10分かかることがある。
-  `gh api repos/murakami-kaito-dev/AiNewsCurator/pages` で `"status"` を確認。
-- **更新が反映されない**: PWA のキャッシュが古い。アプリを一度完全に閉じて
-  開き直す(SWはネットワーク優先なのでオンラインなら通常は最新が出ます)。
+Cloudflare Pages の該当プロジェクト → **「Custom domains」** → ドメインを追加。
+ドメインをCloudflareで買う/移管すると設定が最短。マネタイズ時の信用度が上がる。
+
+## サーバーレス関数(Cloudflare Functions)
+
+`functions/` 配下に置いたJSが自動でAPIになる。動作確認用に `functions/api/health.js` を用意済み。
+公開後 `https://<名前>.pages.dev/api/health` で `{"status":"ok",...}` が返れば疎通OK。
+将来のニュースレター登録受付・クリック計測などはここに実装する。
+
+---
+
+## 付録: 旧 GitHub Pages 方式(参考・移行後は使わない)
+
+初回に使った手順。Cloudflare へ移行後は GitHub Pages を停止する。
+
+```bash
+# リポジトリは作成済み。Pages の停止は:
+gh api repos/murakami-kaito-dev/AiNewsCurator/pages -X DELETE
+```
+
+GitHub Pages 版URL(移行後停止予定): https://murakami-kaito-dev.github.io/AiNewsCurator/

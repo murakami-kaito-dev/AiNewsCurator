@@ -1,7 +1,14 @@
 # Release Log — AiNewsCurator
 
 「どのバージョンに何が入っていて、今どの状態か」を新しいセッションでも即わかるようにする記録。
-静的サイトのため「ビルド」は存在せず、**push = デプロイ**(GitHub Pages 自動)。
+静的サイトのため「ビルド」は存在せず、**push = デプロイ**(Cloudflare Pages が自動ビルド)。
+
+## infra 2026.08.22 — ホスティングを Cloudflare Pages へ移行
+- 状態: リポジトリ側の準備完了・コミット済み。**Cloudflare への接続はユーザーのブラウザ操作待ち**(deploy-guide.md)。
+- 理由: 商用利用が規約上OK / サーバーレス関数(Functions)が使える / `<project>.pages.dev` が github.io より綺麗。
+- 追加: `_headers`(週次更新の即時反映)、`functions/api/health.js`(Functions疎通テンプレート)。
+- コード変更なし(全パス相対のためホスト非依存)。移行方式は Git連携(push→自動デプロイ、週次エージェントの自動更新も維持)。
+- 残: ユーザーが Cloudflare Pages に接続 → 公開URL確定 → 動作確認後に旧 GitHub Pages を停止。
 
 ## v2026.08.23 — v2 全面改訂「オカン基準」ドキュメントサイト化
 - 状態: 配信済み(2026-08-23、フィードバック反映の大規模リリース)
