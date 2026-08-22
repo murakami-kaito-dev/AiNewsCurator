@@ -1,65 +1,83 @@
 # デプロイ手順(ユーザー向け)
 
-ホスティング: **Cloudflare Pages(無料・商用利用OK・サーバーレス関数あり)**。
+ホスティング: **Cloudflare Workers(静的アセット配信・無料・商用OK・サーバーレス関数あり)**。
 リポジトリは GitHub(`murakami-kaito-dev/AiNewsCurator`)。**git push = 自動デプロイ**。
 
-コードはすべて相対パスなので、GitHub Pages でも Cloudflare でも改修なしで動く。
+このサイトは静的ファイル(全パス相対)+ 最小の Worker(API用)で構成。配信に必要な
+`wrangler.jsonc` / `worker/index.js` / `.assetsignore` はリポジトリに用意済み。
 
 ---
 
-## 初回セットアップ(Cloudflare Pages への接続)
+## このアカウントのフローについて
 
-⚠️ この「接続」だけは**あなたのブラウザ操作が必要**です(あなたのCloudflareアカウントと
-リポジトリを紐付けるため。Claude は代わりにログインできない)。所要3〜5分・一度きり。
+Cloudflare の新しい統合フロー(Workers Builds)では、「Create application」で
+**Workers / Pages の選択肢は出ず、そのまま設定画面に進む**。よって Workers の静的アセット機能で配信する
+(そのための `wrangler.jsonc` を用意してある)。以前の「Pagesフロー(Framework preset を選ぶ画面)」は使わない。
 
-**Git連携方式**を使う。これなら以後 `git push` するだけで自動デプロイされ、
-週次自動更新エージェントの仕組みもそのまま生きる。
+## 初回セットアップ
 
-1. **Cloudflareアカウントを作る(無料)**: https://dash.cloudflare.com/sign-up
-2. ダッシュボード左メニュー **「Workers & Pages」** → **「Create application」**
-   → **「Pages」** タブ → **「Connect to Git」**
-3. GitHub を連携(初回はGitHub側でアクセス許可)。リポジトリ **`AiNewsCurator`** を選び **「Begin setup」**
-4. ビルド設定を次の通りにする:
-   - **Project name**: 好きな名前(これが公開URL `<名前>.pages.dev` になる。例 `antenna-ai`)
-   - **Production branch**: `main`
-   - **Framework preset**: `None`
+⚠️ この接続だけは**あなたのブラウザ操作が必要**(あなたのCloudflareアカウントとリポジトリの紐付けのため)。
+所要3〜5分・一度きり。以後は `git push` で自動デプロイされ、週次自動更新エージェントもそのまま生きる。
+
+1. **Cloudflareアカウント作成(無料)**: https://dash.cloudflare.com/sign-up
+   (ログイン情報は Git管理外の `.local/CloudFlareLoginInfo.txt`。※平文なので取扱注意)
+2. ダッシュボード **「Workers & Pages」** → **「Create application」** → リポジトリ **`AiNewsCurator`** を選んで進む
+3. 設定画面で、下の【確定した設定】の通りに入力する(重要な項目):
+   - **Project name**: `antenna-ai`
    - **Build command**: 空欄のまま
-   - **Build output directory**: `/`
-5. **「Save and Deploy」** → 数十秒でビルド完了。**`https://<名前>.pages.dev`** で公開される。
+   - **Deploy command**: `npx wrangler deploy`(初期値のまま)
+   - **(Advanced settings) Non-production branch deploy command**: `npx wrangler versions upload`(初期値のまま)
+   - **(Advanced settings) Path**: `/`(初期値のまま)
+   - **API token**: **「Create new token」を選ぶ**(Cloudflareが適切な権限のトークンを自動生成する)。
+     `API token name` は任意(空でも可。付けるなら `antenna-ai-deploy` など)
+   - **Variable name / Variable value**: **空欄**(このサイトでは環境変数は不要)
+4. **「Deploy」** をクリック → ビルド&デプロイが走る(1〜2分)。
+5. 完了すると公開URLが割り当てられる。Workers の場合 **`antenna-ai.<アカウント名>.workers.dev`** の形になる。
+   **そのURLを Claude に伝える** → 動作確認(サイト表示 + `/api/health` の疎通)、
+   旧 GitHub Pages の停止、ドキュメントのURL確定反映、までを Claude が行う。
 
-公開できたら、その URL を Claude に教えてください。動作確認と、後片付け
-(GitHub Pages 側の停止、ドキュメントのURL反映)を Claude が行います。
+## 【確定した設定】(記録)
+
+| 項目 | 値 |
+|---|---|
+| 作成フロー | 統合フロー(Workers Builds。Pages/Workers の選択は出ない) |
+| Project name | `antenna-ai` |
+| 公開URL | デプロイ後に割り当て(例 `antenna-ai.<アカウント名>.workers.dev`)→ 確定後にここへ記録 |
+| Build command | (空欄) |
+| Deploy command | `npx wrangler deploy` |
+| Non-production branch deploy command | `npx wrangler versions upload` |
+| Path | `/` |
+| API token | 「Create new token」で自動生成 / name は任意(`antenna-ai-deploy`) |
+| Variables | なし |
+| 配信構成 | `wrangler.jsonc` + `worker/index.js`(静的アセット + `/api/*` ルート) |
+| 公開除外 | `.assetsignore`(`.claude/` `tools/` `worker/` 等の内部ファイルは配信しない) |
+| ログイン情報の保管場所 | `.local/CloudFlareLoginInfo.txt`(Git管理外・平文注意) |
 
 ## スマホで「アプリ」にする(任意)
 
-- **iPhone**: Safari で `pages.dev` のURLを開く → 共有 → 「ホーム画面に追加」
+- **iPhone**: Safari で公開URLを開く → 共有 → 「ホーム画面に追加」
 - **Android**: Chrome で開く → メニュー → 「アプリをインストール」
 
 ## 2回目以降のデプロイ
 
-不要です。`main` に push するだけで Cloudflare が自動でビルド・反映します
-(週次更新エージェントがこれを行う)。
+不要。`main` に push するだけで Cloudflare が自動でビルド・反映する(週次更新エージェントがこれを行う)。
 
-## 独自ドメインを付けるとき(任意・後日)
+## サーバーレス関数(Worker)
 
-Cloudflare Pages の該当プロジェクト → **「Custom domains」** → ドメインを追加。
-ドメインをCloudflareで買う/移管すると設定が最短。マネタイズ時の信用度が上がる。
+`worker/index.js` にサーバー側処理を書ける。動作確認用に `/api/health` を実装済み
+(公開後 `https://<公開URL>/api/health` で `{"status":"ok",...}` が返ればOK)。
+将来のニュースレター登録受付・クリック計測などはここに追加する。
 
-## サーバーレス関数(Cloudflare Functions)
+## 独自ドメイン(任意・後日)
 
-`functions/` 配下に置いたJSが自動でAPIになる。動作確認用に `functions/api/health.js` を用意済み。
-公開後 `https://<名前>.pages.dev/api/health` で `{"status":"ok",...}` が返れば疎通OK。
-将来のニュースレター登録受付・クリック計測などはここに実装する。
+Cloudflare の該当プロジェクト → カスタムドメイン設定で追加できる。マネタイズ時の信用度が上がる。
 
 ---
 
-## 付録: 旧 GitHub Pages 方式(参考・移行後は使わない)
-
-初回に使った手順。Cloudflare へ移行後は GitHub Pages を停止する。
+## 付録: 旧 GitHub Pages の停止(Cloudflare公開を確認してから)
 
 ```bash
-# リポジトリは作成済み。Pages の停止は:
 gh api repos/murakami-kaito-dev/AiNewsCurator/pages -X DELETE
 ```
 
-GitHub Pages 版URL(移行後停止予定): https://murakami-kaito-dev.github.io/AiNewsCurator/
+GitHub Pages 版URL(移行後に停止): https://murakami-kaito-dev.github.io/AiNewsCurator/

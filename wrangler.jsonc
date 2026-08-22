@@ -1,0 +1,14 @@
+{
+  // Cloudflare Workers の設定。統合フロー(Workers Builds)で `npx wrangler deploy` が読む。
+  // このサイトは「静的アセット + 最小の Worker(API用)」構成。
+  // - assets.directory "." … リポジトリ直下の静的ファイル(index.html/css/js/content/icons等)を配信
+  // - main worker/index.js … /api/* などサーバー側処理。静的アセットに無いパスだけ Worker が処理する
+  // 公開しない内部ファイルは .assetsignore で除外している。
+  "name": "antenna-ai",
+  "compatibility_date": "2026-08-22",
+  "main": "worker/index.js",
+  "assets": {
+    "directory": ".",
+    "binding": "ASSETS"
+  }
+}

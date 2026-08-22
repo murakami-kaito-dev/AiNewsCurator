@@ -1,12 +1,14 @@
 # AiNewsCurator (ANTENNA) — プロジェクトルール・情報の地図
 
 AI/LLM のキャッチアップを自動化するドキュメント型 PWA。ユーザー個人のためのアプリ。
-ホスティング: **Cloudflare Pages** へ移行中(リポジトリは GitHub)。公開URLは接続後に `<project>.pages.dev` で確定。
+ホスティング: **Cloudflare Workers(静的アセット配信)** へ移行中(リポジトリは GitHub)。
+公開URLは接続後に `antenna-ai.<アカウント名>.workers.dev` で確定。
 旧 GitHub Pages 版(移行後停止予定): https://murakami-kaito-dev.github.io/AiNewsCurator/
 
 ## これは何か
 - 静的サイト(ビルドステップなし)+ PWA。全パス相対指定なのでホスト非依存。**git push = 自動デプロイ**。
-- Cloudflare Pages は Git連携方式(GitHubへのpushを検知して自動ビルド)。`functions/` にサーバーレス関数を置ける。
+- Cloudflare は統合フロー(Workers Builds)で Git連携。`wrangler.jsonc`(静的アセット + `main`)で配信し、
+  `worker/index.js` にサーバー側処理(`/api/*`)を書ける。内部ファイルは `.assetsignore` で公開除外。
 - **シェル(HTML/CSS/JS)とコンテンツ(`content/` 配下のJSON)を分離**している。
   定期更新ではコンテンツJSONだけを触り、シェルは原則触らない。
 - 毎週月曜 9:00 JST にスケジュール済みクラウドエージェントが自律更新
