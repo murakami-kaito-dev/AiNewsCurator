@@ -244,8 +244,6 @@ function renderBlocks(host, blocks) {
 /* ---------- ニュースレター登録フォーム ---------- */
 function newsletterBox() {
   const box = el("section", "nl-box");
-  box.appendChild(el("h3", "nl-title", "毎週の更新をメールで受け取る"));
-  box.appendChild(el("p", "nl-desc", "新しい号が出たらお知らせします。登録は無料で、いつでも解除できます。"));
   const form = el("form", "nl-form");
   const email = el("input", "nl-input");
   email.type = "email"; email.required = true; email.placeholder = "you@example.com"; email.autocomplete = "email";
@@ -357,7 +355,17 @@ async function renderTrends(sub) {
     grid.appendChild(cardLink("#/trends/archive", "過去の号をすべて見る", `アーカイブに${data.issues.length - 1}号あります`, "ARCHIVE"));
     contentEl.appendChild(grid);
   }
-  if (SITE.newsletter && SITE.newsletter.enabled) contentEl.appendChild(newsletterBox());
+}
+
+/* ---------- 登録ページ ---------- */
+function renderSubscribe() {
+  header(contentEl, "メールで更新を受け取る",
+    "毎週の新着号を、あなたのメールにお届けします。登録は無料で、いつでも解除できます。");
+  if (SITE.newsletter && SITE.newsletter.enabled) {
+    contentEl.appendChild(newsletterBox());
+  } else {
+    contentEl.appendChild(el("p", "loading", "ただいま準備中です。"));
+  }
 }
 
 /* ---------- 用語辞典 ---------- */
@@ -518,6 +526,7 @@ async function route() {
     const section = SITE.sections.find(s => s.id === sectionId);
     contentEl.innerHTML = "";
     if (sectionId === "search") await renderSearch();
+    else if (sectionId === "subscribe") renderSubscribe();
     else if (sectionId === "trends") await renderTrends(sub);
     else if (sectionId === "glossary") await renderGlossary(sub);
     else if (section && section.type === "docs") {
@@ -535,6 +544,8 @@ addEventListener("hashchange", route);
 /* 検索ボタンと "/" ショートカット */
 const searchBtn = document.getElementById("search-btn");
 if (searchBtn) searchBtn.addEventListener("click", () => { location.hash = "#/search"; });
+const subscribeBtn = document.getElementById("subscribe-btn");
+if (subscribeBtn) subscribeBtn.addEventListener("click", () => { location.hash = "#/subscribe"; });
 addEventListener("keydown", (e) => {
   if (e.key === "/" && !/INPUT|TEXTAREA/.test(document.activeElement.tagName)) {
     e.preventDefault();
