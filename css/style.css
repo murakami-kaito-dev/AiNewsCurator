@@ -494,6 +494,39 @@ main { flex: 1; }
 .res-note { font-size: 12.5px; color: var(--muted); margin-top: 3px; }
 .res-disc { font-size: 11.5px; color: var(--muted); margin-top: 10px; }
 
+/* ---- nested (包含図) ---- */
+.nestbox { border: 1.5px solid var(--line); border-radius: 14px; padding: 14px; }
+.nestbox .nestbox { margin-top: 12px; }
+.nb-0 { background: color-mix(in srgb, var(--muted) 6%, transparent); }
+.nb-1 { background: color-mix(in srgb, var(--wave) 10%, transparent); border-color: color-mix(in srgb, var(--wave) 45%, var(--line)); }
+.nb-2 { background: color-mix(in srgb, var(--signal) 14%, transparent); border-color: color-mix(in srgb, var(--signal) 55%, var(--line)); }
+.nestbox-label { display: flex; flex-direction: column; gap: 2px; }
+.nestbox-name { font-weight: 700; font-size: 15px; }
+.nb-1 > .nestbox-label .nestbox-name { color: var(--wave); }
+.nb-2 > .nestbox-label .nestbox-name { color: var(--signal); }
+.nestbox-desc { font-size: 12.5px; color: var(--muted); line-height: 1.7; }
+
+/* ---- flow (処理フロー図) ---- */
+.flow { margin: 8px 0 4px; }
+.flow-row {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+  padding: 12px 14px; margin-bottom: 10px;
+}
+.flow-name { font-weight: 700; font-size: 14px; margin-bottom: 9px; }
+.flow-steps { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.flow-step {
+  font-family: var(--mono); font-size: 12px;
+  background: var(--surface-2); border: 1px solid var(--line);
+  border-radius: 6px; padding: 4px 9px;
+}
+.flow-step.auto {
+  background: color-mix(in srgb, var(--signal) 16%, transparent);
+  border-color: color-mix(in srgb, var(--signal) 50%, var(--line));
+  color: var(--ink);
+}
+.flow-arrow { color: var(--muted); font-family: var(--mono); }
+.flow-eg { font-size: 12.5px; color: var(--muted); margin-top: 9px; }
+
 /* ---- footer ---- */
 .site-footer {
   border-top: 1px solid var(--line);

@@ -204,6 +204,39 @@ function renderBlocks(host, blocks) {
         if (hasAffil) sec.appendChild(el("p", "res-disc", "※ 上記の一部にはアフィリエイト広告を含みます(リンク経由の購入で運営に収益が入る場合があります)。"));
         host.appendChild(sec); break;
       }
+      case "nested": {
+        // 入れ子(包含)図。layers を外側→内側の順に、箱の中に箱を重ねて描く。
+        let current = host;
+        b.layers.forEach((layer, i) => {
+          const box = el("div", "nestbox nb-" + i);
+          const lab = el("div", "nestbox-label");
+          lab.appendChild(el("span", "nestbox-name", layer.label));
+          if (layer.desc) { const dsc = el("span", "nestbox-desc"); dsc.appendChild(richText(layer.desc)); lab.appendChild(dsc); }
+          box.appendChild(lab);
+          current.appendChild(box);
+          current = box;
+        });
+        break;
+      }
+      case "flow": {
+        // 処理フロー図。各行 = 手法名 + 横並びのステップ(矢印つき)+ 具体例。
+        const sec = el("div", "flow");
+        if (b.title) sec.appendChild(el("h2", "doc-h2", b.title));
+        for (const row of b.rows) {
+          const r = el("div", "flow-row");
+          r.appendChild(el("div", "flow-name", row.name));
+          const steps = el("div", "flow-steps");
+          row.steps.forEach((s, i) => {
+            if (i > 0) steps.appendChild(el("span", "flow-arrow", "→"));
+            const cls = "flow-step" + (typeof s === "object" && s.auto ? " auto" : "");
+            steps.appendChild(el("span", cls, typeof s === "object" ? s.text : s));
+          });
+          r.appendChild(steps);
+          if (row.example) { const eg = el("p", "flow-eg"); eg.appendChild(richText(row.example)); r.appendChild(eg); }
+          sec.appendChild(r);
+        }
+        host.appendChild(sec); break;
+      }
     }
   }
 }

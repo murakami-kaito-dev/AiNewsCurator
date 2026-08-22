@@ -31,6 +31,23 @@
 - 現状 `affiliate.amazonTag` は空 → 今は通常の外部リンク(タグなし・PR非表示)として有効。
 - **ユーザーがやること**: Amazonアソシエイト(https://affiliate.amazon.co.jp/)に登録し、**トラッキングID**(例 `xxxx-22`)を取得して Claude に渡す。
 - **その後Claudeがやること**: `site.json` の `affiliate.amazonTag` に設定 → push。以後すべてのAmazonリンクが自動でタグ付き+PR表示になる。
+
+### Amazonアソシエイト 申請フォームの記入内容(2026-08 決定)
+
+| 欄 | 記入内容 |
+|---|---|
+| 希望する登録ID(半角英数) | `antennaai`(重複時の候補: `aiantenna` / `antennaainews`) |
+| サイト/アプリの内容説明(全角256字以内) | 下記の定型文 |
+| サイトの種類 | **コンテンツメディア / パブリッシャー / ブロガー** |
+| プログラムを知った経緯 | 「その他」など任意(審査に影響しない) |
+| 運営規約 | 同意にチェック |
+
+説明文(コピペ用):
+> 『ANTENNA』は、AI・LLMの最新動向と基礎知識をエンジニア向けに無料でまとめる学習メディアです。毎週の技術ニュース、用語辞典、仕組みの図解に加え、G検定・E資格などAI資格の学習ガイドを掲載しています。資格・学習関連の記事の中で、対応する技術書・問題集・参考書を読者に紹介する目的で、AmazonのリンクをPR表記のうえ掲載します。
+
+- サイトURL入力欄には公開URL `https://antenna-ai.km-solo-developer.workers.dev` を使う。
+- **想定トラッキングID**: 登録ID `antennaai` → 発行されるIDは通常 `antennaai-22`(amazon.co.jp の慣例)。
+  確定したら `site.json` の `affiliate.amazonTag` に設定する(現在は空)。
 - 他ASP(もしも/A8/afb 等の講座アフィリ)を足す場合は resources ブロックにURLを追加する。
 
 ## 原則
