@@ -3,6 +3,14 @@
 「どのバージョンに何が入っていて、今どの状態か」を新しいセッションでも即わかるようにする記録。
 静的サイトのため「ビルド」は存在せず、**push = デプロイ**(Cloudflare Workers が自動ビルド)。
 
+## editorial 2026.08.23 — 「AIを使う」タブに6ページ追加(第1回編集会議)
+- 状態: 公開済み(ユーザー承認のうえ main へマージ)。
+- 追加ページ: use/delegation, iteration, context-engineering, verification, model-selection, reusable-workflows
+  (「AIを使う」は4→10ページに。入門→実務→習熟の階段構成、全ページに図解 flow/table)
+- 用語辞典に3語追加(lost-in-the-middle / prompt-caching / idempotency、計78語)。
+- basics/capability から use/delegation への導線を追加。content-guide を実態に更新(h2は3〜5節・分量1200〜2000字・図解優先)。
+- 編集部を常設化(editorial-runbook.md / editorial スキル / テーマ台帳)。
+
 ## feat 2026.08.22 — マネタイズの仕込み(ニュースレター土台 + アフィリエイト枠)
 - 状態: 実装・公開済み。ただし**有効化はユーザーのアカウント作業待ち**(monetization.md)。
 - ① ニュースレター(Cloudflare自前・KV): 登録フォーム+`/api/subscribe`(KV保存)を実装。

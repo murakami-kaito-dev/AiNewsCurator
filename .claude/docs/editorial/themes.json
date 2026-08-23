@@ -6,49 +6,55 @@
       "section": "use",
       "slug": "delegation",
       "title": "AIに任せる仕事の見分け方",
-      "status": "awaiting-approval",
+      "status": "published",
       "issue": "2026-08-23 第1回編集会議",
-      "note": "「AIを使う」タブ拡充。入門→実務→習熟の階段として企画。"
+      "note": "「AIを使う」タブ拡充。入門→実務→習熟の階段として企画。",
+      "published": "2026-08-23"
     },
     {
       "section": "use",
       "slug": "iteration",
       "title": "AIとの往復で仕上げる",
-      "status": "awaiting-approval",
+      "status": "published",
       "issue": "2026-08-23 第1回編集会議",
-      "note": "「AIを使う」タブ拡充。入門→実務→習熟の階段として企画。"
+      "note": "「AIを使う」タブ拡充。入門→実務→習熟の階段として企画。",
+      "published": "2026-08-23"
     },
     {
       "section": "use",
       "slug": "context-engineering",
       "title": "コンテキストの設計 — 何を渡すか",
-      "status": "awaiting-approval",
+      "status": "published",
       "issue": "2026-08-23 第1回編集会議",
-      "note": "「AIを使う」タブ拡充。入門→実務→習熟の階段として企画。"
+      "note": "「AIを使う」タブ拡充。入門→実務→習熟の階段として企画。",
+      "published": "2026-08-23"
     },
     {
       "section": "use",
       "slug": "verification",
       "title": "AIの出力を検品する",
-      "status": "awaiting-approval",
+      "status": "published",
       "issue": "2026-08-23 第1回編集会議",
-      "note": "「AIを使う」タブ拡充。入門→実務→習熟の階段として企画。"
+      "note": "「AIを使う」タブ拡充。入門→実務→習熟の階段として企画。",
+      "published": "2026-08-23"
     },
     {
       "section": "use",
       "slug": "model-selection",
       "title": "モデルの使い分けとコスト",
-      "status": "awaiting-approval",
+      "status": "published",
       "issue": "2026-08-23 第1回編集会議",
-      "note": "「AIを使う」タブ拡充。入門→実務→習熟の階段として企画。"
+      "note": "「AIを使う」タブ拡充。入門→実務→習熟の階段として企画。",
+      "published": "2026-08-23"
     },
     {
       "section": "use",
       "slug": "reusable-workflows",
       "title": "繰り返し作業を型にする",
-      "status": "awaiting-approval",
+      "status": "published",
       "issue": "2026-08-23 第1回編集会議",
-      "note": "「AIを使う」タブ拡充。入門→実務→習熟の階段として企画。"
+      "note": "「AIを使う」タブ拡充。入門→実務→習熟の階段として企画。",
+      "published": "2026-08-23"
     }
   ]
 }
