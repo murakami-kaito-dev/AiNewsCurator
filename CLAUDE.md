@@ -21,7 +21,10 @@ AI/LLM のキャッチアップを自動化するドキュメント型 PWA。ユ
 - **バックログ(今後やるべき対応): `.claude/docs/backlog.md`**(配信+ダブルオプトイン等の積み残し)
 - マネタイズ運用: `.claude/docs/monetization.md`
 - **コンテンツ様式ガイド: `.claude/docs/content-guide.md`**(スキーマ・文体・専門用語ルールの正)
-- 定期更新の実行手順: `.claude/docs/update-runbook.md`
+- 定期更新(トレンド)の実行手順: `.claude/docs/update-runbook.md`
+- **編集部(学習コンテンツの企画・執筆・校閲): `.claude/docs/editorial-runbook.md`**
+  スキル `editorial` で招集。テーマ台帳は `.claude/docs/editorial/themes.json`。
+  成果物はブランチ+プレビューURLで提示し、**ユーザーの承認後に main へマージ**する。
 - リリースログ: `.claude/docs/release-log.md`
 - デプロイ手順: `.claude/docs/deploy-guide.md` / 定期ルーチン設定の写し: `.claude/docs/routine-config.json`
 - 検証スクリプト: `tools/validate.py`(JSON構文・リンク整合・site.json対応を一括検査)
