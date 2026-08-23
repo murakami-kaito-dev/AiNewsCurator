@@ -62,7 +62,7 @@ ANTENNAの全コンテンツはこのガイドに従う。定期更新エージ�
   - `[[page:section/slug|表示名]]` → 記事ページへ
 - **Markdown記法は使えない**(`**太字**`・`# 見出し`・`- 箇条書き` 等はそのまま文字として表示される)。
   強調は文構造で表す。箇条書きは `list` ブロック、見出しは `h2` ブロックを使う。リンクは上記の `[[...]]` のみ。
-- demo の id は `next-token` / `attention` / `training` / `tokenize` / `temperature` のみ。
+- demo の id は `next-token` / `attention` / `training` / `tokenize` / `temperature` / `neural-params` のみ。
 - 図解ブロック: `nested`(入れ子/包含図。`layers:[{label,desc}]` を外側→内側で描画)、
   `flow`(処理フロー図。`rows:[{name,steps:[文字列 or {text,auto:true}],example}]`。`auto:true` のステップは強調表示)。
 

@@ -552,6 +552,21 @@ main { flex: 1; }
 .flow-arrow { color: var(--muted); font-family: var(--mono); }
 .flow-eg { font-size: 12.5px; color: var(--muted); margin-top: 9px; }
 
+/* ---- neural network (parameter) demo ---- */
+.nn-legend { font-size: 12.5px; color: var(--muted); margin-bottom: 10px; line-height: 1.7; }
+.nn-legend b { color: var(--signal); }
+.nn-wrap { margin: 4px 0 10px; }
+.nn-svg { width: 100%; height: auto; display: block; }
+.nn-line { stroke: var(--wave); stroke-width: 1; opacity: 0.34; cursor: pointer; }
+.nn-line:hover { opacity: 0.8; stroke-width: 2; }
+.nn-line.on { stroke: var(--signal); stroke-width: 3.2; opacity: 1; }
+.nn-node { fill: var(--surface-2); stroke: var(--wave); stroke-width: 2; }
+.nn-node-1 { stroke: var(--signal); }
+.nn-cap { font-family: var(--mono); font-size: 10px; fill: var(--muted); }
+.nn-count { font-family: var(--mono); font-size: 12.5px; color: var(--muted); line-height: 1.9; }
+.nn-count b { color: var(--signal); }
+.nn-pick { font-size: 12.5px; color: var(--signal); margin-top: 6px; min-height: 1.2em; }
+
 /* ---- footer ---- */
 .site-footer {
   border-top: 1px solid var(--line);

@@ -244,3 +244,85 @@ window.DEMOS["training"] = function (frame) {
     }, 2200);
   }
 };
+
+/* ---------- 6. パラメータ = 重み(線)の本数 ---------- */
+window.DEMOS["neural-params"] = function (frame) {
+  const IN = 3, OUT = 2;
+  const SIZES = [2, 4, 8];
+  let hidden = 4;
+
+  frame.insertAdjacentHTML("beforeend", `
+    <p class="demo-title">DEMO — パラメータは「線の本数」で数える</p>
+    <p class="nn-legend">丸=ニューロン(信号を受け取って次へ渡す計算の単位) / 線=重み。線1本が<b>パラメータ1個</b>です。</p>
+    <div class="demo-tabs"></div>
+    <div class="nn-wrap"></div>
+    <p class="nn-count"></p>
+    <p class="nn-pick"></p>
+    <p class="demo-hint">線をタップすると1本(=パラメータ1個)が光ります。中間層の丸を増やすと線が一気に増える — これが「パラメータ数が爆発する」ということ。実際のLLMは、この図の何億倍もの線を持っています。</p>
+  `);
+
+  const tabsEl = frame.querySelector(".demo-tabs");
+  const wrapEl = frame.querySelector(".nn-wrap");
+  const countEl = frame.querySelector(".nn-count");
+  const pickEl = frame.querySelector(".nn-pick");
+
+  function ys(n, h) {
+    const step = h / (n + 1);
+    return Array.from({ length: n }, (_, i) => Math.round(step * (i + 1)));
+  }
+
+  function draw() {
+    const W = 330, H = 190;
+    const xs = [45, 165, 285];
+    const layers = [ys(IN, H), ys(hidden, H), ys(OUT, H)];
+    let svg = `<svg class="nn-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="ニューラルネットワークの重みの図">`;
+    for (let l = 0; l < 2; l++) {
+      layers[l].forEach((y1) => {
+        layers[l + 1].forEach((y2) => {
+          svg += `<line class="nn-line" x1="${xs[l]}" y1="${y1}" x2="${xs[l + 1]}" y2="${y2}" />`;
+        });
+      });
+    }
+    layers.forEach((col, l) => {
+      col.forEach((y) => {
+        svg += `<circle class="nn-node nn-node-${l}" cx="${xs[l]}" cy="${y}" r="9" />`;
+      });
+    });
+    svg += `<text class="nn-cap" x="${xs[0]}" y="${H - 2}" text-anchor="middle">入力</text>`;
+    svg += `<text class="nn-cap" x="${xs[1]}" y="${H - 2}" text-anchor="middle">中間</text>`;
+    svg += `<text class="nn-cap" x="${xs[2]}" y="${H - 2}" text-anchor="middle">出力</text>`;
+    svg += `</svg>`;
+    wrapEl.innerHTML = svg;
+
+    wrapEl.querySelectorAll(".nn-line").forEach((ln) => {
+      ln.addEventListener("click", () => {
+        wrapEl.querySelectorAll(".nn-line").forEach((o) => o.classList.remove("on"));
+        ln.classList.add("on");
+        pickEl.textContent = "↑ いま光っている線1本が、調整される数値(重み)1個 = パラメータ1個です。";
+      });
+    });
+
+    const w1 = IN * hidden, w2 = hidden * OUT;
+    const weights = w1 + w2;
+    const biases = hidden + OUT;
+    countEl.innerHTML =
+      `線(重み) ${IN}×${hidden} + ${hidden}×${OUT} = <b>${weights}本</b>` +
+      ` / 丸ごとの調整値(バイアス) ${biases}個 → <b>合計 ${weights + biases} パラメータ</b>`;
+    pickEl.textContent = "";
+  }
+
+  SIZES.forEach((n) => {
+    const b = document.createElement("button");
+    b.className = "demo-tab";
+    b.textContent = "中間層 " + n + "個";
+    b.addEventListener("click", () => {
+      hidden = n;
+      tabsEl.querySelectorAll("button").forEach((x) =>
+        x.setAttribute("aria-pressed", String(x === b)));
+      draw();
+    });
+    tabsEl.appendChild(b);
+  });
+  tabsEl.querySelectorAll("button")[1].setAttribute("aria-pressed", "true");
+  draw();
+};

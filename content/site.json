@@ -3,7 +3,7 @@
   "affiliate": { "amazonTag": "antennaai-22" },
   "sections": [
     { "id": "trends", "label": "トレンド", "type": "trends",
-      "lede": "毎週月曜に自動更新されるAIニュースのキュレーション。過去号もすべて読めます。" },
+      "lede": "1日おきに自動更新される、いま注目されているAIニュースのキュレーション。過去号もすべて読めます。" },
     { "id": "basics", "label": "AIの基礎", "type": "docs",
       "lede": "AIを何も知らない状態から、ニュースが読める状態へ。ここが土台です。",
       "pages": [

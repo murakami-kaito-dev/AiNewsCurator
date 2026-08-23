@@ -7,7 +7,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 CONTENT = ROOT / "content"
-DEMOS = {"next-token", "attention", "training", "tokenize", "temperature"}
+DEMOS = {"next-token", "attention", "training", "tokenize", "temperature", "neural-params"}
 LINK_RE = re.compile(r"\[\[(glossary|page):([a-z0-9/-]+)\|([^\]]+)\]\]")
 errors = []
 
