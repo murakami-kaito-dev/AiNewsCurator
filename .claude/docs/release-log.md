@@ -3,6 +3,15 @@
 「どのバージョンに何が入っていて、今どの状態か」を新しいセッションでも即わかるようにする記録。
 静的サイトのため「ビルド」は存在せず、**push = デプロイ**(Cloudflare Workers が自動ビルド)。
 
+## receive v2026.08.24 — サイバー能力『重大』ラインへの接近と、ChatGPT広告の欧州展開
+- 状態: 配信済み(定期更新、1日おき)。
+- 新規号 v2026.08.24(対象期間: 2026年8月18日〜8月24日、4記事)を trends.json 先頭に追加。
+  - OpenAI「Astra」がPreparedness Frameworkの『重大』サイバー能力基準に迫り開発ペースを落とすと発表(規制・倫理)
+  - Anthropic、学習サイト「Claude Academy」を拡充(ツール・サービス)
+  - MCP、次期仕様に向けた新ロードマップを公開(ツール・サービス)
+  - ChatGPTの広告表示が欧州31市場に拡大(企業・業界)
+- 用語辞典・恒久ページの変更なし(新用語なし)。`python3 tools/validate.py` 通過確認済み。
+
 ## editorial 2026.08.23 — 「AIを使う」タブに6ページ追加(第1回編集会議)
 - 状態: 公開済み(ユーザー承認のうえ main へマージ)。
 - 追加ページ: use/delegation, iteration, context-engineering, verification, model-selection, reusable-workflows
