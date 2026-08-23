@@ -1,7 +1,7 @@
 {
-  "_note": "1日おきの定期更新ルーチン(クラウドエージェント)の設定の写し。実体は trig_01YS47DTA4oS1idnmN5JQo8G。cron は UTC 0:00 の隔日 = JST 9:00(奇数日)。",
+  "_note": "1日おきの定期更新ルーチン(クラウドエージェント)の設定の写し。実体は trig_01YS47DTA4oS1idnmN5JQo8G。cron は UTC 23:30 の隔日 = JST 翌朝 8:30。",
   "name": "ANTENNA 定期受信 (1日おきのAIトレンド更新)",
-  "cron_expression": "0 0 */2 * *",
+  "cron_expression": "30 23 */2 * *",
   "enabled": true,
   "job_config": {
     "ccr": {
