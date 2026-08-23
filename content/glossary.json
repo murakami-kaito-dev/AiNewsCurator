@@ -980,6 +980,46 @@
         "deepfake",
         "ai-safety"
       ]
+    },
+    {
+      "slug": "lost-in-the-middle",
+      "term": "Lost in the Middle",
+      "reading": "ろすといんざみどる",
+      "category": "限界",
+      "definition": "長い入力の中ほどに置かれた情報ほど、先頭や末尾に比べて見落とされやすくなる現象。同じ資料を渡しても、置き場所によって答えが変わることがあります。だから大事な指示や根拠は、真ん中ではなく先頭か末尾に置くのが実務上の対処になります。",
+      "context": "[[glossary:context-window|コンテキストウィンドウ]]が100万トークン級に伸びた現在も程度差はあれ残るとされ、資料の並べ方や[[glossary:rag|RAG]]の並び順を考える理由になっている。",
+      "related": [
+        "context-window",
+        "context-engineering",
+        "attention"
+      ]
+    },
+    {
+      "slug": "prompt-caching",
+      "term": "プロンプトキャッシュ (prompt caching)",
+      "reading": "ぷろんぷときゃっしゅ",
+      "category": "実践",
+      "definition": "毎回同じ内容を送る先頭部分(共通の指示や資料など)を提供側で再利用し、再送分の料金と待ち時間を下げる仕組み。固定の内容を先頭に、毎回変わる内容を後ろに置くほど効きやすくなります。",
+      "context": "対応の有無・条件・有効期限は提供元ごとに異なる。長い資料を何度も渡す使い方でコスト差が大きくなるため、[[glossary:api|API]]利用時の基本的な節約手段として知られる。",
+      "related": [
+        "token",
+        "system-prompt",
+        "api",
+        "context-engineering"
+      ]
+    },
+    {
+      "slug": "idempotency",
+      "term": "冪等性 (idempotency)",
+      "reading": "べきとうせい",
+      "category": "実践",
+      "definition": "同じ操作を何度実行しても、結果が1回目と変わらない性質のこと。途中で失敗して再実行しても二重送信や二重登録が起きないなら「冪等性がある」と言います。",
+      "context": "AIに作業を自動実行させる前提条件。冪等でない操作(送信・課金・削除)は、必ず人の承認を挟む設計にするという判断に直結する。",
+      "related": [
+        "agent",
+        "tool-use",
+        "orchestration"
+      ]
     }
   ]
 }

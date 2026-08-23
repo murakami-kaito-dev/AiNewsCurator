@@ -21,11 +21,13 @@ ANTENNAの全コンテンツはこのガイドに従う。定期更新エージ�
 
 - **リード文(lede)**: このページで何が分かるかを2文で。
 - **例え話(analogyブロック)**: 冒頭に必ず1つ。日常の物事に例えて直感を作る。
-- **本文**: h2で2〜4節に分ける。1段落は3〜4文まで。「なぜ?」に必ず答える
+- **本文**: h2で3〜5節に分ける。1段落は3〜4文まで。「なぜ?」に必ず答える
   (例:「GPUと相性が良い」→ なぜ相性が良いのかまで書く)。
 - **エンジニア向け補足(calloutブロック)**: 実務者向けの一歩深い話・数値・落とし穴。
 - **次のステップ(linksブロック)**: 関連ページへ2〜4リンク。学習順で自然な次を先頭に。
-- 分量: 1ページ 800〜1500字(詰め込むより「1ページ1テーマ」で分割)。
+- 分量: 1ページ 1200〜2000字を目安(詰め込むより「1ページ1テーマ」で分割)。
+  2000字を超えるなら、図解ブロック(flow/table/nested)で置き換えられないかを先に検討する。
+  **文字が続くと読まれない。** 手順・比較・分類は文章ではなく図解ブロックにするのが原則。
 
 ## 文体
 
@@ -92,4 +94,5 @@ agent, tool-use, mcp, mcp-server, a2a, orchestration, sub-agent,
 harness-engineering, loop-engineering, framework, langchain,
 alignment, ai-safety, prompt-injection, jailbreak, pii,
 copyright-ai, eu-ai-act, ai-governance, deepfake,
-g-kentei, e-shikaku, world-model, continual-learning, agent-memory, ai-ethics
+g-kentei, e-shikaku, world-model, continual-learning, agent-memory, ai-ethics,
+lost-in-the-middle, prompt-caching, idempotency
