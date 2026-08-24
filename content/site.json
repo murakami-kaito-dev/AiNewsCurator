@@ -175,6 +175,11 @@
           "summary": "「AI界のUSB-C」。なぜ標準規格が必要で、どう使うのか。"
         },
         {
+          "slug": "agent-architecture",
+          "title": "AIエージェントのしくみ — 脳と体",
+          "summary": "推論はクラウド、実行は手元。エージェントの分担を解剖する。"
+        },
+        {
           "slug": "frameworks",
           "title": "フレームワーク",
           "summary": "LangChain等。自前実装とフレームワーク利用の分かれ目。"
@@ -187,6 +192,11 @@
       "type": "docs",
       "lede": "技術そのものの外側 — 歴史、規制、セキュリティ、業界の力学。",
       "pages": [
+        {
+          "slug": "engineering-evolution",
+          "title": "AIの操り方の変遷",
+          "summary": "プロンプト→コンテキスト→ハーネス→ループ。効かせる場所の移動史。"
+        },
         {
           "slug": "history",
           "title": "AIの歴史",

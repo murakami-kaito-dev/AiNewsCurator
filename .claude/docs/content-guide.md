@@ -67,6 +67,7 @@ ANTENNAの全コンテンツはこのガイドに従う。定期更新エージ�
 - demo の id は `next-token` / `attention` / `training` / `tokenize` / `temperature` / `neural-params` のみ。
 - 図解ブロック: `nested`(入れ子/包含図。`layers:[{label,desc}]` を外側→内側で描画)、
   `flow`(処理フロー図。`rows:[{name,steps:[文字列 or {text,auto:true}],example}]`。`auto:true` のステップは強調表示)。
+  ※`flow` の `steps` はリンク記法が展開されない。用語リンクを置くなら `example` 側に書くこと。
 
 ## 用語辞典のスキーマ (`content/glossary.json`)
 
@@ -95,4 +96,5 @@ harness-engineering, loop-engineering, framework, langchain,
 alignment, ai-safety, prompt-injection, jailbreak, pii,
 copyright-ai, eu-ai-act, ai-governance, deepfake,
 g-kentei, e-shikaku, world-model, continual-learning, agent-memory, ai-ethics,
-lost-in-the-middle, prompt-caching, idempotency
+lost-in-the-middle, prompt-caching, idempotency,
+stateless, session, harness, in-context-learning, verifier
