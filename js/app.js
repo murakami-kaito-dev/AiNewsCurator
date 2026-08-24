@@ -322,7 +322,7 @@ function renderNewsDetail(issue, item, idx) {
     [issue.version, `#/trends/${issue.version}`],
     [item.title.length > 16 ? item.title.slice(0, 16) + "…" : item.title, null],
   ]);
-  contentEl.appendChild(el("p", "updated-line", `${item.category} ・ ${issue.version} ・ ${issue.date}`));
+  contentEl.appendChild(el("p", "updated-line", `${item.category} ・ ${issue.date}`));
   contentEl.appendChild(el("h1", "tab-title", item.title));
   contentEl.appendChild(pRich("news-lead", item.lead || item.summary || ""));
   if (item.body) contentEl.appendChild(pRich("doc-p", item.body));
@@ -387,7 +387,7 @@ async function renderTrends(sub) {
   const section = SITE.sections.find(s => s.id === "trends");
   header(contentEl, "トレンド", section.lede, data.updated);
   contentEl.appendChild(el("h2", "issue-head", latest.headline));
-  contentEl.appendChild(el("p", "issue-date", `${latest.version} ・ ${latest.date}`));
+  contentEl.appendChild(el("p", "issue-date", latest.date));
   renderIssueItems(contentEl, latest);
   if (data.issues.length > 1) {
     const grid = el("div", "card-grid");
