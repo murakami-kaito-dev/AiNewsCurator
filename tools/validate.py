@@ -42,9 +42,11 @@ if None in slugs or "" in slugs:
     errors.append("glossary: slug のないエントリがある")
 
 page_refs = set()
+nav_titles = {}
 for s in site["sections"]:
     for p in s.get("pages", []):
         page_refs.add(f"{s['id']}/{p['slug']}")
+        nav_titles[f"{s['id']}/{p['slug']}"] = p.get("title")
         f = CONTENT / "pages" / s["id"] / f"{p['slug']}.json"
         if not f.exists():
             errors.append(f"site.json に載っているが実体がない: {f.relative_to(ROOT)}")
@@ -59,6 +61,12 @@ for f in sorted((CONTENT / "pages").rglob("*.json")):
     for key in ("title", "lede", "updated", "blocks"):
         if key not in data:
             errors.append(f"{f.relative_to(ROOT)}: 必須キー {key} がない")
+    # ナビ(site.json)のタイトルとページ本体のタイトルの不一致を検出
+    nav_title = nav_titles.get(rel)
+    if nav_title is not None and data.get("title") and nav_title != data["title"]:
+        errors.append(
+            f"{f.relative_to(ROOT)}: site.json のタイトルと不一致 "
+            f"(nav='{nav_title}' / page='{data['title']}')")
     for b in data.get("blocks", []):
         if b.get("type") == "demo" and b.get("id") not in DEMOS:
             errors.append(f"{f.relative_to(ROOT)}: 不明な demo id {b.get('id')}")

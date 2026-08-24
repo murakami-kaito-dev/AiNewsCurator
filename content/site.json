@@ -194,8 +194,8 @@
       "pages": [
         {
           "slug": "engineering-evolution",
-          "title": "AIの操り方の変遷",
-          "summary": "プロンプト→コンテキスト→ハーネス→ループ。効かせる場所の移動史。"
+          "title": "AIを使いこなす技術の4つの層",
+          "summary": "プロンプト→コンテキスト→ハーネス→ループ。手を入れる場所の広がり方。"
         },
         {
           "slug": "history",
