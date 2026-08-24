@@ -1,5 +1,5 @@
 {
-  "updated": "2026.08.23",
+  "updated": "2026.08.24",
   "terms": [
     {
       "slug": "ai",
@@ -1019,6 +1019,71 @@
         "agent",
         "tool-use",
         "orchestration"
+      ]
+    },
+    {
+      "slug": "stateless",
+      "term": "ステートレス (stateless)",
+      "reading": "すてーとれす",
+      "category": "技術",
+      "definition": "呼び出しのたびに前回の状態を持ち越さない性質。LLMのAPIは多くがこれで、モデル自体は前の会話を覚えていません。会話が続いているように見えるのは、呼び出す側が毎回それまでのやり取りを丸ごと送り直しているからです(事業者側で会話を預かる方式のAPIもありますが、覚えているのはモデルではなくその外側の仕組みです)。",
+      "context": "エージェントの「記憶」がどこにあるのか、料金がなぜ会話の長さに比例するのかの根っこにある性質。",
+      "related": [
+        "api",
+        "context-window",
+        "agent-memory"
+      ]
+    },
+    {
+      "slug": "session",
+      "term": "セッション (session)",
+      "reading": "せっしょん",
+      "category": "実践",
+      "definition": "ひとつの作業のまとまり。AIとの一連のやり取りと、その間に積み上がった文脈や履歴を指します。実体は手元(または事業者側)のプログラムが持っている状態で、閉じれば消えます。",
+      "context": "「ローカルで動くセッション」と「クラウドで動くセッション」の違いは、この状態をどこが持っているかの違い。",
+      "related": [
+        "stateless",
+        "context-window",
+        "agent-memory"
+      ]
+    },
+    {
+      "slug": "harness",
+      "term": "ハーネス (harness)",
+      "reading": "はーねす",
+      "category": "エージェント",
+      "definition": "モデルを取り囲む実行環境そのもの。使える道具の一覧、権限、ループを続けるかの判断、履歴の保存などを担う「体」にあたる部分です。判断する「脳」がモデル、手を動かす「体」がハーネス、と考えると分かりやすくなります。",
+      "context": "元の意味は馬具や安全ベルト。主役そのものではなく、主役を繋いで力を引き出す周辺装備を指す言葉。これを設計する営みが[[glossary:harness-engineering|ハーネスエンジニアリング]]。",
+      "related": [
+        "harness-engineering",
+        "agent",
+        "tool-use"
+      ]
+    },
+    {
+      "slug": "in-context-learning",
+      "term": "文脈内学習 (in-context learning)",
+      "reading": "ぶんみゃくないがくしゅう",
+      "category": "基礎",
+      "definition": "モデルの[[glossary:weight|重み]]を書き換えずに、入力文に書いた指示や実例だけで振る舞いが変わる現象。追加学習をしなくても新しい作業をこなせるため、入力文がそのままプログラムのような役割を果たします。",
+      "context": "2020年のGPT-3で注目され、[[glossary:prompt-engineering|プロンプトエンジニアリング]]という営みそのものの土台になった。",
+      "related": [
+        "prompt",
+        "few-shot",
+        "prompt-engineering"
+      ]
+    },
+    {
+      "slug": "verifier",
+      "term": "検証器 (verifier)",
+      "reading": "けんしょうき",
+      "category": "エージェント",
+      "definition": "エージェントの出力が要件を満たしているかを、人手を介さず機械的に判定する仕組み。テストの合否、形式のチェック、別のモデルによる採点などが該当します。合否が機械で決まらないと、ループを自動で回すことはできません。",
+      "context": "[[glossary:loop-engineering|ループエンジニアリング]]で設計する3点(トリガー・検証器・停止条件)の中核。",
+      "related": [
+        "loop-engineering",
+        "harness-engineering",
+        "agent"
       ]
     }
   ]

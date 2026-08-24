@@ -42,7 +42,25 @@ AIエージェントの「編集部」が組織的に増やし・磨くための
    git commit -m "editorial: <内容>"
    git push -u origin editorial/<...>     # 非本番ブランチ = プレビューURLが発行される
    ```
-   → プレビューURLを人間に提示 → **承認を得てから** `main` にマージして公開。
+   → **編集部がプレビューURLを算出し、記事への直リンクまで作って人間に提示する。**
+   ユーザーにダッシュボードを探させないこと(校了紙は編集部が持っていく)。
+
+   **プレビューURLの規則**(ブランチ名の `/` 等をハイフンに置換 + `-<worker名>.<サブドメイン>`):
+   ```
+   https://<branch-with-dashes>-antenna-ai.km-solo-developer.workers.dev
+   例) editorial/2026-08-24-agent-and-evolution
+     → https://editorial-2026-08-24-agent-and-evolution-antenna-ai.km-solo-developer.workers.dev
+   ```
+   提示前に必ず疎通確認する(ビルドに1〜2分かかるので、200が返るまで待つ):
+   ```bash
+   P="https://<...>.workers.dev"
+   curl -s -o /dev/null -w "%{http_code}\n" "$P/"                    # 200 になるまで待つ
+   curl -s "$P/content/site.json" | python3 -m json.tool | head       # 新ページが載っているか
+   ```
+   提示は「サイト全体のURL」だけでなく、**新規/変更したページへの `#/section/slug` 直リンク**を並べる。
+   (ハッシュが長くDNSラベル63文字を超える場合や404の場合のみ、ダッシュボードでの確認手順を案内する)
+
+   → **承認を得てから** `main` にマージして公開。
 8. **記録** — 台帳を `published` に更新し、`.claude/docs/release-log.md` に記録。
 
 ## 3. 品質基準(校閲チェックリスト)
@@ -53,4 +71,5 @@ AIエージェントの「編集部」が組織的に増やし・磨くための
 - [ ] 事実は出典で裏が取れる。不確かなものは書かないか「未確認」と明記
 - [ ] Markdown記法(`**`等)を使っていない
 - [ ] 図解が有効な箇所で `nested` / `flow` / `demo` を使えているか
-- [ ] 分量 800〜1500字。冗長な繰り返しがない
+- [ ] **字数の上限は設けない**(2026-08-24 撤廃)。短くするために説明を削っていないか
+- [ ] 冗長な繰り返し(同じ主張の言い換え・図解の内容の本文での再説明)がないか

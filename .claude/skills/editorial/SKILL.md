@@ -20,7 +20,10 @@ description: ANTENNA編集部を招集して学習コンテンツ(content/pages�
 4. **校閲** — ①事実(裏取り) → ②読者(オカン基準・専門用語の全数ルール・冗長さ)。
 5. **検証** — `python3 tools/validate.py` を通す。ヘッドレスChromeで描画も確認する。
 6. **出版候補の提出** — `editorial/<日付>-<テーマ>` ブランチにpush。
-   非本番ブランチなのでCloudflareがプレビューURLを発行する。**そのURLをユーザーに提示して承認を得る。**
+   非本番ブランチなのでCloudflareがプレビューURLを発行する。
+   **URLは編集部が算出して提示する(ユーザーにダッシュボードを探させない)。**
+   規則: `https://<ブランチ名の / をハイフンに置換>-antenna-ai.km-solo-developer.workers.dev`
+   提示前に curl で 200 を確認し、**新規ページへの `#/section/slug` 直リンク**まで作って渡す。
    **承認前に main へマージしない。**
 7. **公開** — 承認後に main へマージ → 自動デプロイ。台帳を published に更新し release-log に記録。
 
