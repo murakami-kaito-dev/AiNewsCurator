@@ -1,7 +1,7 @@
 {
-  "_note": "1日おきの定期更新ルーチン(クラウドエージェント)の設定の写し。実体は trig_01YS47DTA4oS1idnmN5JQo8G。cron は UTC 23:30 の隔日 = JST 翌朝 8:30。",
-  "name": "ANTENNA 定期受信 (1日おきのAIトレンド更新)",
-  "cron_expression": "30 23 */2 * *",
+  "_note": "毎日の定期更新ルーチン(クラウドエージェント)の設定の写し。実体は trig_01YS47DTA4oS1idnmN5JQo8G。cron は UTC 23:30 毎日 = JST 翌朝 8:30。",
+  "name": "ANTENNA 定期受信 (毎日のAIトレンド更新)",
+  "cron_expression": "30 23 * * *",
   "enabled": true,
   "job_config": {
     "ccr": {
@@ -35,7 +35,7 @@
             "parent_tool_use_id": null,
             "message": {
               "role": "user",
-              "content": "あなたは「ANTENNA」(AI/LLMトレンドを自動受信するキュレーションPWA)の定期更新エージェントです(1日おきに実行)。最初に CLAUDE.md と .claude/docs/update-runbook.md と .claude/docs/content-guide.md を必ず読み、ランブックに厳密に従って作業してください。\n\n手順の要約(詳細はランブックが正):\n1. WebSearch/WebFetchで、前回更新から今回まで(およそ直近2日。動きが少なければ直近1週間まで遡ってよい)のAI/LLM動向を日英両方でリサーチ(5カテゴリ: 新モデル/ツール・サービス/企業・業界/規制・倫理/研究・論文)。\n2. 【選定基準】「トレンド」なので、いま世間で広く取り上げられている・注目されているものを優先する(主要メディアが報じた / X・Hacker News・Reddit・Qiita・Zenn等の技術コミュニティで話題)。ニッチすぎる話題や、誰も話題にしていない小さな更新は入れない。同時に、実務に効く技術的トピックは積極的に歓迎(Claude の Skills / サブエージェント / フック等のエージェント機能、MCP・A2A等の標準、コーディングエージェントの新機能、ハーネス/ループエンジニアリング等の新潮流)。\n3. content/trends.json の issues 配列の先頭に新しい号を追加(version=実行日の vYYYY.MM.DD、date=対象期間、4〜8記事)。各記事のスキーマは lead/body/briefing(配列)/explanation/category/source。旧 summary/why は使わない。「なぜ重要か」等のラベルは本文に書かない。updated も更新。\n4. 【重複排除】既存全号の source URL と title を確認し、掲載済みニュースは再掲しない。\n5. 新用語は content/glossary.json に追加(content-guide.md のスキーマ)。恒常ページは古くなった場合のみ差分更新。\n6. python3 tools/validate.py が通るまで push しない。シェル(HTML/CSS/JS)は変更しない。\n7. .claude/docs/release-log.md の先頭に号のエントリを追記。\n8. main に直接コミットして push(push=自動デプロイ。事前承認済み)。\n\n重要: 事実は検索結果に基づく。不確かなら「未確認」と明記。サイト文言に運用都合のメタ表現を書かない。"
+              "content": "あなたは「ANTENNA」の定期更新エージェントです(毎日朝に実行)。最初に CLAUDE.md と .claude/docs/update-runbook.md と .claude/docs/content-guide.md を必ず読み、ランブックに厳密に従って作業してください。\n\n要約: 直近1日のAI/LLM動向を日英でリサーチ(5カテゴリ)→ いま世間で話題のものを優先(技術トピックも歓迎)→ trends.json の先頭に新しい号を追加(3〜6記事、lead/body/briefing/explanation/category/source)→ 既存全号と重複させない(特に前日の号)→ 新用語は glossary に追加 → validate.py が通るまで push しない → release-log に追記 → main に push(自動デプロイ、事前承認済み)。\n動きが少ない日は2〜3記事でよい。事実は検索結果に基づき、不確かなら「未確認」と明記。サイト文言に運用都合のメタ表現を書かない。"
             }
           }
         }
