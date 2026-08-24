@@ -70,6 +70,22 @@ for f in sorted((CONTENT / "pages").rglob("*.json")):
     for b in data.get("blocks", []):
         if b.get("type") == "demo" and b.get("id") not in DEMOS:
             errors.append(f"{f.relative_to(ROOT)}: 不明な demo id {b.get('id')}")
+        # リンク記法が展開されない場所にリンクを書いていないか
+        # (h2/title はシェルが素のテキストとして描画するため、記法がそのまま画面に出てしまう)
+        if b.get("type") == "h2" and LINK_RE.search(b.get("text", "")):
+            errors.append(
+                f"{f.relative_to(ROOT)}: h2見出しにリンク記法は使えない(画面にそのまま出る)。"
+                f"見出しはプレーンにし、本文でリンクすること: {b['text'][:40]}")
+        if b.get("type") == "flow":
+            for row in b.get("rows", []):
+                for st in row.get("steps", []):
+                    txt = st if isinstance(st, str) else st.get("text", "")
+                    if LINK_RE.search(txt):
+                        errors.append(
+                            f"{f.relative_to(ROOT)}: flowのstepsにリンク記法は使えない。"
+                            f"exampleに書くこと: {txt[:40]}")
+    if LINK_RE.search(data.get("title", "")):
+        errors.append(f"{f.relative_to(ROOT)}: title にリンク記法は使えない")
     for text in walk_text(data):
         for kind, target, _label in LINK_RE.findall(text):
             if kind == "glossary" and target not in slugs:

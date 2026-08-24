@@ -71,6 +71,9 @@ ANTENNAの全コンテンツはこのガイドに従う。定期更新エージ�
 - 図解ブロック: `nested`(入れ子/包含図。`layers:[{label,desc}]` を外側→内側で描画)、
   `flow`(処理フロー図。`rows:[{name,steps:[文字列 or {text,auto:true}],example}]`。`auto:true` のステップは強調表示)。
   ※`flow` の `steps` はリンク記法が展開されない。用語リンクを置くなら `example` 側に書くこと。
+- **リンク記法が展開されない場所**(書くと `[[...]]` が画面にそのまま出る。validate.py が検出する):
+  `h2` の見出し / ページの `title` / `flow` の `steps`。
+  見出しに用語を出したい場合は**見出しはプレーンにし、直後の本文でリンクする**。
 
 ## 用語辞典のスキーマ (`content/glossary.json`)
 
