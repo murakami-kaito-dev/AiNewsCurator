@@ -13,7 +13,7 @@
     },
     {
       "type": "p",
-      "text": "プロンプト、コンテキスト、ハーネス、ループ。この4つを「層」と呼びます。層とは、人が手を入れる範囲の広さです。流行り廃りではなく、前のやり方が限界にぶつかるたびに手を入れる場所が一つ外へ広がった結果です。"
+      "text": "プロンプト、コンテキスト、ハーネス、ループ。英語圏の技術記事では、この4つをまとめて「4つの層(four layers)」と呼び、「エージェントとは、4つの工学の層に包まれたループである」「それぞれの層が前の層を包む」と説明されます。このページもその呼び方に従います(出典はページ末尾)。層とは、人が手を入れる範囲の広さのことです。流行り廃りではなく、前のやり方が限界にぶつかるたびに、手を入れる場所が一つ外へ広がった結果です。"
     },
     {
       "type": "table",
@@ -179,6 +179,28 @@
       "type": "callout",
       "title": "エンジニア向け補足",
       "body": "プロンプト層は文言をコードと同じく版管理する。コンテキスト層の仕事は詰め込みではなく選別で、長文の中ほどが見落とされやすい傾向([[glossary:lost-in-the-middle|lost in the middle]])に注意し、[[glossary:prompt-caching|プロンプトキャッシュ]]が効くよう固定部分を先頭に置く。ハーネス層はCI(変更のたびに自動で検査する仕組み)に近く、道具定義・権限境界・検証器を設定として持ち、失敗のたびに検査を増やす。ループ層は二重に走っても壊れない冪等性([[glossary:idempotency|idempotency]])と再試行の上限が要ります。"
+    },
+    {
+      "type": "resources",
+      "title": "この整理の出典",
+      "note": "「4つの層」という呼び方と、層が入れ子になるという説明の出どころです。",
+      "items": [
+        {
+          "url": "https://futureagi.com/blog/loop-engineering/prompt-context-harness-loop-layers/",
+          "label": "Prompt, Context, Harness, Loop: The Four Layers of AI Agent Engineering",
+          "note": "4つを「層」として並べ、それぞれが前を包むと整理した記事。"
+        },
+        {
+          "url": "https://blog.dailydoseofds.com/p/prompt-context-harness-and-loop-engineering",
+          "label": "Prompt, Context, Harness & Loop Engineering (Avi Chawla)",
+          "note": "「エージェントとは4つの工学の層に包まれたループ」という定式化。"
+        },
+        {
+          "url": "https://explainx.ai/blog/context-prompt-loop-harness-engineering-stack-2026",
+          "label": "Context vs prompt vs loop vs harness engineering",
+          "note": "4つを同じスタックの層として比較した解説。"
+        }
+      ]
     },
     {
       "type": "links",
