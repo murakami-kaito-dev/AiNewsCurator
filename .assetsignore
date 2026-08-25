@@ -5,6 +5,7 @@
 .assetsignore
 .claude/
 .local/
+docs/
 tools/
 worker/
 functions/

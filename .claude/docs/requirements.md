@@ -62,7 +62,7 @@
 - リサーチ範囲: 新モデル/新ツール/新概念・用語/能力境界の変化/現場活用の新事例
 - `trends` は新規記事を先頭に追加(過去分はアーカイブとして残す)
 - `glossary` / `capability-map` / `radar` / `history` は差分更新
-- 更新のたび `.claude/docs/release-log.md` に記録し、バージョン(`vYYYY.MM.DD`)を付す
+- 更新のたび `docs/release-log.md` に記録し、バージョン(`vYYYY.MM.DD`)を付す
 
 ## 6. ユーザーが手動で行う操作(最小化し、手順書化する)
 

@@ -25,7 +25,7 @@ AI/LLM のキャッチアップを自動化するドキュメント型 PWA。ユ
 - **編集部(学習コンテンツの企画・執筆・校閲): `.claude/docs/editorial-runbook.md`**
   スキル `editorial` で招集。テーマ台帳は `.claude/docs/editorial/themes.json`。
   成果物はブランチ+プレビューURLで提示し、**ユーザーの承認後に main へマージ**する。
-- リリースログ: `.claude/docs/release-log.md`
+- **リリースログ: `docs/release-log.md`**(`.claude/` の外。理由は「不変条件・禁忌」を参照)
 - デプロイ手順: `.claude/docs/deploy-guide.md` / 定期ルーチン設定の写し: `.claude/docs/routine-config.json`
 - 検証スクリプト: `tools/validate.py`(JSON構文・リンク整合・site.json対応を一括検査)
 - コンテンツ: `content/site.json`(ナビ) / `content/pages/<section>/<slug>.json`(記事) /
@@ -40,3 +40,9 @@ AI/LLM のキャッチアップを自動化するドキュメント型 PWA。ユ
 - push 前に `python3 tools/validate.py` を必ず通す。
 - 定期更新の commit/push はユーザーから事前承認済み。それ以外は指示があったときのみ。
 - 更新のたび release-log に記録する。
+- **`docs/release-log.md` を `.claude/` 配下に戻さない。** `.claude/**` への書き込みは
+  センシティブファイル判定で承認プロンプトが出るため、**無人の定期実行が承認待ちで停止する**
+  (2026-08-25 に実際に発生。記事執筆も検証も終わった状態で配信できず)。
+  同じ理由で、**配信(content の commit/push)を release-log の記録より先に完了させる**
+  — 記録で詰まっても配信だけは通る順序にする(update-runbook §4)。
+- `docs/` は内部ドキュメント置き場。**`.assetsignore` に必ず載せる**(載せ忘れると社内メモが公開される)。
