@@ -1,6 +1,83 @@
 {
-  "updated": "2026.08.25",
+  "updated": "2026.08.26",
   "issues": [
+    {
+      "version": "v2026.08.26",
+      "date": "2026年8月26日",
+      "headline": "AIエージェントの新たな攻撃面が相次いで発覚、開発陣営はGA機能と専用推論チップで足場固め",
+      "items": [
+        {
+          "title": "Grokに「暗号化した指示」を読ませてチャット履歴を盗む攻撃、xAIは未対応のまま",
+          "category": "規制・倫理",
+          "lead": "AIセキュリティ企業Adversa AIが、xAIの[[glossary:agent|エージェント]]型チャット「Grok」からユーザーの個人情報を盗み出す手口「Cryptographic Context Injection(暗号的コンテキスト注入)」を公表した。悪意あるWebページを開いてGrokに要約させるだけで発動する、いわゆるゼロクリック攻撃だという。",
+          "body": "Webページの中にAES-256-GCMで暗号化した指示文を仕込んでおくと、Grokはその内容を読み取れないまま自らのコード実行環境で復号し、指示に従ってしまう。指示は「復号鍵を作れ」という体裁でユーザー名・おおよその位置情報・利用プラン・チャット履歴を集めさせ、それを攻撃者のサーバーのURLへの付加情報として送信させる。Adversa AIは6月3日にxAIへ報告済みだが、8月19日時点で修正は確認されていない。同様の手口はGoogleのGeminiでも再現できたという。",
+          "briefing": [
+            "暗号化した指示文をAIに復号・実行させてガードレールをすり抜ける新手口",
+            "悪意あるページを開かせるだけで発動するゼロクリック攻撃",
+            "6月3日にxAIへ報告済みだが8月19日時点で未修正、Geminiでも再現",
+            "約20回の試行で成功率はおよそ4割"
+          ],
+          "explanation": "従来のプロンプトインジェクション対策は、外部から来た文字列を「信頼できない指示」として見分けることを前提にしていた。この手口は指示を暗号文のまま渡すことで、その前提そのものを回避する。エージェントがWebページを自律的に読んで行動する場面が増えるほど、こうした「AI自身に見えない攻撃」への備えが問われることになる。",
+          "source": "https://adversa.ai/blog/cryptographic-context-injection-grok-data-theft/"
+        },
+        {
+          "title": "NVIDIAのローカルAIエージェント基盤「NemoClaw」に脆弱性、悪意あるWebページ1回の閲覧で乗っ取り可能",
+          "category": "規制・倫理",
+          "lead": "セキュリティ企業Oasis Securityが、NVIDIAが提供するローカルAIエージェント基盤「NemoClaw」の脆弱性(CVE-2026-65105)を公表した。悪意あるWebページを一度開くだけで、PC上で動くローカルLLMサーバー「[[glossary:local-llm|Ollama]]」を外部から無認証で操作できてしまう。",
+          "body": "NemoClawはOllamaを起動する際、本来は同一PC内からのみ許可すべき通信をネットワーク全体に開いてしまう設定(OLLAMA_HOST=0.0.0.0)を使っており、これが悪用の起点になる。攻撃者はDNSリバインディングという手法でこの制限を回り込み、モデルの応答テンプレートを書き換えて、以後のすべての会話に隠し指示が適用されるようにできる。macOS・Linux向けは修正版(v0.0.35)が提供済みだが、Windows・WSL環境は8月25日時点で未修正で、注意喚起の表示にとどまる。",
+          "briefing": [
+            "CVE-2026-65105、NemoClaw経由でOllamaが無認証操作される脆弱性",
+            "悪意あるWebページを1回開くだけで発動、資格情報の窃取は不要",
+            "DNSリバインディングでネットワーク制限を回避",
+            "macOS/Linuxは修正済み(v0.0.35)、Windows/WSLは8月25日時点で未修正"
+          ],
+          "explanation": "ローカルLLMは「クラウドに送らないから安全」と捉えられがちだが、それは通信内容の話であって、ローカルのAPIサーバー自体の設定が甘ければ話は別になる。PC内で完結するはずのエージェント基盤ほど、外部からの不用意なアクセス許可が見過ごされやすいという教訓を示す事例。",
+          "source": "https://www.guardianmssp.com/2026/08/25/a-malicious-webpage-could-poison-your-local-ai-model-behind-nvidia-nemoclaw/"
+        },
+        {
+          "title": "Claude Platformの「コンピュータ操作」「ブラウザ操作」「Skills API」「Files API」が正式リリース",
+          "category": "ツール・サービス",
+          "lead": "Anthropicは、画面を見てPCを操作する「computer use」、Webページの構造を読んで操作する新機能「browser use」、そして手順書を[[glossary:agent|エージェント]]に持たせる「Skills API」、ファイルを扱わせる「Files API」を、ベータ版から正式版(GA)に切り替えた。",
+          "body": "browser useはページのDOM構造を読み取れるため、座標クリックだけに頼っていた従来のcomputer useより少ない往復回数でタスクを終えられ、早期利用企業では1タスクあたりのAPI呼び出し回数が2〜4割減ったという。Skills APIは手順書(スキル)をアップロードしてバージョン管理し、リクエストごとに特定版か最新版かを指定できる。Files APIはレート制限が従来比5倍、保存容量も1TBに拡大された。",
+          "briefing": [
+            "computer use・browser use・Skills API・Files APIがベータを終えGAに",
+            "browser useはDOM構造を読めるため往復回数を2〜4割削減",
+            "Skills APIは手順書をバージョン管理して[[glossary:api|API]]から指定できる",
+            "Files APIはレート制限5倍・保存容量1TBに拡大"
+          ],
+          "explanation": "これまで「ブラウザ操作エージェント」「手順書を持たせたエージェント」は個別のハックで組むしかなかった機能群だった。それが正式な[[glossary:api|API]]として揃ったことで、実務でエージェントを本番投入する際の土台(何がAnthropic公式にサポートされる範囲か)がはっきりする。",
+          "source": "https://enterprisedna.co/resources/news/anthropic-browser-use-computer-use-skills-api-enterprise-ga-august-2026/"
+        },
+        {
+          "title": "NVIDIA、エージェント向け専用推論チップ「Groq 3 LPX」が量産開始",
+          "category": "ツール・サービス",
+          "lead": "NVIDIAは8月24日、2023年に買収したGroqの技術をもとにした推論専用チップ「Groq 3 LPX」の量産開始を発表した。既存の主力プラットフォーム「Vera Rubin」に追加する形で、ラック1台あたり最大256基を搭載できる。",
+          "body": "Groq 3 LPXは、時間のかかる文脈の読み込みはGPU(Vera Rubin)に任せ、応答文をひとつずつ生成する「デコード」部分だけを高速化する専用設計。オープンモデル「Gemma 4 31B」を10万[[glossary:token|トークン]]の文脈長で動かすベンチマークでは、毎秒3,400トークンを記録し、レイテンシに敏感な用途で他プラットフォーム比最大4倍の応答速度を謳う。AIクラウドのNebiusが最初の採用企業になる。",
+          "briefing": [
+            "推論専用チップ「Groq 3 LPX」が8月24日に量産開始",
+            "Vera Rubinに追加搭載、ラック1台あたり最大256基",
+            "Gemma 4 31Bで毎秒3,400トークン、他比最大4倍の応答速度",
+            "Nebiusが最初の採用クラウド"
+          ],
+          "explanation": "[[glossary:agent|エージェント]]は1つのタスクを終えるまでに何百〜何千回も推論を繰り返すため、応答の速さがそのまま体感速度に直結する。学習用の巨大GPUとは別に「エージェントの受け答えを速くするための専用チップ」という新しい製品カテゴリが立ち上がったことを示す動き。",
+          "source": "https://www.mobileworldlive.com/nvidia/nvidia-groq-3-lpx-enters-full-production"
+        },
+        {
+          "title": "OpenAI、Codex/ChatGPT Workの5時間利用上限をPlusプランに再導入",
+          "category": "企業・業界",
+          "lead": "OpenAIは8月24日、コーディング支援機能「Codex」とチーム向け機能「ChatGPT Work」について、Plusプラン向けに一時撤廃していた「5時間ごとの利用上限」を8月25日から復活させると発表した。",
+          "body": "週単位の利用枠に加える形の追加制限で、数週間にわたり週枠のみで運用していたところを元に戻す。OpenAIは、Plusユーザーの一部が知らないうちに週の利用枠を使い切ってしまう問題を避け、計算資源の負荷を平準化する狙いだと説明している。上位のPro($100)・Pro($200)プランには当面この5時間上限は適用しない。",
+          "briefing": [
+            "Codex/ChatGPT Workの5時間上限をPlusプラン向けに8月25日から再導入",
+            "週単位の利用枠とは別の追加制限",
+            "狙いは計算資源の負荷平準化と、意図しない枠の使い切り防止",
+            "Pro($100)・Pro($200)プランには当面適用されない"
+          ],
+          "explanation": "無料化・上限撤廃の方向に見えた流れが、利用が伸びるほど計算資源の制約に引き戻される場面。同じ機能でもプランによって利用条件が細かく変わる状態が続いており、コーディングエージェントを日常的に使う開発者は自分のプランの上限を確認しておく必要がある。",
+          "source": "https://www.ithinkdiff.com/openai-codex-five-hour-limit/"
+        }
+      ]
+    },
     {
       "version": "v2026.08.25",
       "date": "2026年8月25日",
