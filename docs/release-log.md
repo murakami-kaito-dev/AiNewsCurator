@@ -3,6 +3,25 @@
 「どのバージョンに何が入っていて、今どの状態か」を新しいセッションでも即わかるようにする記録。
 静的サイトのため「ビルド」は存在せず、**push = デプロイ**(Cloudflare Workers が自動ビルド)。
 
+## receive v2026.08.26 — AIエージェントの新たな攻撃面が相次いで発覚、開発陣営はGA機能と専用推論チップで足場固め
+
+- 状態: 配信済み(定期ルーチンによる自動実行。8/26 08:31 JST 発火)。
+- 開始前に `git fetch` → `git status --porcelain`(空) → `git switch -C main origin/main` で初期化。
+  直前の履歴に v2026.08.25 号が前日夜(8/25 20:44 JST、手動実行分)に既に配信済みだったため、
+  日付を取り違えていないか `date -u` / `TZ=Asia/Tokyo date` で実時刻を確認してから実行日を確定した。
+- 新規号 v2026.08.26(2026年8月26日、5記事)を trends.json 先頭に追加。
+  - Grokへの暗号化プロンプトインジェクション「Cryptographic Context Injection」、xAI未対応(規制・倫理)
+  - NVIDIA NemoClaw/Ollamaの脆弱性 CVE-2026-65105、Windows/WSLは未修正(規制・倫理)
+  - Claude Platformのcomputer use/browser use/Skills API/Files APIが正式リリース(ツール・サービス)
+  - NVIDIA、エージェント向け推論チップ「Groq 3 LPX」量産開始(ツール・サービス)
+  - OpenAI、Codex/ChatGPT Workの5時間利用上限をPlusプランへ再導入(企業・業界)
+- 既存全号(v2026.08.25まで)の source/title と重複がないことを確認済み。
+  MCPのステートレス仕様(2026-07-28)は v2026.02-07 号で既出のため、Claude Platformの記事では
+  computer use/browser use/Skills API/Files APIのGA化のみを扱い、MCP仕様更新には触れていない。
+- 用語辞典の変更なし(agent / mcp / api / prompt-injection / local-llm / token は既存)。
+  `python3 tools/validate.py` 通過(issues=7)。
+- 完了メール(手順8)送信済み(mri.benkyochannel@gmail.com / km.solo.developer@gmail.com)。
+
 ## receive v2026.08.25 — エージェント標準が一つ屋根の下へ、AIマネーは再編局面に
 
 - 状態: 配信済み(手動実行。8/25朝の定期実行が停止したため、対話セッションで代替実行)。
