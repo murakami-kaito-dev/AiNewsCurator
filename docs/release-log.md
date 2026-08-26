@@ -3,6 +3,23 @@
 「どのバージョンに何が入っていて、今どの状態か」を新しいセッションでも即わかるようにする記録。
 静的サイトのため「ビルド」は存在せず、**push = デプロイ**(Cloudflare Workers が自動ビルド)。
 
+## receive v2026.08.27 — OpenAIで幹部退社ラッシュと偽情報工作の摘発が相次ぐ、AnthropicとAlibabaは新機能・新モデルで攻勢
+
+- 状態: 配信済み(定期ルーチンによる自動実行。8/27 08:30 JST 発火)。セッションの `currentDate` 表記は
+  UTC基準で8/26のままだったが、`TZ=Asia/Tokyo date` で実時刻を確認し8/27発火と確定した。
+- 開始前に `git fetch` → `git status --porcelain`(空) → `git switch -C main origin/main` で初期化。
+- 新規号 v2026.08.27(2026年8月27日、4記事)を trends.json 先頭に追加。
+  - OpenAI、ChatGPTを使ったロシア発の偽情報工作を摘発(規制・倫理)
+  - OpenAI、幹部の退社が2026年に入り10人超に(企業・業界)
+  - Claudeの「メモリ」がChatとCoworkで統合(ツール・サービス)
+  - アリババ「Qwen3.8-Flash-Next」公開(新モデル)
+- 既存全号(v2026.08.26まで)の source/title と重複がないことを確認済み。
+- WebFetch がこの実行環境では主要ドメイン全般に対して EGRESS_BLOCKED となり使用不可だったため、
+  事実確認は WebSearch のスニペット(複数ソースの一致)のみに基づく。
+- 用語辞典の変更なし(open-weight / token / inference / agent-memory / agent は既存)。
+  `python3 tools/validate.py` 通過(issues=8)。
+- 完了メール(手順8)送信済み(mri.benkyochannel@gmail.com / km.solo.developer@gmail.com)。
+
 ## receive v2026.08.26 — AIエージェントの新たな攻撃面が相次いで発覚、開発陣営はGA機能と専用推論チップで足場固め
 
 - 状態: 配信済み(定期ルーチンによる自動実行。8/26 08:31 JST 発火)。
