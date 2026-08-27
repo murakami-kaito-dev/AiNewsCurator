@@ -16,7 +16,11 @@
   // wrangler.jsonc に追記する形(IDは実値に置換)
   "kv_namespaces": [{ "binding": "SUBSCRIBERS", "id": "<namespace-id>" }]
   ```
-- 登録者の閲覧: CloudflareダッシュボードのKVビューアで一覧可能。送信(実際の配信)は別途メール送信手段を接続する将来課題。
+- 登録者の閲覧: CloudflareダッシュボードのKVビューアで一覧可能(value.status: pending=確認待ち / confirmed=配信対象)。
+- **配信は実装済み(2026-08-27)**: ダブルオプトイン(確認メール)+解除リンク+毎朝9:30のWorker cron配信(Brevo)。
+  有効化にはユーザーの Brevo アカウント接続が必要 → APIキーと検証済み送信元を、Cloudflareダッシュボード →
+  Workers & Pages → antenna-ai → Settings → Variables and Secrets に **BREVO_API_KEY** / **SENDER_EMAIL** として設定。
+  未設定の間、登録フォームは「準備中」を返し、cron配信は何もしない(安全側)。
 - **将来対応(配信+ダブルオプトイン/間違いメール対策)は `.claude/docs/backlog.md` に詳細を記録済み。**
   現状の登録は形式チェックのみで、タイプミス・なりすまし・不達は防げない。配信を始める前に確認メール方式を導入すること。
 
