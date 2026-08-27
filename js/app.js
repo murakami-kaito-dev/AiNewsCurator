@@ -147,7 +147,7 @@ function renderBlocks(host, blocks) {
       case "analogy": {
         const d = el("div", "analogy");
         d.appendChild(el("b", null, "例え話"));
-        d.appendChild(pRich(null, b.body));
+        for (const para of b.body.split("\n\n")) d.appendChild(pRich(null, para));
         host.appendChild(d); break;
       }
       case "callout": {

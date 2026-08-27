@@ -59,7 +59,7 @@ ANTENNAの全コンテンツはこのガイドに従う。定期更新エージ�
   "lede": "リード文(2文)",
   "updated": "2026.08.23",
   "blocks": [
-    { "type": "analogy", "body": "例え話。テキスト内で [[glossary:token|トークン]] リンク可" },
+    { "type": "analogy", "body": "例え話。テキスト内で [[glossary:token|トークン]] リンク可。\\n\\n で段落を分けられる(長い例え話は1〜2文ごとに分ける)" },
     { "type": "h2", "text": "節タイトル" },
     { "type": "p", "text": "段落。[[glossary:slug|表示名]] と [[page:section/slug|表示名]] が使える" },
     { "type": "list", "items": ["項目1", "項目2"] },
