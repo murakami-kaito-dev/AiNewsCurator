@@ -3,6 +3,21 @@
 「どのバージョンに何が入っていて、今どの状態か」を新しいセッションでも即わかるようにする記録。
 静的サイトのため「ビルド」は存在せず、**push = デプロイ**(Cloudflare Workers が自動ビルド)。
 
+## receive v2026.08.28 — Hugging Face侵入事件の全容が判明、Nvidiaは買収検討・Anthropicは計算資源に450億ドル投資
+
+- 状態: 配信済み(定期ルーチンによる自動実行。UTC 8/27 23:31 = JST 8/28 08:31 発火)。
+- 開始前に `git fetch` → `git status --porcelain`(空) → `git switch -C main origin/main` で初期化。
+- 新規号 v2026.08.28(2026年8月28日、4記事)を trends.json 先頭に追加。
+  - OpenAI、Hugging Face侵入事件の技術報告書を公開(規制・倫理)
+  - Nvidia、Hugging Faceを129億ドルで買収へ(企業・業界、報道ベース・両社未公式発表)
+  - Anthropic、Nscaleと6年450億ドルの計算資源契約(企業・業界)
+  - OpenAI・Anthropic・Googleなど100社超、AIサイバー防衛の共同声明(規制・倫理)
+- 既存全号(v2026.08.27まで)の source/title と重複がないことを確認済み。
+- 用語辞典の変更なし([[glossary:gpu|GPU]] は既存slugを利用)。
+  `python3 tools/validate.py` 通過(issues=9)。
+- 配信: `git add content/` → commit `882d962` → `git push origin main`(自動デプロイ)。
+- 完了メール(手順8)送信済み(mri.benkyochannel@gmail.com / km.solo.developer@gmail.com)。
+
 ## kintsugi 2026.08.27 — 金継ぎ診断の修理を公開
 - 状態: 公開済み(ユーザー承認のうえ main へマージ)。
 - 経緯: kintsugi スキル(.claude/skills/kintsugi・再配布NGのためGit管理外)で全画面診断。
