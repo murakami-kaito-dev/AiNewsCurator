@@ -3,6 +3,19 @@
 「どのバージョンに何が入っていて、今どの状態か」を新しいセッションでも即わかるようにする記録。
 静的サイトのため「ビルド」は存在せず、**push = デプロイ**(Cloudflare Workers が自動ビルド)。
 
+## kintsugi 2026.08.27 — 金継ぎ診断の修理を公開
+- 状態: 公開済み(ユーザー承認のうえ main へマージ)。
+- 経緯: kintsugi スキル(.claude/skills/kintsugi・再配布NGのためGit管理外)で全画面診断。
+  最悪ページ(basics/token)が散らかり度51・低コントラスト7件・極小文字9件で未卒業だった。
+- 修理: ①ライトテーマの色の元栓2本(--signal #C77800→#945900 / --wave #2563EB→#2059D6、全背景で床4.5検算)
+  ②文字段の整理+極小文字を12px以上へ(chip/issue-date/src/nl-priv含む) ③角丸を3種(10/14/999)に統合
+  ④token.json の長段落6ブロックを文単位で分割(文言不変assert)+analogyブロックに \n\n 段落対応(app.js)。
+- 実装: index.html の <style id="kintsugi-repair">(診断の検証済みCSS・無改変)+ <style id="kintsugi-repair-2">(仕上げ)。
+- 検証: 金継ぎ ものさし v1.6.2・3幅(1280/768/390)で全主要7画面が散らかり度4〜28・破れ0・悪化0。
+  診断書: .claude/skills/kintsugi/field/antenna/SHINDAN-20260827.md(門合格)・証書 compare.html。
+- 保留: マーケ処方2件(メール登録入口の文言つき設置/英字ラベルの日本語併記)はユーザー判断待ち。
+  ガラス調ヘッダーは意匠として意図的に残置。
+
 ## receive v2026.08.27 — OpenAIで幹部退社ラッシュと偽情報工作の摘発が相次ぐ、AnthropicとAlibabaは新機能・新モデルで攻勢
 
 - 状態: 配信済み(定期ルーチンによる自動実行。8/27 08:30 JST 発火)。セッションの `currentDate` 表記は
