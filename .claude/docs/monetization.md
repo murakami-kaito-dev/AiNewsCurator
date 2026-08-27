@@ -21,8 +21,7 @@
   有効化にはユーザーの Brevo アカウント接続が必要 → APIキーと検証済み送信元を、Cloudflareダッシュボード →
   Workers & Pages → antenna-ai → Settings → Variables and Secrets に **BREVO_API_KEY** / **SENDER_EMAIL** として設定。
   未設定の間、登録フォームは「準備中」を返し、cron配信は何もしない(安全側)。
-- **将来対応(配信+ダブルオプトイン/間違いメール対策)は `.claude/docs/backlog.md` に詳細を記録済み。**
-  現状の登録は形式チェックのみで、タイプミス・なりすまし・不達は防げない。配信を始める前に確認メール方式を導入すること。
+- 経緯と実装記録は `.claude/docs/backlog.md` の [済 2026-08-27] 項を参照。
 
 ## ② 寄付/応援(未着手)
 
