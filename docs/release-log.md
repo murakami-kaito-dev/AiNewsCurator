@@ -3,6 +3,24 @@
 「どのバージョンに何が入っていて、今どの状態か」を新しいセッションでも即わかるようにする記録。
 静的サイトのため「ビルド」は存在せず、**push = デプロイ**(Cloudflare Workers が自動ビルド)。
 
+## receive v2026.08.29 — Anthropic、Salesforce連携とロボット操作規格で事業領域を拡大 ― Z.aiは低価格オープンウェイトモデルで対抗
+
+- 状態: 配信済み(定期ルーチンによる自動実行。UTC 8/28 23:31 = JST 8/29 08:31 発火)。
+  セッションの `currentDate` 表記はUTC基準で8/28のままだったが、`TZ=Asia/Tokyo date` で
+  実時刻を確認し8/29発火と確定した(前回 v2026.08.28 は JST 8/28 08:36 発火、直前の commit)。
+- 開始前に `git fetch` → `git status --porcelain`(空) → `git switch -C main origin/main` で初期化。
+- 新規号 v2026.08.29(2026年8月29日、4記事)を trends.json 先頭に追加。
+  - SalesforceとAnthropic、Claudeを営業支援に統合する提携「Claudeforce」(企業・業界)
+  - Anthropic、AIエージェント向けロボット・実験装置操作の共通規格「MHS」を試験公開(ツール・サービス)
+  - Z.ai、オープンウェイトの新モデル「GLM-5.3-Flash」公開・Gemini比10分の1の価格(新モデル)
+  - Claude Codeに「制限モード(--restricted)」追加、v2.1.248(ツール・サービス)
+- 既存全号(v2026.08.28まで)の source/title と重複がないことを確認済み
+  (Stripe-OpenRouter買収・OpenAI GPT-Live・ElevenLabs資金調達など、直近1日を超えて古いニュースは除外)。
+- 用語辞典の変更なし(既存slug: agent/mcp/weight/open-weight/multimodal/inference/context-window/token/prompt-caching を利用)。
+  `python3 tools/validate.py` 通過(issues=10)。
+- 配信: `git add content/` → commit `8d8cc4b` → `git push origin main`(自動デプロイ)。
+- 完了メール(手順8)送信済み(mri.benkyochannel@gmail.com / km.solo.developer@gmail.com)。
+
 ## receive v2026.08.28 — Hugging Face侵入事件の全容が判明、Nvidiaは買収検討・Anthropicは計算資源に450億ドル投資
 
 - 状態: 配信済み(定期ルーチンによる自動実行。UTC 8/27 23:31 = JST 8/28 08:31 発火)。
