@@ -50,7 +50,9 @@ export default {
     // 動作確認用エンドポイント
     if (url.pathname === "/api/health") {
       return Response.json({ status: "ok", service: SITE_NAME, runtime: "cloudflare-workers",
-        newsletter: configured(env) ? "configured" : "not_configured" });
+        newsletter: configured(env) ? "configured" : "not_configured",
+        // 診断用: どの設定が見えているか(真偽のみ。値は絶対に出さない)
+        env_seen: { BREVO_API_KEY: Boolean(env.BREVO_API_KEY), SENDER_EMAIL: Boolean(env.SENDER_EMAIL), SUBSCRIBERS_KV: Boolean(env.SUBSCRIBERS) } });
     }
 
     // 登録(ダブルオプトイン: pending 保存 → 確認メール)
