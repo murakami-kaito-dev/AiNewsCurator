@@ -14,5 +14,7 @@
   // ニュースレター登録者を保存する KV(worker の env.SUBSCRIBERS)
   "kv_namespaces": [
     { "binding": "SUBSCRIBERS", "id": "71605517d80c48219d92723382968667" }
-  ]
+  ],
+  // ニュースレター配信の定時実行(UTC 0:30 = JST 9:30。毎朝8:30の記事更新が済んだ後に新しい号を検知して配信)
+  "triggers": { "crons": ["30 0 * * *"] }
 }

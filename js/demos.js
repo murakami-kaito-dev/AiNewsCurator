@@ -10,7 +10,7 @@ const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
 /* ---------- 1. 次トークン予測 ---------- */
 window.DEMOS["next-token"] = function (frame) {
   frame.insertAdjacentHTML("beforeend", `
-    <p class="demo-title">DEMO 01 — 次のトークンを予測する</p>
+    <p class="demo-title">体験デモ DEMO 01 — 次のトークンを予測する</p>
     <p class="nt-sentence"><span class="cursor">▍</span></p>
     <div class="nt-cands"></div>
     <button class="demo-btn">生成してみる</button>
@@ -90,7 +90,7 @@ window.DEMOS["attention"] = function (frame) {
   svg += `</svg>`;
 
   frame.insertAdjacentHTML("beforeend", `
-    <p class="demo-title">DEMO 02 — 自己注意:単語は文中の他の単語を「見て」意味を決める</p>
+    <p class="demo-title">体験デモ DEMO 02 — 自己注意:単語は文中の他の単語を「見て」意味を決める</p>
     ${svg}
     <p class="demo-hint">上の行の単語をタップ。「口座」は「銀行」に強く注意を向ける — だから「川の土手(bank)」ではなく金融機関だと分かる。線の太さ=注意の強さ。</p>
   `);
@@ -124,7 +124,7 @@ window.DEMOS["tokenize"] = function (frame) {
   };
   const PALETTE_ALPHA = [0.22, 0.14, 0.30];
   frame.insertAdjacentHTML("beforeend", `
-    <p class="demo-title">DEMO — 文章はどう「トークン」に刻まれるか</p>
+    <p class="demo-title">体験デモ DEMO — 文章はどう「トークン」に刻まれるか</p>
     <div class="demo-tabs"></div>
     <div class="tok-row"></div>
     <p class="tok-meta"></p>
@@ -162,7 +162,7 @@ window.DEMOS["tokenize"] = function (frame) {
 window.DEMOS["temperature"] = function (frame) {
   const CANDS = [["予測", 3.0], ["生成", 2.2], ["理解", 1.4], ["料理", 0.4], ["削除", 0.2]];
   frame.insertAdjacentHTML("beforeend", `
-    <p class="demo-title">DEMO — temperature:「かたい答え」と「意外な答え」のつまみ</p>
+    <p class="demo-title">体験デモ DEMO — temperature:「かたい答え」と「意外な答え」のつまみ</p>
     <p class="doc-p" style="font-size:13.5px">文脈「AIは次の単語を___」に続く候補の選ばれやすさが、temperatureでどう変わるかを見てみます。</p>
     <div class="temp-slider-row">
       <span class="temp-value"></span>
@@ -223,7 +223,7 @@ window.DEMOS["training"] = function (frame) {
     ["推論(あなたが使う時)", "重みは固定。文脈を入力に、次トークン予測を高速に繰り返すだけ。"],
   ];
   frame.insertAdjacentHTML("beforeend", `
-    <p class="demo-title">DEMO 03 — LLMができるまで</p>
+    <p class="demo-title">体験デモ DEMO 03 — LLMができるまで</p>
     <div class="pipe">${stages.map((s, i) => `
       <div class="pipe-stage" data-i="${i}">
         <span class="stage-no">STAGE ${i + 1}</span>
@@ -252,7 +252,7 @@ window.DEMOS["neural-params"] = function (frame) {
   let hidden = 4;
 
   frame.insertAdjacentHTML("beforeend", `
-    <p class="demo-title">DEMO — パラメータは「線の本数」で数える</p>
+    <p class="demo-title">体験デモ DEMO — パラメータは「線の本数」で数える</p>
     <p class="nn-legend">丸=ニューロン(信号を受け取って次へ渡す計算の単位) / 線=重み。線1本が<b>パラメータ1個</b>です。</p>
     <div class="demo-tabs"></div>
     <div class="nn-wrap"></div>

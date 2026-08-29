@@ -104,7 +104,7 @@ function breadcrumb(host, items) {
 }
 
 function header(host, title, lede, updated) {
-  if (updated) host.appendChild(el("p", "updated-line", `LAST RECEIVED: ${updated}`));
+  if (updated) host.appendChild(el("p", "updated-line", `最終受信 LAST RECEIVED: ${updated}`));
   host.appendChild(el("h1", "tab-title", title));
   if (lede) host.appendChild(pRich("tab-lede", lede));
 }
@@ -262,9 +262,10 @@ function newsletterBox() {
         body: JSON.stringify({ email: email.value, company: hp.value }),
       });
       const data = await res.json().catch(() => ({}));
-      if (res.ok && data.ok) { msg.className = "nl-msg ok"; msg.textContent = "登録しました。ありがとうございます。"; form.reset(); }
+      if (res.ok && data.ok) { msg.className = "nl-msg ok"; msg.textContent = "確認メールを送りました。メール内のリンクを開くと登録が完了します。"; form.reset(); }
       else if (data.error === "invalid_email") { msg.className = "nl-msg ng"; msg.textContent = "メールアドレスの形式が正しくないようです。"; }
       else if (data.error === "not_configured") { msg.className = "nl-msg ng"; msg.textContent = "ただいま準備中です。少し待ってからお試しください。"; }
+      else if (data.error === "send_failed") { msg.className = "nl-msg ng"; msg.textContent = "確認メールを送れませんでした。アドレスをお確かめのうえ、時間をおいて再度お試しください。"; }
       else { msg.className = "nl-msg ng"; msg.textContent = "送信に失敗しました。時間をおいて再度お試しください。"; }
     } catch {
       msg.className = "nl-msg ng"; msg.textContent = "送信に失敗しました。通信環境をご確認ください。";
@@ -353,7 +354,7 @@ function renderNewsDetail(issue, item, idx) {
 async function renderTrends(sub) {
   const data = await loadJSON("content/trends.json");
   const fu = document.getElementById("footer-updated");
-  if (fu) fu.textContent = `LAST RECEIVED: ${data.updated || "—"}`;
+  if (fu) fu.textContent = `最終受信 LAST RECEIVED: ${data.updated || "—"}`;
   const parts = sub ? sub.split("/").filter(Boolean) : [];
 
   if (parts[0] === "archive") {
@@ -391,7 +392,7 @@ async function renderTrends(sub) {
   renderIssueItems(contentEl, latest);
   if (data.issues.length > 1) {
     const grid = el("div", "card-grid");
-    grid.appendChild(cardLink("#/trends/archive", "過去の号をすべて見る", `アーカイブに${data.issues.length - 1}号あります`, "ARCHIVE"));
+    grid.appendChild(cardLink("#/trends/archive", "過去の号をすべて見る", `アーカイブに${data.issues.length - 1}号あります`, "アーカイブ"));
     contentEl.appendChild(grid);
   }
 }
@@ -399,7 +400,7 @@ async function renderTrends(sub) {
 /* ---------- 登録ページ ---------- */
 function renderSubscribe() {
   header(contentEl, "メールで更新を受け取る",
-    "毎週の新着号を、あなたのメールにお届けします。登録は無料で、いつでも解除できます。");
+    "毎日の新着号を、あなたのメールにお届けします。登録は無料で、届いたメールのリンクからいつでも解除できます。");
   if (SITE.newsletter && SITE.newsletter.enabled) {
     contentEl.appendChild(newsletterBox());
   } else {
