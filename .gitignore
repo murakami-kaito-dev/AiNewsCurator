@@ -12,3 +12,6 @@ secrets/
 
 # local-only files
 .local/
+
+# kintsugi スキル(再配布NGのため公開リポジトリにコミットしない)
+.claude/skills/kintsugi/

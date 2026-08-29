@@ -15,7 +15,25 @@
       "Bash(git add *)",
       "Bash(git commit -q -m 'v2: ドキュメント型IAへ全面改訂 — オカン基準28ページ+用語辞典75語+週次トレンド+サイト内検索 *)",
       "Bash(git push *)",
-      "Bash(pkill -f \"http.server 8766\")"
+      "Bash(pkill -f \"http.server 8766\")",
+      "Bash(npx --version)",
+      "Bash(command -v wrangler)",
+      "Bash(env)",
+      "Bash(git commit -q -m 'infra: Cloudflare Pages 移行の準備\\(_headers / Functions テンプレート / ドキュメント\\) *)",
+      "Bash(git check-ignore *)",
+      "Bash(node --check worker/index.js)",
+      "Bash(node -e \"const fs=require\\('fs'\\);const s=fs.readFileSync\\('wrangler.jsonc','utf8'\\).replace\\(/\\\\/\\\\/.*$/gm,''\\).replace\\(/\\\\/\\\\*[\\\\s\\\\S]*?\\\\*\\\\//g,''\\);JSON.parse\\(s\\);console.log\\('wrangler.jsonc OK'\\)\")",
+      "Bash(grep -Ei 'cloudflarelogin|\\\\.local/|secret|\\\\.env$|credential|\\\\.p8|\\\\.pem')",
+      "Bash(git commit -q -m 'infra: Cloudflare Workers\\(静的アセット\\)構成へ切替 — 統合フロー対応 *)",
+      "Bash(gh api *)",
+      "Bash(curl -s -o /dev/null -w \"旧 github.io: HTTP %{http_code}\\\\n\" https://murakami-kaito-dev.github.io/AiNewsCurator/)",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\('まだ有効:', d.get\\('html_url'\\), d.get\\('status'\\)\\)\")",
+      "Bash(echo \"---exit: $?\")",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\('まだ有効:', d.get\\('status'\\)\\)\")",
+      "Bash(grep -Ei 'cloudflarelogin|\\\\.local/|secret|\\\\.env$|\\\\.p8|\\\\.pem')",
+      "Bash(git commit -q -m 'docs: Cloudflare Workers 移行完了・公開URL確定を記録\\(旧Pages停止\\) *)",
+      "Bash(node --check js/app.js)",
+      "Bash(python3 -m json.tool content/site.json)"
     ]
   }
 }
