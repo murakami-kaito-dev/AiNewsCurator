@@ -5,7 +5,7 @@
 //   POST /api/subscribe   … pending で保存し、確認メールを送る(Brevo)
 //   GET  /api/confirm     … 確認リンクの着地。token 一致で confirmed に昇格
 //   GET  /api/unsubscribe … 解除リンクの着地。登録を削除
-//   scheduled(cron)       … 新しい号が出ていたら confirmed 全員へ配信(毎朝9:30 JST)
+//   scheduled(cron)       … 新しい号が出ていたら confirmed 全員へ配信(毎朝7:30 JST)
 //
 // 必要な設定(Cloudflareダッシュボード → Worker → Settings → Variables):
 //   Secret BREVO_API_KEY … Brevo の APIキー

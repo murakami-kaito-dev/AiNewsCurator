@@ -17,7 +17,7 @@
   "kv_namespaces": [{ "binding": "SUBSCRIBERS", "id": "<namespace-id>" }]
   ```
 - 登録者の閲覧: CloudflareダッシュボードのKVビューアで一覧可能(value.status: pending=確認待ち / confirmed=配信対象)。
-- **配信は実装済み(2026-08-27)**: ダブルオプトイン(確認メール)+解除リンク+毎朝9:30のWorker cron配信(Brevo)。
+- **配信は実装済み(2026-08-27)**: ダブルオプトイン(確認メール)+解除リンク+毎朝7:30のWorker cron配信(Brevo)。
   有効化にはユーザーの Brevo アカウント接続が必要 → APIキーと検証済み送信元を、Cloudflareダッシュボード →
   Workers & Pages → antenna-ai → Settings → Variables and Secrets に **BREVO_API_KEY** / **SENDER_EMAIL** として設定。
   未設定の間、登録フォームは「準備中」を返し、cron配信は何もしない(安全側)。

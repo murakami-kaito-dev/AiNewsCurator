@@ -11,9 +11,9 @@ AI/LLM のキャッチアップを自動化するドキュメント型 PWA。ユ
   `worker/index.js` にサーバー側処理(`/api/*`)を書ける。内部ファイルは `.assetsignore` で公開除外。
 - **シェル(HTML/CSS/JS)とコンテンツ(`content/` 配下のJSON)を分離**している。
   定期更新ではコンテンツJSONだけを触り、シェルは原則触らない。
-- 毎日 8:30 JST にスケジュール済みクラウドエージェントが自律更新
+- 毎日 7:00 JST にスケジュール済みクラウドエージェントが自律更新
   (リサーチ → JSON更新 → 検証 → commit/push)。
-- ニュースレター: ダブルオプトイン式(worker/index.js)。毎朝 9:30 JST に Worker の cron が
+- ニュースレター: ダブルオプトイン式(worker/index.js)。毎朝 7:30 JST に Worker の cron が
   新しい号を検知して confirmed 読者へ配信(Brevo。Secrets 未設定なら何もしない)。詳細: monetization.md
 - 情報設計はドキュメント型: セクション(トレンド/AIの基礎/AIを使う/AIを組み込む/周辺知識/用語辞典)
   → 子ページ。`content/site.json` がナビの正。

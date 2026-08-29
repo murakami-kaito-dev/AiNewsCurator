@@ -8,7 +8,7 @@
 
 **実装済み**(newsletter/2026-08-27)。送信=Brevo(無料300通/日・要ユーザーのアカウント接続)。
 仕組み: /api/subscribe(pending+確認メール) → /api/confirm(確定) → /api/unsubscribe(解除・全配信メールに記載)。
-配信はWorkerのcron(毎朝9:30 JST)が新しい号を検知してconfirmed宛に送る(エージェントは無変更)。
+配信はWorkerのcron(毎朝7:30 JST)が新しい号を検知してconfirmed宛に送る(エージェントは無変更)。
 残: (a)ユーザーのBrevo接続(APIキー+送信元検証→CF SecretsにBREVO_API_KEY/SENDER_EMAIL) (b)到達率向上のための独自ドメイン認証(任意)。
 以下は当時の記録:
 
