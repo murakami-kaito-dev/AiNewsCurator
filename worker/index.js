@@ -133,25 +133,26 @@ export default {
         const r = await env.ASSETS.fetch(new Request(SITE_URL + "/content/trends.json"));
         if (r.ok) { const t = await r.json(); latest = (t.issues && t.issues[0] && t.issues[0].version) || null; }
       } catch {}
-      let confirmed = 0, pending = 0, cursor;
+      let confirmed = 0, pending = 0, gotLatest = 0, cursor;
       if (env.SUBSCRIBERS) do {
         const l = await env.SUBSCRIBERS.list({ cursor });
         for (const k of l.keys) {
           if (k.name.startsWith("__meta")) continue;
           const rec = JSON.parse((await env.SUBSCRIBERS.get(k.name)) || "null");
-          if (rec && rec.status === "confirmed") confirmed++;
+          if (rec && rec.status === "confirmed") { confirmed++; if (latest && rec.lastSentVer === latest) gotLatest++; }
           else if (rec && rec.status === "pending") pending++;
         }
         cursor = l.list_complete ? null : l.cursor;
       } while (cursor);
+      // delivered = 確定読者全員が最新号を受信済み(受信者ごとの真実に基づく)
       return Response.json({
         configured: configured(env),
         latestIssue: latest,
         lastSent: lastSent || null,
-        delivered: !!(latest && lastSent === latest),
+        delivered: !!(latest && confirmed > 0 && gotLatest === confirmed),
+        gotLatest, confirmed, pending,
         lastCronAt: lastCronAt || null,
         lastDeliverAt: lastDeliverAt || null,
-        confirmed, pending,
       });
     }
 
@@ -191,9 +192,8 @@ async function deliver(env, opts = {}) {
   const issue = trends.issues && trends.issues[0];
   if (!issue) return { ok: false, reason: "no_issue" };
 
-  const last = await env.SUBSCRIBERS.get("__meta_last_sent");
-  if (!force && last === issue.version) { console.log("deliver: already fully sent", issue.version); return { ok: true, reason: "already_sent", version: issue.version, sent: 0 }; }
-
+  // 号ごとの短絡判定は行わない。号単位で「送信済み」を持つと、後から確定した読者に永久に届かない
+  // (実際に v2026.08.29 で発生)。真実は受信者ごとの lastSentVer に持たせ、毎回そこから未受信者を割り出す=自己修復。
   // 確定済みで「この号をまだ受け取っていない」読者だけを集める(受信者ごとに既読管理=重複送信しない)
   const targets = [];
   let cursor;
