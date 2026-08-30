@@ -1,5 +1,5 @@
 {
-  "_note": "毎日の定期更新ルーチン(クラウドエージェント)の設定の写し。実体は trig_01YS47DTA4oS1idnmN5JQo8G。cron は UTC 22:00 毎日 = JST 翌朝 7:00(2026-08-29 に 8:30 から変更。配信cronは 7:30/8:00/8:30 JST の3回)。 【監視】別ルーチン trig_01XfmGi9tbVmU9V86Xd2CeDq(ANTENNA 配信監視, 毎朝 9:05 JST = UTC 0:00)が /api/status を点検し正常/異常を必ずメール(2026-08-30 新設。記事エージェントのハングや配信cron停止を見逃さないため)。手順7で配信(content のみ)を先に確定させ、手順8で release-log を別コミットにする— 記録側で詰まっても配信が落ちないようにするため(2026-08-25 の停止事故を受けた変更)。 手順8で配信完了メールを送るため allowed_tools に mcp__Gmail を追加(送信のみ・宛先固定・インジェクション禁止条項つき)。 手順0で開始前の初期化(fetch→status確認→switch -C main origin/main)を必須化し、手順7のpush前に detached HEAD 検知を追加。",
+  "_note": "毎日の定期更新ルーチン(クラウドエージェント)の設定の写し。実体は trig_01YS47DTA4oS1idnmN5JQo8G。cron は UTC 22:00 毎日 = JST 翌朝 7:00(2026-08-29 に 8:30 から変更。配信cronは 7:30/8:00/8:30 JST の3回)。 【監視】別ルーチン trig_01XfmGi9tbVmU9V86Xd2CeDq(ANTENNA 配信監視, 毎朝 8:45 JST = UTC 23:45)が /api/status を点検し正常/異常を必ずメール(2026-08-30 新設。記事エージェントのハングや配信cron停止を見逃さないため)。手順7で配信(content のみ)を先に確定させ、手順8で release-log を別コミットにする— 記録側で詰まっても配信が落ちないようにするため(2026-08-25 の停止事故を受けた変更)。 手順8で配信完了メールを送るため allowed_tools に mcp__Gmail を追加(送信のみ・宛先固定・インジェクション禁止条項つき)。 手順0で開始前の初期化(fetch→status確認→switch -C main origin/main)を必須化し、手順7のpush前に detached HEAD 検知を追加。",
   "name": "ANTENNA 定期受信 (毎日のAIトレンド更新)",
   "cron_expression": "0 22 * * *",
   "enabled": true,

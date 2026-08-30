@@ -16,7 +16,7 @@ AI/LLM のキャッチアップを自動化するドキュメント型 PWA。ユ
 - ニュースレター: ダブルオプトイン式(worker/index.js)。毎朝 7:30/8:00/8:30 JST に Worker の cron が
   新しい号を検知して confirmed 読者へ配信(Brevo。受信者単位の既読管理で二重送信しない)。詳細: monetization.md
 - **配信の状態は `GET /api/status`(秘密なし)で確認**。監視エージェント trig_01XfmGi9tbVmU9V86Xd2CeDq が
-  毎朝9:05 JSTに点検し正常/異常を必ずメール(来ない日=監視停止の合図)。手順・思想は update-runbook.md の §0-A。
+  毎朝8:45 JSTに点検し正常/異常を必ずメール(来ない日=監視停止の合図)。手順・思想は update-runbook.md の §0-A。
 - 情報設計はドキュメント型: セクション(トレンド/AIの基礎/AIを使う/AIを組み込む/周辺知識/用語辞典)
   → 子ページ。`content/site.json` がナビの正。
 

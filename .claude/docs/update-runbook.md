@@ -24,7 +24,7 @@
   → だから **手順7(publish)を最優先で確実に終える**こと。detached HEAD 検知(手順0/7)を必ず通す。
 - **状態確認: `GET /api/status`**(秘密なし)。`latestIssue`=サイト最新号 / `delivered`=確定読者全員が最新号を受信済みか /
   `lastCronAt`=配信cronの最終発火 / `confirmed`=確定読者数。デバッグ時はまずこれを見る。
-- **監視エージェント `trig_01XfmGi9tbVmU9V86Xd2CeDq`(毎朝 9:05 JST)**が /api/status を点検し、
+- **監視エージェント `trig_01XfmGi9tbVmU9V86Xd2CeDq`(毎朝 8:45 JST)**が /api/status を点検し、
   正常でも異常でも**必ず1通メール**を送る(`[ANTENNA監視] ✅ 正常` / `🚨 要対応`)。
   **この監視メールが来ない日は監視自体が止まっている合図**。異常時の一次対応は監視メール本文のヒントに従う。
 
