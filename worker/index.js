@@ -121,29 +121,80 @@ export default {
       return page("このリンクは無効です", "既に解除済みか、リンクが正しくありません。");
     }
 
+    // 配信の状態確認(監視用。秘密は出さず、版・件数・発火時刻のみ)
+    if (url.pathname === "/api/status") {
+      const [lastSent, lastCronAt, lastDeliverAt] = await Promise.all([
+        env.SUBSCRIBERS?.get("__meta_last_sent"),
+        env.SUBSCRIBERS?.get("__meta_last_cron_at"),
+        env.SUBSCRIBERS?.get("__meta_last_deliver_at"),
+      ]);
+      let latest = null;
+      try {
+        const r = await env.ASSETS.fetch(new Request(SITE_URL + "/content/trends.json"));
+        if (r.ok) { const t = await r.json(); latest = (t.issues && t.issues[0] && t.issues[0].version) || null; }
+      } catch {}
+      let confirmed = 0, pending = 0, cursor;
+      if (env.SUBSCRIBERS) do {
+        const l = await env.SUBSCRIBERS.list({ cursor });
+        for (const k of l.keys) {
+          if (k.name.startsWith("__meta")) continue;
+          const rec = JSON.parse((await env.SUBSCRIBERS.get(k.name)) || "null");
+          if (rec && rec.status === "confirmed") confirmed++;
+          else if (rec && rec.status === "pending") pending++;
+        }
+        cursor = l.list_complete ? null : l.cursor;
+      } while (cursor);
+      return Response.json({
+        configured: configured(env),
+        latestIssue: latest,
+        lastSent: lastSent || null,
+        delivered: !!(latest && lastSent === latest),
+        lastCronAt: lastCronAt || null,
+        lastDeliverAt: lastDeliverAt || null,
+        confirmed, pending,
+      });
+    }
+
+    // 手動配信レバー(復旧・監視エージェント用)。ADMIN_KEY 未設定なら無効。
+    if (url.pathname === "/api/admin/deliver") {
+      if (!env.ADMIN_KEY || url.searchParams.get("key") !== env.ADMIN_KEY) {
+        return Response.json({ ok: false, error: "forbidden" }, { status: 403 });
+      }
+      const result = await deliver(env, { force: url.searchParams.get("force") === "1" });
+      return Response.json({ ok: true, result });
+    }
+
     // それ以外は静的アセットにフォールバック
     return env.ASSETS.fetch(request);
   },
 
-  // 毎朝の配信(cron)。新しい号が出ていたら confirmed 全員へ送る。
+  // 毎朝の配信(cron)。新しい号が出ていたら、まだ受け取っていない confirmed 読者へ配信する。
+  // 冪等: 同じ号は二重送信しない。複数回発火しても安全(取りこぼしに強い)。
   async scheduled(event, env, ctx) {
-    ctx.waitUntil(deliver(env));
+    ctx.waitUntil((async () => {
+      // ハートビート: cron が発火したこと自体を記録(発火していないことを外から検知できる)
+      try { await env.SUBSCRIBERS?.put("__meta_last_cron_at", new Date().toISOString()); }
+      catch (e) { console.log("heartbeat failed", String(e).slice(0, 80)); }
+      await deliver(env);
+    })());
   },
 };
 
-async function deliver(env) {
-  if (!configured(env)) { console.log("deliver: not configured, skip"); return; }
+async function deliver(env, opts = {}) {
+  const force = !!opts.force;
+  if (!configured(env)) { console.log("deliver: not configured, skip"); return { ok: false, reason: "not_configured" }; }
+  await env.SUBSCRIBERS.put("__meta_last_deliver_at", new Date().toISOString());
   // 自分の静的アセットから最新号を読む
   const res = await env.ASSETS.fetch(new Request(SITE_URL + "/content/trends.json"));
-  if (!res.ok) { console.log("deliver: trends.json fetch failed", res.status); return; }
+  if (!res.ok) { console.log("deliver: trends.json fetch failed", res.status); return { ok: false, reason: "trends_fetch_failed", status: res.status }; }
   const trends = await res.json();
   const issue = trends.issues && trends.issues[0];
-  if (!issue) return;
+  if (!issue) return { ok: false, reason: "no_issue" };
 
   const last = await env.SUBSCRIBERS.get("__meta_last_sent");
-  if (last === issue.version) { console.log("deliver: already sent", issue.version); return; }
+  if (!force && last === issue.version) { console.log("deliver: already fully sent", issue.version); return { ok: true, reason: "already_sent", version: issue.version, sent: 0 }; }
 
-  // 確定済みの読者を集める(メタキーは除外)
+  // 確定済みで「この号をまだ受け取っていない」読者だけを集める(受信者ごとに既読管理=重複送信しない)
   const targets = [];
   let cursor;
   do {
@@ -151,14 +202,17 @@ async function deliver(env) {
     for (const k of l.keys) {
       if (k.name.startsWith("__meta")) continue;
       const rec = JSON.parse((await env.SUBSCRIBERS.get(k.name)) || "null");
-      if (rec && rec.status === "confirmed" && rec.token) targets.push({ email: k.name, token: rec.token });
+      if (rec && rec.status === "confirmed" && rec.token && (force || rec.lastSentVer !== issue.version)) {
+        targets.push({ email: k.name, rec });
+      }
     }
     cursor = l.list_complete ? null : l.cursor;
   } while (cursor);
+
   if (targets.length === 0) {
-    console.log("deliver: no confirmed subscribers");
     await env.SUBSCRIBERS.put("__meta_last_sent", issue.version);
-    return;
+    console.log("deliver: no pending recipients for", issue.version);
+    return { ok: true, reason: "no_pending", version: issue.version, sent: 0 };
   }
 
   const bodyBase =
@@ -169,14 +223,18 @@ async function deliver(env) {
 
   let sent = 0, failed = 0;
   for (const t of targets) {
-    const unsub = `${SITE_URL}/api/unsubscribe?e=${encodeURIComponent(t.email)}&t=${t.token}`;
+    const unsub = `${SITE_URL}/api/unsubscribe?e=${encodeURIComponent(t.email)}&t=${t.rec.token}`;
     try {
       await sendMail(env, t.email,
         `[${SITE_NAME}] ${issue.headline}(${issue.version})`,
         bodyBase + `\n—\n配信の解除はこちら: ${unsub}\n`);
+      t.rec.lastSentVer = issue.version; // 送れた人だけ既読化(失敗した人は次回の対象に残る)
+      await env.SUBSCRIBERS.put(t.email, JSON.stringify(t.rec));
       sent++;
     } catch (e) { failed++; console.log("deliver: send failed", t.email.slice(0, 3) + "***", String(e).slice(0, 120)); }
   }
-  await env.SUBSCRIBERS.put("__meta_last_sent", issue.version);
+  // 全員に送れたときだけ号を「配信完了」にする。失敗が残れば完了扱いにせず、次回の発火で残りを再送。
+  if (failed === 0) await env.SUBSCRIBERS.put("__meta_last_sent", issue.version);
   console.log(`deliver: ${issue.version} sent=${sent} failed=${failed}`);
+  return { ok: failed === 0, version: issue.version, sent, failed };
 }
