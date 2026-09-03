@@ -98,7 +98,7 @@ category は 基礎 / アーキテクチャ / 技術 / 実践 / エージェン�
 
 ## 用語slug一覧(リンク先として使ってよい語)
 
-ai, machine-learning, deep-learning, neural-network, weight, parameter, gpu,
+agi, ai, machine-learning, deep-learning, neural-network, weight, parameter, gpu,
 llm, generative-ai, foundation-model, token, tokenizer, context-window,
 transformer, attention, embedding, vector, next-token-prediction, temperature, sampling,
 pretraining, sft, rlhf, reward-model, fine-tuning, inference, scaling-laws, emergence,
