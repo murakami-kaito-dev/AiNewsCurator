@@ -112,4 +112,4 @@ alignment, ai-safety, prompt-injection, jailbreak, pii,
 copyright-ai, eu-ai-act, ai-governance, deepfake,
 g-kentei, e-shikaku, world-model, continual-learning, agent-memory, ai-ethics,
 lost-in-the-middle, prompt-caching, idempotency,
-stateless, session, harness, in-context-learning, verifier
+stateless, session, harness, in-context-learning, verifier, distillation

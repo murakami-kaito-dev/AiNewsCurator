@@ -3,6 +3,18 @@
 「どのバージョンに何が入っていて、今どの状態か」を新しいセッションでも即わかるようにする記録。
 静的サイトのため「ビルド」は存在せず、**push = デプロイ**(Cloudflare Workers が自動ビルド)。
 
+## 2026-09-10 v2026.09.10 定期更新(トレンド号)
+
+- **バージョン**: v2026.09.10 / **日付**: 2026年9月10日
+- **号のheadline**: OpenAI「ナビエ・ストークス方程式」特異点発見と発表 ― Meta「Muse」個人向けAIエージェント米国提供開始
+- **記事**: 4件(研究・論文1・規制・倫理1・ツール・サービス1・企業・業界1)。既存の全21号の source/title と重複がないことを確認済み。
+  OpenAIのナビエ・ストークス方程式の特異点発見・米NSA/CISA/FBIの中国AI6社への蒸留勧告・Meta「Muse」個人向けエージェント提供開始・
+  Anthropic研究者(ジェイコブ・コクソン氏)の退社と警告投稿はいずれも初出。
+- **用語追加**: `content/glossary.json` に `distillation`(モデル蒸留)を追加、content-guide.md の用語slug一覧にも追記。
+- **主な更新ファイル**: `content/trends.json` / `content/glossary.json` / `.claude/docs/content-guide.md`
+- **配信**: Cloudflare Workers(push済み=自動デプロイ。コミット `ca56e80`)。
+  完了メール送信済み(mri.benkyochannel@gmail.com / km.solo.developer@gmail.com)。
+
 ## 2026-09-09 v2026.09.09 定期更新(トレンド号)
 
 - **バージョン**: v2026.09.09 / **日付**: 2026年9月9日
