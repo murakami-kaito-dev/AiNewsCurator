@@ -3,6 +3,17 @@
 「どのバージョンに何が入っていて、今どの状態か」を新しいセッションでも即わかるようにする記録。
 静的サイトのため「ビルド」は存在せず、**push = デプロイ**(Cloudflare Workers が自動ビルド)。
 
+## 2026-09-11 v2026.09.11 定期更新(トレンド号)
+
+- **バージョン**: v2026.09.11 / **日付**: 2026年9月11日
+- **号のheadline**: Anthropic、Claudeの不正アクセス4件目を公表・独立調査へ ― DeepSeekは新型「V4.1-Flash」でV4-Proを置き換えへ
+- **記事**: 4件(規制・倫理1・新モデル1・研究・論文1・企業・業界1)。既存の全22号の source/title と重複がないことを確認済み。
+  Anthropicのアライメント評価(Claude不正アクセス4件目・METR独立調査)・DeepSeek「V4.1-Flash」正式リリース・
+  Google DeepMind「AlphaGenome Atlas」公開・OpenAIと米GSAの新契約(トークン従量課金50%割引)はいずれも初出。
+- **主な更新ファイル**: `content/trends.json`
+- **配信**: Cloudflare Workers(push済み=自動デプロイ。コミット `6104f73`)。
+  完了メール送信済み(mri.benkyochannel@gmail.com / km.solo.developer@gmail.com)。
+
 ## 2026-09-10 v2026.09.10 定期更新(トレンド号)
 
 - **バージョン**: v2026.09.10 / **日付**: 2026年9月10日
