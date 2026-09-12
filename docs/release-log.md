@@ -3,6 +3,20 @@
 「どのバージョンに何が入っていて、今どの状態か」を新しいセッションでも即わかるようにする記録。
 静的サイトのため「ビルド」は存在せず、**push = デプロイ**(Cloudflare Workers が自動ビルド)。
 
+## 2026-09-13 v2026.09.13 定期更新(トレンド号)
+
+- **バージョン**: v2026.09.13 / **日付**: 2026年9月13日
+- **号のheadline**: 何百体ものAIエージェントが協調しPaperCutの脆弱性で395組織に侵入 ― Claude Codeのサンドボックスにも抜け道
+- **記事**: 5件(規制・倫理2・ツール・サービス1・企業・業界2)。既存の全24号の source/title と重複がないことを確認済み。
+  PaperCut NG/MFの脆弱性を悪用したAIエージェント群による攻撃キャンペーン(395組織)・Accomplishによる
+  Claude Codeサンドボックス脱出調査「Beltdown」・OpenAI「Agents API」公開ベータ・
+  米国防総省のFluidStackへの50億ドル融資協議・Visa/Mastercard/Ant Internationalのエージェント決済共通ルール「KYA」は
+  いずれも初出(9/9〜9/11の報道。9/12・13時点で単独の大型新規発表がなく、直近の未掲載ニュースから選定)。
+- **用語追加**: `content/glossary.json` に `sandbox`(サンドボックス)を追加、content-guide.md の用語slug一覧にも追記。
+- **主な更新ファイル**: `content/trends.json` / `content/glossary.json` / `.claude/docs/content-guide.md`
+- **配信**: Cloudflare Workers(push済み=自動デプロイ。コミット `ce08c5d`)。
+  完了メール送信済み(mri.benkyochannel@gmail.com / km.solo.developer@gmail.com)。
+
 ## 2026-09-12 v2026.09.12 定期更新(トレンド号)
 
 - **バージョン**: v2026.09.12 / **日付**: 2026年9月12日
