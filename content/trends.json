@@ -1,6 +1,68 @@
 {
-  "updated": "2026.09.25",
+  "updated": "2026.09.26",
   "issues": [
+    {
+      "version": "v2026.09.26",
+      "date": "2026年9月26日",
+      "headline": "Oracle、AIデータセンター計画に「不可抗力」通知 ― 「AIの父」シュミットフーバー氏はSakana AIへ参画",
+      "items": [
+        {
+          "title": "Oracle、AIデータセンター最大級「Project Jupiter」に不可抗力通知 ― 電力供給の遅れで4000億ドル規模の契約が揺れる",
+          "category": "企業・業界",
+          "source": "https://www.datacenterdynamics.com/en/news/oracle-issues-force-majeure-notice-to-blue-owl-following-series-of-setbacks-at-project-jupiter-data-center-campus-report/",
+          "lead": "Oracleが、OpenAI・SoftBankとの合計4000億ドル規模のデータセンター計画「Stargate」の柱の一つである「Project Jupiter」について、開発元のBlue Owl Capital傘下Stack Infrastructureに不可抗力(フォースマジュール)通知を送った。米ニューメキシコ州で建設中のこの施設は出力2.45ギガワットを想定する大型拠点で、電力供給網の整備遅れが背景にある。",
+          "body": "ニューメキシコ州土地局がガスパイプラインの敷設を2度却下したことで、電力供給の稼働開始予定は2027年2月まで後ろ倒しになった。約20行の銀行団が総額180億ドルを融資しており、この債務は額面の9割を下回る水準で取引されている。Oracleは今回の通知を「予防的な措置」と説明しており、2028年の稼働開始に間に合わなかった場合に賃料支払いを最大3年猶予される権利を確保する狙いとみられる。",
+          "briefing": [
+            "Oracleが「Project Jupiter」データセンターの開発元に不可抗力通知を送付",
+            "背景はニューメキシコ州の電力供給網整備の遅れ。稼働予定は2027年2月に後ろ倒し",
+            "計画は総額4000億ドル規模の「Stargate」(Oracle・OpenAI・SoftBank)の一部。180億ドルの融資債務は額面割れで取引",
+            "発表を受けOracleとBlue Owlの株価が約4%下落"
+          ],
+          "explanation": "AI開発競争を支えるデータセンター投資が、電力インフラという物理的な制約に直面している象徴的な事例です。巨額のAI投資計画が「電力が足りない」という現実的な壁にぶつかり、契約上の責任回避の手段まで使われ始めている点は、AI投資ブームの持続可能性を占ううえで注目に値します。"
+        },
+        {
+          "title": "「AIの父」シュミットフーバー氏、日本のSakana AIにチーフサイエンティフィックアドバイザーとして参画",
+          "category": "企業・業界",
+          "source": "https://asia.nikkei.com/business/technology/artificial-intelligence/ai-pioneer-schmidhuber-to-join-japan-s-sakana-ai-as-science-adviser",
+          "lead": "深層学習の基礎技術であるLSTMや[[glossary:world-model|世界モデル]]の提唱者として知られ、「AIの父」とも呼ばれるユルゲン・シュミットフーバー氏が、日本のスタートアップSakana AIにチーフサイエンティフィックアドバイザーとして参画したと発表された。定期的に東京を訪れ、同社の研究を支援するという。",
+          "body": "シュミットフーバー氏は、AIが自らの学習方法を改善していく「再帰的自己改善」という発想を1987年の博士論文で既に示しており、Sakana AIが新設した「RSI Lab」でこの分野の研究助言にあたる。同社は行動を起こす前に物理的な結果を安全にシミュレートできる「エージェント指向の世界モデル」の開発を進めており、日本の製造業(ものづくり)の伝統を生かした供給網最適化やロボット活用への応用を掲げている。",
+          "briefing": [
+            "LSTMや世界モデルの提唱者、ユルゲン・シュミットフーバー氏がSakana AIに参画",
+            "役職はチーフサイエンティフィックアドバイザー。新設の「RSI Lab」を助言",
+            "Sakana AIは、行動前に結果をシミュレートする「エージェント指向の世界モデル」を開発中",
+            "製造業の供給網最適化やロボット活用への応用を視野に入れる"
+          ],
+          "explanation": "世界的に著名な研究者が米国の大手AI企業ではなく日本のスタートアップに参画するのは異例で、Sakana AIが掲げる「世界モデル」路線への評価の高さを示しています。対話の延長ではなく、行動の結果を事前にシミュレートして安全に検証する技術は、ロボットや産業応用の分野で今後の競争軸になる可能性があります。"
+        },
+        {
+          "title": "Google、AI用チップ「TPU」を積んだ試験衛星を10月1日に打ち上げへ ― 宇宙太陽光でデータセンターの電力問題に挑む",
+          "category": "研究・論文",
+          "source": "https://siliconangle.com/2026/09/24/googles-first-project-suncatcher-ai-satellite-set-to-blast-off-into-orbit-next-week/",
+          "lead": "Googleは10月1日、AI向け演算チップ「TPU」を4基搭載した試験衛星「MVP」を、SpaceXのロケットで打ち上げると発表した。宇宙空間でAI計算基盤を稼働させる構想「Project Suncatcher」の初の実証機で、衛星画像企業Planetと共同開発した。",
+          "body": "常時日照が得られる軌道に置いた太陽電池は、地上の同じ面積のものに比べ最大8倍の発電量を得られるとされ、GoogleはこれをAIデータセンターが直面する電力不足の解決策になりうるか検証する。真空環境での冷却が計算機の性能に与える影響も合わせて調べる計画で、2027年には2基の衛星を打ち上げ、衛星間をレーザー通信でつなぐ実験も予定している。",
+          "briefing": [
+            "Googleが10月1日、TPU4基搭載の試験衛星「MVP」をSpaceXのロケットで打ち上げ",
+            "宇宙空間でのAI計算基盤「Project Suncatcher」構想の初の実証機",
+            "常時日照の軌道では地上の最大8倍の太陽光発電が可能とされ、電力不足解決の糸口を探る",
+            "2027年には衛星2基でのレーザー通信実験も計画"
+          ],
+          "explanation": "AIブームの制約要因が計算能力そのものから電力調達に移りつつある中で、Googleは地上の送電網に頼らない選択肢として宇宙空間を検討し始めています。実用化にはコストや保守など課題が多く残りますが、大手テック企業が電力問題の解決策を地球の外にまで求め始めたこと自体が、現在のAI投資の規模を物語っています。"
+        },
+        {
+          "title": "AMDの軍事転用可能チップ、中国で正規価格の3%未満で流通と判明 ― 半導体アナリストが「反逆行為」と批判",
+          "category": "規制・倫理",
+          "source": "https://www.tomshardware.com/tech-industry/leading-semiconductor-analyst-accuses-amd-of-treason-over-restricted-chips-availability-in-china-amd-blames-diversion-of-export-controlled-rfsoc-usd36-000-radar-silicon-allegedly-quoted-at-usd1-000-for-crowdfunding-project",
+          "lead": "半導体調査会社SemiAnalysisの創業者ディラン・パテル氏が、AMD製の輸出規制対象チップが中国で不正に流通していると指摘し、AMDを「反逆行為」だと厳しく批判した。問題のチップはレーダー用途などに使われる軍事転用可能な「Zynq UltraScale+ XCZU47DR」で、米国の対中輸出規制の対象になっている。",
+          "body": "このチップは米国での正規価格が1個3万6000ドルで、米企業でも大口購入時は4000〜5000ドル程度だが、中国のクラウドファンディングサイトでは搭載システムがわずか1000ドル程度で提示されていたという。AMDはTom's Hardwareの取材に対し、規制対象地域への直接販売・出荷を否定し、流通過程での第三者による横流しが原因だとして調査を進める方針を示した。",
+          "briefing": [
+            "SemiAnalysisのディラン・パテル氏が、AMD製輸出規制チップの中国流通を指摘",
+            "対象は軍事転用可能な「Zynq UltraScale+ XCZU47DR」。正規価格の3%未満で流通",
+            "AMDは直接販売を否定し、第三者による横流しが原因と説明、調査を約束"
+          ],
+          "explanation": "AI・先端半導体の対中輸出規制は年々強化されていますが、正規の流通網からいったん外れたチップを完全に追跡するのは難しく、規制の実効性そのものへの疑問を投げかける事例です。輸出規制の抜け道を防ぐ責任が、規制当局だけでなくメーカー側の流通管理にも及ぶのかが今後の焦点になります。"
+        }
+      ]
+    },
     {
       "version": "v2026.09.25",
       "date": "2026年9月25日",
