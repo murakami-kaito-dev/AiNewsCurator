@@ -3,6 +3,27 @@
 「どのバージョンに何が入っていて、今どの状態か」を新しいセッションでも即わかるようにする記録。
 静的サイトのため「ビルド」は存在せず、**push = デプロイ**(Cloudflare Workers が自動ビルド)。
 
+## 2026-09-29 v2026.09.29 定期更新(トレンド号)
+
+- **バージョン**: v2026.09.29 / **日付**: 2026年9月29日
+- **号のheadline**: Meta、法人向けAI基盤「Meta Enterprise Platform」を発表 ― 個人向け「Muse」を3週間で企業展開
+- **記事**: 4件(ツール・サービス1・規制・倫理1・企業・業界1・研究・論文1)。既存の全40号の source/title と重複がないことを確認済み。
+  Metaによる法人向けAI基盤「Meta Enterprise Platform」発表
+  (個人向け「Muse」・企業向け「Meta Business Agent」・開発者向け「Muse API」・コーディング支援「Muse Code」の4本柱、
+  元MongoDB CEOのチランタン・デサイ氏が最高エンタープライズプラットフォーム責任者に就任、9/28発表)・
+  中国当局によるDeepSeek・Moonshot調査
+  (Anthropicが両社に対しClaudeへの無断データ転送(Moonshotは2,300万件超、DeepSeekは14日間で1,210万件超)を告発、
+  監視カメラ映像やデータベース認証情報など機微データの転送例も報告、中国のインターネット規制当局が幹部・従業員を聴取)・
+  パーソナルAI「Instinct」のシリーズC調達
+  (Sequoia・Benchmark・Coatueなどから10億ドル、評価額100億ドルに。招待制サービス開始から1か月ほどで
+  前回調達(評価額25億ドル)から急伸、9/28発表)・
+  新ベンチマーク「FrontierMath Erdős」公開
+  (エルデシュ・パールの未解決問題68問をLeanでの厳密な証明・反証で評価、最高性能のGPT-6 Astraでも正答率3%、
+  Epoch AIが9/1公開)、はいずれも初出。
+- **主な更新ファイル**: `content/trends.json`
+- **配信**: Cloudflare Workers(push済み=自動デプロイ。コミット `23a190a`)。
+  完了メール送信済み(mri.benkyochannel@gmail.com / km.solo.developer@gmail.com)。
+
 ## 2026-09-28 v2026.09.28 定期更新(トレンド号)
 
 - **バージョン**: v2026.09.28 / **日付**: 2026年9月28日
