@@ -3,6 +3,27 @@
 「どのバージョンに何が入っていて、今どの状態か」を新しいセッションでも即わかるようにする記録。
 静的サイトのため「ビルド」は存在せず、**push = デプロイ**(Cloudflare Workers が自動ビルド)。
 
+## 2026-09-30 v2026.09.30 定期更新(トレンド号)
+
+- **バージョン**: v2026.09.30 / **日付**: 2026年9月30日
+- **号のheadline**: Anthropic「Claude Sonnet 5.5」公開 ― OpenAIはDevDayで常時稼働エージェント「dots」を発表
+- **記事**: 5件(新モデル1・ツール・サービス1・規制・倫理1・企業・業界2)。既存の全41号の source/title と重複がないことを確認済み。
+  Anthropicによる「Claude Sonnet 5.5」公開
+  (Sonnet 5比で出力速度30%超高速・タスク単価最大30%減、Terminal-Bench 4.0で70.6%、価格据え置き、
+  Haiku 5.5を数週間以内に投入予定、9/28発表)・
+  OpenAIのDevDay 2026発表
+  (常時稼働の個人向けエージェント「dots」、GPT-6 Astra並み性能を5分の1価格で提供する「GPT-6.1 Sol」、9/29発表)・
+  Nvidia「Open Agent Safety Platform」発表
+  (権限検証の「OpenShell」と挙動監視・封じ込めの「Sentry」、Microsoft・Perplexity等100社超が採用、9/28発表)・
+  AMDによるWorld Labs買収
+  (Fei-Fei Li氏創業の空間知性スタートアップを全株式交換で82億ドル買収、Li氏はAMD上級副社長兼チーフサイエンティストに、9/28発表)・
+  OpenAIの新規資金調達報道
+  (評価額1兆4000億ドルで300億ドル規模を検討、IPOはなお先送りとBloombergが9/29報道)、はいずれも初出。
+- **その他**: 前号(v2026.09.29)に `headline` フィールドが欠落していたのを発見・補完(`worker/index.js` の配信メール件名・本文で参照される必須フィールド)。
+- **主な更新ファイル**: `content/trends.json`
+- **配信**: Cloudflare Workers(push済み=自動デプロイ。コミット `db8393f`)。
+  完了メール送信済み(mri.benkyochannel@gmail.com / km.solo.developer@gmail.com)。
+
 ## 2026-09-29 v2026.09.29 定期更新(トレンド号)
 
 - **バージョン**: v2026.09.29 / **日付**: 2026年9月29日
