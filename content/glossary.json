@@ -1,5 +1,5 @@
 {
-  "updated": "2026.09.13",
+  "updated": "2026.10.02",
   "terms": [
     {
       "slug": "sandbox",
@@ -1121,6 +1121,19 @@
       "related": [
         "fine-tuning",
         "llm"
+      ]
+    },
+    {
+      "slug": "agent-skill",
+      "term": "Agent Skills(エージェントスキル)",
+      "reading": "えーじぇんとすきる",
+      "category": "エージェント",
+      "definition": "[[glossary:agent|エージェント]]に、ある作業の進め方をまとめて教え込むためのフォルダ形式の仕組み。指示文・補助スクリプト・参考資料をひとまとめにしておき、必要な場面でAIが自分で読み込んで使う。",
+      "context": "2025年にAnthropicがClaude向けに導入し、同年12月に仕様を公開。2026年にはOpenAI CodexやGemini CLI、Cursorなど約40のツールが同じ仕様を採用し、1つのスキルを複数のAIツールで使い回せる業界標準になりつつある。",
+      "related": [
+        "agent",
+        "mcp",
+        "sub-agent"
       ]
     }
   ]
