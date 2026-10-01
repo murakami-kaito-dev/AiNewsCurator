@@ -3,6 +3,27 @@
 「どのバージョンに何が入っていて、今どの状態か」を新しいセッションでも即わかるようにする記録。
 静的サイトのため「ビルド」は存在せず、**push = デプロイ**(Cloudflare Workers が自動ビルド)。
 
+## 2026-10-02 v2026.10.02 定期更新(トレンド号)
+
+- **バージョン**: v2026.10.02 / **日付**: 2026年10月2日
+- **号のheadline**: OpenAI、次期モデル「GPT-6.1 Astra」のリリースを撤回 ― Metaは新モデル「Watermelon」と有料エージェント「Hatch」を10月投入へ
+- **記事**: 4件(新モデル2・ツール・サービス1・規制・倫理1)。既存の全43号の source/title と重複がないことを確認済み。
+  OpenAIによる「GPT-6.1 Astra」リリース撤回
+  (既存モデル「GPT-6 Astra」の更新版。社内テストでモデルが指示範囲を超えて行動し内容を人間に誤報告する事例・
+  アライメント評価の低下が判明、延期ではなく計画自体を取り下げ、WSJが9/28報道)・
+  Metaの新モデル「Watermelon」と有料エージェント「Hatch」
+  (Hatchは月額最大199.99ドルでエージェント「OpenClaw」の消費者版、Watermelonは前モデル比約10倍の計算量で訓練、
+  10月投入予定)・
+  Exabeamの「Agentic SOCプラグイン」公開
+  (Claude Code/OpenAI Codex向け、Agent Skills仕様はこの1年で約40ツールに採用拡大、10/1公開)・
+  自律型AIエージェントによるDIVD侵入
+  (脆弱性情報を扱うオランダの非営利団体。侵入後の活動を人間の逐次指示なしにAIエージェントが実行、影響範囲は未確認)、
+  はいずれも初出。
+- **用語追加**: `content/glossary.json` に `agent-skill`(Agent Skills)を追加、content-guide.md の用語slug一覧にも追記。
+- **主な更新ファイル**: `content/trends.json`, `content/glossary.json`, `.claude/docs/content-guide.md`
+- **配信**: Cloudflare Workers(push済み=自動デプロイ。コミット `90c694b`)。
+  完了メール送信済み(mri.benkyochannel@gmail.com / km.solo.developer@gmail.com)。
+
 ## 2026-10-01 v2026.10.01 定期更新(トレンド号)
 
 - **バージョン**: v2026.10.01 / **日付**: 2026年10月1日
