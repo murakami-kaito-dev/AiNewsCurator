@@ -1,6 +1,42 @@
 {
-  "updated": "2026.10.06",
+  "updated": "2026.10.07",
   "issues": [
+    {
+      "version": "v2026.10.07",
+      "date": "2026年10月7日",
+      "headline": "OpenAI、EU向けChatGPTの生成テキストに透かし導入へ ― Anthropicはスタートアップ支援を拡充",
+      "updated": "2026.10.07",
+      "items": [
+        {
+          "title": "OpenAI、ChatGPTとCodexの生成テキストにEUで透かしを導入 ― 新方式「textGrain」採用",
+          "category": "規制・倫理",
+          "source": "https://techcrunch.com/2026/10/05/openai-will-start-watermarking-chatgpts-text-in-the-eu/",
+          "lead": "OpenAIは10月5日、EU圏のChatGPTとCodexが生成するテキストに、目に見えない透かしを追加する計画を発表しました。[[glossary:eu-ai-act|EU AI法]]が義務付けるAI生成コンテンツの標示要件に対応する措置です。",
+          "body": "採用する方式は「textGrain」といい、ペンシルバニア大学とイェール大学の研究者と共同で開発しました。秘密鍵を使って単語の予測をわずかに調整し、その積み重ねのパターンから検出器がAI生成と判定できる仕組みです。EU圏のChatGPT・Codexユーザーへの展開は今後数週間で始まり、API開発者向けには世界中で即日利用できるようになります(初期設定はオフ)。",
+          "briefing": [
+            "[[glossary:eu-ai-act|EU AI法]]が義務付ける透明性要件への対応",
+            "新方式「textGrain」は単語選択をわずかに操作し、検出器で判定できるようにする",
+            "文章の10%を同義語に置き換えるだけで検出率は約92%から66%に低下",
+            "EU向けは数週間以内に展開、APIは初期設定オフで即日利用可能"
+          ],
+          "explanation": "文章への透かしは画像や音声に比べて技術的な難易度が高く、OpenAIはこれまで導入を見送ってきました。[[glossary:eu-ai-act|EU AI法]]のような規制をきっかけに主要各社が追随する流れが本格化しており、AI生成コンテンツの判別可能性が標準機能になっていく可能性があります。ただし文章を少し書き換えるだけで検出率が下がる点は、実効性の課題として残ります。"
+        },
+        {
+          "title": "Anthropic、スタートアップ向け支援プログラムを拡充 ― Claude Teamを1年無料提供",
+          "category": "ツール・サービス",
+          "source": "https://techcrunch.com/2026/10/06/anthropic-gives-startups-a-free-year-of-enterprise-service-and-1000-in-token-credits",
+          "lead": "Anthropicは10月6日、スタートアップ支援プログラム「Claude for Startups」の拡充を発表しました。対象企業は有料プラン「Claude Team」を最大5シートまで1年間無料で利用できます。",
+          "body": "特典にはAPIクレジット1,000ドル分、プラグイン開発が可能な「Claude Marketplace」へのアクセス権、Anthropicの Applied AIチームとのオフィスアワーも含まれます。対象となるのは設立5年以内、または直近2年以内に資金調達を受けた企業です。Anthropicは「AIの恩恵は、モデル単体ではなく、その上に構築する企業を通じて多くの人に届く」としています。",
+          "briefing": [
+            "有料プラン「Claude Team」を最大5シート、1年間無料で提供",
+            "APIクレジット1,000ドル分を付与",
+            "プラグイン開発が可能な「Claude Marketplace」へのアクセス権も付帯",
+            "対象は設立5年以内、または直近2年以内に資金調達した企業"
+          ],
+          "explanation": "[[glossary:agent|エージェント]]を使った自社サービスの検証段階では、API呼び出しのコストが積み上がりやすいという課題があります。無料クレジットと有料プランの提供は、スタートアップの初期開発コストを下げつつ、開発の土台としてClaudeを選んでもらう狙いがあります。OpenAIやGoogleも同種の支援策を競っており、開発者の裾野を広げる動きが続いています。"
+        }
+      ]
+    },
     {
       "version": "v2026.10.06",
       "date": "2026年10月6日",
