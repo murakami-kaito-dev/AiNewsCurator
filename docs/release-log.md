@@ -3,6 +3,26 @@
 「どのバージョンに何が入っていて、今どの状態か」を新しいセッションでも即わかるようにする記録。
 静的サイトのため「ビルド」は存在せず、**push = デプロイ**(Cloudflare Workers が自動ビルド)。
 
+## 2026-10-10 v2026.10.10 定期更新(トレンド号)
+
+- **バージョン**: v2026.10.10 / **日付**: 2026年10月10日
+- **号のheadline**: OpenAI、「GPT-6」を全ユーザーに展開 ― Anthropicはオープンソース向け脆弱性スキャンを無償公開
+- **記事**: 3件(ツール・サービス1・企業・業界1・研究・論文1)。既存の全51号の source/title と重複がないことを確認済み。
+  OpenAIによるChatGPT全ユーザーへの「GPT-6」展開
+  (有料プランはGPT-6 Sol、無料プラン/GoはGPT-6 Luna、回答にグラフやボタンを生成する新UI「Intelligent UI」も導入、
+  対象はチャット画面のみでWork/Codexは対象外、週間12億人規模、10/7発表)・
+  Anthropicによるサイバー防衛構想「Cyber Mission」発表
+  (オープンソース向け無償脆弱性スキャン「OSS Scanner」、基幹インフラ向けCritical Infrastructure Defense Programを開始、
+  CrowdStrike・Palo Alto Networks等と提携、10/8発表)・
+  OpenAIによる未公開モデル生成の数学論文722本のGitHub公開
+  (約4000問を与え選別、計算機検証済みは162本のみ、MITの数学者は再現可能になるまで未検証扱いを主張、
+  9月のFields賞受賞者らの懸念の延長線上、10/6発表)、
+  はいずれも初出。
+- **用語追加**: なし(新規jargonなし。説明はいずれも本文中で平易に言い換え)。
+- **主な更新ファイル**: `content/trends.json`
+- **配信**: Cloudflare Workers(push済み=自動デプロイ。コミット `41cec27`)。
+  完了メール送信済み(mri.benkyochannel@gmail.com / km.solo.developer@gmail.com)。
+
 ## 2026-10-09 v2026.10.09 定期更新(トレンド号)
 
 - **バージョン**: v2026.10.09 / **日付**: 2026年10月9日
