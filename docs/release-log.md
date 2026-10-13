@@ -3,6 +3,27 @@
 「どのバージョンに何が入っていて、今どの状態か」を新しいセッションでも即わかるようにする記録。
 静的サイトのため「ビルド」は存在せず、**push = デプロイ**(Cloudflare Workers が自動ビルド)。
 
+## 2026-10-14 v2026.10.14 定期更新(トレンド号)
+
+- **バージョン**: v2026.10.14 / **日付**: 2026年10月14日
+- **号のheadline**: 「判断特化型」AIモデルのTypeSafe AI、8.7億ドルを調達 ― AnthropicはデータからダッシュボードをつくるClaude Dashboardsを公開
+- **記事**: 3件(企業・業界1・ツール・サービス2)。既存の全55号の source/title と重複がないことを確認済み
+  (Jevの初出は v2026.09.22、Salesforce×Anthropic提携「Claudeforce」は v2026.08.29 で別件。今号はいずれも続報・別発表として新規記事扱い)。
+  TypeSafe AIのシリーズA資金調達8.7億ドル
+  (基盤モデル「Jev」の開発元、a16z主導・Sequoia/DCVC参加、バリュエーション75億ドルへ急上昇、
+  フォーチュン500の約3分の1が採用と説明、AI投資過熱への議論も、10/9報道)・
+  Anthropicの新機能「Claude Dashboards」「Claude Motion」ベータ公開
+  (データ連携で自動更新するダッシュボード生成とコード描画によるアニメーション生成、
+  Docs・Slides・Designはベータ終了し無料プランにも拡大、10/8発表)・
+  Salesforce「Winter '27」一般提供開始
+  (AIエージェント機能Agentforceを標準有効化、Agentforce Contact Centerが30カ国以上で稼働、
+  音声エージェントによる予約対応「Autonomous Scheduling」も追加、10/12発表)、
+  はいずれも初出。
+- **用語追加**: なし(既存slugの agent / foundation-model で対応)。
+- **主な更新ファイル**: `content/trends.json`
+- **配信**: Cloudflare Workers(push済み=自動デプロイ。コミット `986e547`)。
+  完了メール送信済み(mri.benkyochannel@gmail.com / km.solo.developer@gmail.com)。
+
 ## 2026-10-13 v2026.10.13 定期更新(トレンド号)
 
 - **バージョン**: v2026.10.13 / **日付**: 2026年10月13日
