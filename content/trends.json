@@ -1,6 +1,56 @@
 {
-  "updated": "2026.10.13",
+  "updated": "2026.10.14",
   "issues": [
+    {
+      "version": "v2026.10.14",
+      "date": "2026年10月14日",
+      "headline": "「判断特化型」AIモデルのTypeSafe AI、8.7億ドルを調達 ― AnthropicはデータからダッシュボードをつくるClaude Dashboardsを公開",
+      "updated": "2026.10.14",
+      "items": [
+        {
+          "title": "「Jev」開発のTypeSafe AI、シリーズAで8.7億ドルを調達 ― バリュエーションは75億ドルに",
+          "category": "企業・業界",
+          "source": "https://news.bgov.com/us-law-week/andreessen-horowitz-backs-jev-maker-at-7-5-billion-value",
+          "lead": "9月に文章を生成しない新型[[glossary:foundation-model|基盤モデル]]「Jev」を公開したTypeSafe AIが、シリーズAで8.7億ドルを調達したと複数の海外メディアが報じました。Andreessen Horowitz(a16z)が主導し、Sequoia Capitalや既存投資家のDCVCも参加、バリュエーションは75億ドルに達しました。",
+          "body": "調達した資金は、判断結果を確率とスコアで直接返すJevの機能拡張と、同様の設計を持つ新モデルの開発、企業向け機能の強化に使うとしています。同社はフォーチュン500企業の約3分の1がJevを採用済みと説明していますが、社名は明らかにしていません。今年前半のシード資金調達時点のバリュエーション(約2億ドル)と比べると、わずか数ヶ月での急上昇です。",
+          "briefing": [
+            "シリーズAで8.7億ドルを調達。a16zが主導し、バリュエーションは75億ドルに",
+            "Jevは文章を生成せず、判断結果を確率・スコアで直接出力する基盤モデル",
+            "フォーチュン500企業の約3分の1が採用と説明(社名は非公開)",
+            "今年前半のシード時点の評価額(約2億ドル)から数ヶ月で大幅に上昇"
+          ],
+          "explanation": "短期間での大幅なバリュエーション上昇は、海外の技術コミュニティでAI投資の過熱に対する議論を呼びました。実際の収益よりも採用の広がりを重視した評価だという指摘もあり、同社が示す性能・コスト優位の数値も現時点では自社発表にとどまります。マイクロソフトの「Decision-1」など、文章生成を前提としない判断特化型モデルの競合も相次いで登場しており、投資家の関心がこの分野に集まっていることがうかがえます。"
+        },
+        {
+          "title": "Anthropic、データと連携して自動更新するダッシュボード「Claude Dashboards」とアニメーション生成「Claude Motion」をベータ公開",
+          "category": "ツール・サービス",
+          "source": "https://thenewstack.io/claude-dashboards-data-motion/",
+          "lead": "Anthropicは10月8日、ダッシュボードを自動生成する「Claude Dashboards」と、説明用アニメーションを生成する「Claude Motion」の2つの新機能をベータ公開しました。合わせてDocs・Slides・Designはベータを終え、無料プランを含む全プランで使えるようになりました。",
+          "body": "Dashboardsは、SnowflakeやBigQueryといったデータ基盤やSalesforceなどのCRMと接続し、自然言語で質問するとダッシュボードを作成します。元データが更新されると表示も自動的に更新され、数値をクリックすると裏側の集計方法を確認できます。Motionは指示文から説明用のアニメーションを生成する機能で、動画生成モデルではなくコードから描画する仕組みのため、生成後も内容を編集してMP4として書き出せます。",
+          "briefing": [
+            "Claude Dashboards・Claude Motionを2026年10月8日にベータ公開",
+            "Dashboardsは外部データと接続し、自然言語の質問から自動更新のダッシュボードを作成",
+            "Motionはコード描画によるアニメーション生成。生成後も編集可能でMP4書き出しに対応",
+            "Docs・Slides・Designはベータを終え、無料プランを含む全プランに拡大"
+          ],
+          "explanation": "Claudeが会話の相手にとどまらず、レポートやダッシュボードといった業務上の成果物そのものを直接作る方向に踏み出した更新です。Motionがあえて動画生成モデルを使わずコードで描画している点も、正確さが求められる業務用途を意識した設計といえます。"
+        },
+        {
+          "title": "Salesforce、AIエージェントが業務フローを担う新版「Winter '27」を一般提供開始",
+          "category": "ツール・サービス",
+          "source": "https://futurumgroup.com/insights/salesforce-winter-27-agents-now-run-the-workflow/",
+          "lead": "Salesforceは、業務支援[[glossary:agent|AIエージェント]]機能「Agentforce」を標準で有効化した新版「Salesforce Winter '27」を10月12日に一般提供開始したと発表しました。Agentforceへのアクセス権を持つ組織では、追加設定なしに利用できるようになります。",
+          "body": "新規に作成する組織では作成時点から有効化され、既存の組織も順次切り替わります。追加料金や請求方法の変更はないとSalesforceは説明しています。今回の更新では、30カ国以上でAIエージェントによる顧客対応を行う「Agentforce Contact Center」や、音声エージェントが15分かかる予約の電話対応を数秒で終える「Autonomous Scheduling」なども含まれています。",
+          "briefing": [
+            "Winter '27が一般提供開始(2026年10月12日)。AgentforceがデフォルトでON",
+            "既存組織も順次自動的に有効化。追加料金・請求変更なし",
+            "Agentforce Contact Centerが30カ国以上で稼働",
+            "音声エージェントによる予約対応「Autonomous Scheduling」も追加"
+          ],
+          "explanation": "企業向けソフトウェアでAIエージェントが「オプション機能」から「標準搭載」に変わる節目といえます。利用するかどうかを企業が選ぶのではなく、エージェントが最初から動いている状態が既定になることで、業務プロセスへの浸透が一段と進むとみられます。"
+        }
+      ]
+    },
     {
       "version": "v2026.10.13",
       "date": "2026年10月13日",
