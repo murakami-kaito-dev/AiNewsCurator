@@ -3,6 +3,22 @@
 「どのバージョンに何が入っていて、今どの状態か」を新しいセッションでも即わかるようにする記録。
 静的サイトのため「ビルド」は存在せず、**push = デプロイ**(Cloudflare Workers が自動ビルド)。
 
+## 2026-10-22 v2026.10.22 定期更新(トレンド号)
+
+- **バージョン**: v2026.10.22 / **日付**: 2026年10月22日
+- **号のheadline**: Anthropic、常駐型AIエージェント「Claude Duet」を試験公開 ― NVIDIA、GTC BerlinでAIチップ「Vera Rubin」量産開始を発表
+- **記事**: 5件(ツール・サービス1・企業・業界1・研究・論文1・規制・倫理2)。既存の全63号の source/title と重複がないことを確認済み。
+  Anthropicが常駐型のプロアクティブAIエージェント「Claude Duet」の試験公開を開始(米Pro/Maxのウェイトリスト制、iOS/Android/ウェブ、Claude Opus 5.5使用)・
+  NVIDIAがGTC BerlinでAIチップ「Vera Rubin」の量産開始と欧州への約100億ドル投資を発表(エージェント安全実行の参照設計「NVIDIA OpenShell」も発表)・
+  Anthropicの内部モデルが64時間の自律実験でサソリの神経毒に結合するタンパク質候補17種を発見(約31万8千件のデザインを生成、211件を外部機関が検証)・
+  Google DeepMindの研究エンジニアが軍事AI契約「Project Nimbus」等への反発から退職(The Intercept、10/21報道)・
+  Anthropicが危険なAIモデルの公開を止める連邦法の草案を米議会に非公開で提示(10月中旬報道、死傷50人超・損害10億ドル超の差し迫った被害に限定)、
+  はいずれも初出。
+- **用語追加**: なし(既存slugの agent / sandbox / ai-safety / ai-ethics / ai-governance で対応)。
+- **主な更新ファイル**: `content/trends.json`
+- **配信**: Cloudflare Workers(push済み=自動デプロイ。コミット `bc7c598`)。
+  完了メール送信済み(mri.benkyochannel@gmail.com / km.solo.developer@gmail.com)。
+
 ## 2026-10-21 v2026.10.21 定期更新(トレンド号)
 
 - **バージョン**: v2026.10.21 / **日付**: 2026年10月21日
