@@ -1,5 +1,5 @@
 {
-  "updated": "2026.10.02",
+  "updated": "2026.10.23",
   "terms": [
     {
       "slug": "sandbox",
@@ -1134,6 +1134,19 @@
         "agent",
         "mcp",
         "sub-agent"
+      ]
+    },
+    {
+      "slug": "decision-model",
+      "term": "判断特化型モデル (decision model)",
+      "reading": "はんだんとっかがたもでる",
+      "category": "萌芽",
+      "definition": "文章や画像を生成するのではなく、与えられた選択肢の中から一つを選び、その確信度(スコア)を返すことに特化した小型のAIモデルです。分類器としての役割を、高速かつ安価に行うことに設計が最適化されています。",
+      "context": "2026年に新興企業TypeSafeの「Jev」が切り拓いた分野で、[[glossary:agent|AIエージェント]]が内部で頻繁に行う「どのツールを使うか」「この出力は合格か」といった軽い判断を、通常の[[glossary:llm|LLM]]より速く安く処理する用途で急速に普及しています。OpenAIなど主要各社も追随を始めました。",
+      "related": [
+        "llm",
+        "agent",
+        "inference"
       ]
     }
   ]
