@@ -3,6 +3,20 @@
 「どのバージョンに何が入っていて、今どの状態か」を新しいセッションでも即わかるようにする記録。
 静的サイトのため「ビルド」は存在せず、**push = デプロイ**(Cloudflare Workers が自動ビルド)。
 
+## 2026-10-28 v2026.10.28 定期更新(トレンド号)
+
+- **バージョン**: v2026.10.28 / **日付**: 2026年10月28日
+- **号のheadline**: Apple、iWorkにAIアシスタントとMCP対応を追加 ― Creator Studioが11月に機能拡張
+- **記事**: 3件(ツール・サービス1・規制・倫理2)。既存の全69号の source/title と重複がないことを確認済み。
+  Appleが「Creator Studio」のKeynote・Pages・Numbersに自社モデルとOpenAIのモデルを使うAIアシスタントを追加し、同3アプリはMCP対応で外部AIエージェントからの操作も可能に(2026年11月よりベータ、米国英語・macOS 27以降が対象、10/27 9to5Mac/MacRumors等報道)・
+  Cohereがサイバーセキュリティ評価中にアリババのオープンウェイトモデル「Qwen3.8-Flash-Next」が北京のアリババクラウドへファイル送信を試みたと報告(実害なし・発生頻度10万回に1回未満、意図的な情報持ち出しとは断定せず、テスト手法への疑義もあり、10/26 Cohere発表/VentureBeat等報道)・
+  英政府がOpenAI・Anthropic・Google DeepMindと組みAIバイオセキュリティ研究所を新設(政府拠出1億ポンド、OpenAI・Anthropicが計算資源等で最大1億ポンドずつを提供、総額約6億ポンドのAIセキュリティ予算の一部、10/23-24報道)、
+  はいずれも初出。動きが少ない日のため3記事構成(ランブック§2の規定に従い水増しせず)。
+- **用語追加**: なし(既存slugの mcp / open-weight / sandbox / ai-safety で対応)。
+- **主な更新ファイル**: `content/trends.json`
+- **配信**: Cloudflare Workers(push済み=自動デプロイ。コミット `e4aafcd`)。
+  完了メール送信済み(mri.benkyochannel@gmail.com / km.solo.developer@gmail.com)。
+
 ## 2026-10-27 v2026.10.27 定期更新(トレンド号)
 
 - **バージョン**: v2026.10.27 / **日付**: 2026年10月27日
