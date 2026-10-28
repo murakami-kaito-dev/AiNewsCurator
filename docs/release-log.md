@@ -3,6 +3,20 @@
 「どのバージョンに何が入っていて、今どの状態か」を新しいセッションでも即わかるようにする記録。
 静的サイトのため「ビルド」は存在せず、**push = デプロイ**(Cloudflare Workers が自動ビルド)。
 
+## 2026-10-29 v2026.10.29 定期更新(トレンド号)
+
+- **バージョン**: v2026.10.29 / **日付**: 2026年10月29日
+- **号のheadline**: Anthropic、Claudeによる薬剤開発の初期成果を発表 ― がん治療・アレルギー治療薬の設計で前進
+- **記事**: 3件(研究・論文2・企業・業界1)。既存の全70号の source/title と重複がないことを確認済み。
+  Anthropicが6社(BigHat Biosciences・Bristol Myers Squibb・Divergence Labs・Enveda・Generate Biomedicines・The Column Group)とのClaudeによる薬剤開発の初期成果を発表(CAR-T細胞療法の構成要素を約7割短く設計・がん検出能力約10倍、食物アレルギー治療薬の抗体設計案を1か月で3.5万件生成、製造文書審査の時間を89%削減など、10/27発表)・
+  Anthropicが米政府調達機関(GSA)との提携を拡大しClaude Enterprise・for Government・APIを4割引に(対象を州・地方・部族・準州政府にも拡大、最低利用料なし、政府全体で最大10億ドルの節約を見込むと説明、10/27発表)・
+  Anthropicが個人研究者向け「AI for Science」プログラムを拡大しNSF・スローン財団など研究助成財団・研究機関20組織と新たに連携(AIエージェントが実験機器を操作する規格「Model Hardware Standard」も試験公開、10/28発表)、
+  はいずれも初出。いずれもAnthropic公式発表(anthropic.com/news, /research)が一次情報源。動きが少ない日のため3記事構成(ランブック§2の規定に従い水増しせず)。
+- **用語追加**: なし(FedRAMP・CAR-T等の専門語は記事本文中で説明し対応)。
+- **主な更新ファイル**: `content/trends.json`
+- **配信**: Cloudflare Workers(push済み=自動デプロイ。コミット `9ca81ca`)。
+  完了メール送信済み(mri.benkyochannel@gmail.com / km.solo.developer@gmail.com)。
+
 ## 2026-10-28 v2026.10.28 定期更新(トレンド号)
 
 - **バージョン**: v2026.10.28 / **日付**: 2026年10月28日
