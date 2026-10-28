@@ -1,6 +1,56 @@
 {
-  "updated": "2026.10.28",
+  "updated": "2026.10.29",
   "issues": [
+    {
+      "version": "v2026.10.29",
+      "date": "2026年10月29日",
+      "headline": "Anthropic、Claudeによる薬剤開発の初期成果を発表 ― がん治療・アレルギー治療薬の設計で前進",
+      "updated": "2026.10.29",
+      "items": [
+        {
+          "title": "Anthropic、Claudeによる薬剤開発の初期成果を発表 ― がん治療・アレルギー治療薬の設計で前進",
+          "category": "研究・論文",
+          "source": "https://www.anthropic.com/research/early-progress-drug-development",
+          "lead": "Anthropicは2026年10月27日、Claudeを薬剤開発に活用する取り組みの初期成果を公表しました。BigHat Biosciences、Bristol Myers Squibb、Divergence Labs、Enveda、Generate Biomedicines、The Column Groupの6社と数か月にわたり研究を進めてきたといいます。",
+          "body": "Generate Biomedicinesとの協力では、Claude Codeががん細胞を狙うCAR-T細胞療法の構成要素を従来より約7割短く設計し、実験室でのテストでは標準品の約10倍のがん検出受容体を生成しました。Divergence Labsとの食物アレルギー治療薬の開発では、Claudeが1か月で抗体の設計案を約3万5000件生成し、早期の試験で標準薬より効果の高い候補が複数見つかりました。Envedaでは製造関連文書1061ページをClaudeが確認し、人による審査で見つかった不備11件すべてと、見落とされていた7件を検出、審査時間を89%削減しました。Anthropicは自社でも希少な筋ジストロフィーの治療薬を開発する企業を買収し、Claudeの支援で着想から有望なマウス実験結果まで18か月未満で到達したとしています。",
+          "briefing": [
+            "BigHat・BMS・Divergence Labs・Enveda・Generate Biomedicines・The Column Groupの6社と薬剤開発で協業",
+            "Generate Biomedicinesとの協力でCAR-T細胞療法の構成要素を約7割短く設計、がん検出能力は約10倍に",
+            "Envedaでは製造文書の審査でAIが人の見落とした不備を検出、審査時間を89%削減",
+            "Anthropic自身も希少疾患の治療薬開発企業を買収し、18か月未満でマウス実験の有望な結果に到達"
+          ],
+          "explanation": "いずれも前臨床段階の初期的な成果であり、実際の医薬品として承認されるまでには長い道のりが残っています。ただ分子設計だけでなく、製造文書の確認や臨床試験計画の評価といった薬剤開発の様々な工程でAIが効果を示している点は、開発期間の短縮につながる可能性として注目されています。"
+        },
+        {
+          "title": "Anthropic、米政府機関向けClaudeを4割引に ― 州・地方自治体にも対象拡大",
+          "category": "企業・業界",
+          "source": "https://www.anthropic.com/news/expanding-partnership-gsa",
+          "lead": "Anthropicは2026年10月27日、米政府調達機関(GSA)との提携を拡大し、連邦政府に加え州・地方・部族・準州(SLTT)政府までClaude Enterprise・Claude for Government・Claude APIを4割引で利用できるようにすると発表しました。",
+          "body": "新契約には最低利用料の縛りがなく、使った分だけ支払う仕組みです。Anthropicはこの割引により米政府全体で最大10億ドルの節約が見込めるとしています。Claude for Governmentは米政府のクラウドセキュリティ認証制度「FedRAMP High」を取得済みで、2026年9月30日に一般提供を開始しました。Amazon Bedrock経由では米国防省向けの認証(IL4・IL5)も一部モデルで取得しています。すでに連邦・州・地方の約500の政府機関がClaudeを利用しているといいます。",
+          "briefing": [
+            "Claude Enterprise・Claude for Government・Claude APIを4割引、最低利用料なし",
+            "対象は連邦政府に加え州・地方・部族・準州(SLTT)政府にも拡大",
+            "Anthropicは政府全体で最大10億ドルの節約を見込むと説明",
+            "購入はGSAの調達スケジュール経由、すでに約500の政府機関が利用中"
+          ],
+          "explanation": "公共部門は予算の制約や調達手続きの長さがAI導入の壁になりやすく、最低利用料なしの値引きはその壁を下げる狙いがあります。OpenAIも米政府向けに独自の割引価格を提示しており、主要AI企業が公共調達という同じ市場を取り合う構図が続いています。"
+        },
+        {
+          "title": "Anthropic、研究助成財団・科学機関向けにAI支援プログラムを拡大 ― 20の組織と新たに連携",
+          "category": "研究・論文",
+          "source": "https://www.anthropic.com/news/ai-for-science-expands-foundations-research-institutions",
+          "lead": "Anthropicは2026年10月28日、個人の研究者にClaudeの無料クレジットを提供する「AI for Science」プログラムを拡大し、研究助成財団や研究機関など20の組織と新たに連携すると発表しました。",
+          "body": "連携先には全米科学財団(NSF)やスローン財団、シモンズ財団といった助成団体に加え、英国のフランシス・クリック研究所やウェルカム・サンガー研究所などの研究機関、さらにプリンストン大学の神経回路地図プロジェクト「FlyWire」やブロード研究所の遺伝子データベース「gnomAD」など個別の研究プロジェクトも含まれます。HHMIジャネリア研究キャンパスとの協力では、AIエージェントが実験装置を安全に操作するための規格「Model Hardware Standard」の試験版も公開されました。",
+          "briefing": [
+            "2025年5月開始の「AI for Science」プログラムが、個人研究者支援から財団・研究機関との連携へ拡大",
+            "NSF・スローン財団など助成団体6団体、フランシス・クリック研究所など研究機関6機関、FlyWireなど個別プロジェクト6件が参加",
+            "AIエージェントが実験機器を操作するための規格「Model Hardware Standard」を試験公開",
+            "生物学・医学・物理学・化学・気候科学・数学など幅広い分野で数百件の研究プロジェクトを支援中"
+          ],
+          "explanation": "研究機関や助成団体ごと連携することで、個々の研究者への支援よりも広い範囲にAIの活用を浸透させる狙いがあります。多くの成果はオープンデータセットやオープンソースのツールとして公開される予定で、AIによる研究支援の効果を特定の研究室だけでなく科学界全体に広げようとする動きとして注目されます。"
+        }
+      ]
+    },
     {
       "version": "v2026.10.28",
       "date": "2026年10月28日",
