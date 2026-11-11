@@ -100,7 +100,7 @@ category は 基礎 / アーキテクチャ / 技術 / 実践 / エージェン�
 
 agi, ai, machine-learning, deep-learning, neural-network, weight, parameter, gpu,
 llm, generative-ai, foundation-model, token, tokenizer, context-window,
-transformer, attention, embedding, vector, next-token-prediction, temperature, sampling,
+transformer, attention, embedding, vector, next-token-prediction, temperature, sampling, tpu,
 pretraining, sft, rlhf, reward-model, fine-tuning, inference, scaling-laws, emergence,
 hallucination, grounding, multimodal, reasoning-model, benchmark,
 prompt, prompt-engineering, system-prompt, few-shot, chain-of-thought, context-engineering,
