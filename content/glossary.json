@@ -1,6 +1,19 @@
 {
-  "updated": "2026.10.23",
+  "updated": "2026.11.12",
   "terms": [
+    {
+      "slug": "tpu",
+      "term": "TPU (Tensor Processing Unit)",
+      "reading": "てぃーぴーゆー",
+      "category": "基礎",
+      "definition": "Googleがニューラルネットワークの計算専用に自社開発している半導体。[[glossary:gpu|GPU]]と同じく大量の掛け算・足し算を並列処理するのが得意で、Googleは自社のAIサービスやクラウド顧客向けのAI基盤を、NVIDIAのGPUとTPUの両方で支えています。",
+      "context": "GoogleはTPUを世代ごとに改良し、学習向け・推論向けなど用途に応じた派生モデルも出している。NVIDIA依存を下げたい企業がTPUを選ぶ動きもある。",
+      "related": [
+        "gpu",
+        "inference",
+        "pretraining"
+      ]
+    },
     {
       "slug": "sandbox",
       "term": "サンドボックス (sandbox)",
