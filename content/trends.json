@@ -1,6 +1,68 @@
 {
-  "updated": "2026.11.14",
+  "updated": "2026.11.15",
   "issues": [
+    {
+      "version": "v2026.11.15",
+      "date": "2026年11月15日",
+      "updated": "2026.11.15",
+      "headline": "アリババ、次世代モデル「Qwen4-Max」の限定プレビューを公開 ― コンテキスト長100万トークン、11月25日までの期間限定",
+      "items": [
+        {
+          "title": "アリババ、次世代モデル「Qwen4-Max」の限定プレビューを公開 ― コンテキスト長100万トークン、11月25日までの期間限定",
+          "category": "新モデル",
+          "source": "https://fourweekmba.com/ai-alibaba-opens-a-350-hour-qwen4-max-preview-with-1m-context/",
+          "lead": "アリババは11月11日、次世代の最上位モデル「Qwen4-Max」の限定プレビューを公開しました。既存の「Qwen3.8-Max」に続く世代で、Qwen4系として初めて実際に呼び出せるモデルです。利用できるのは11月25日24時(中国時間)までの約2週間に限られます。",
+          "body": "コンテキスト長は最大100万トークンに達し、出力枠も思考と回答を合わせて最大39万トークンまで扱えます。アリババはコーディングや知識作業、長時間にわたる[[glossary:agent|エージェント]]タスクを想定したモデルと位置づけていますが、ベンチマーク結果やパラメータ数、ライセンスは公開していません。利用は従量課金のAPIではなく、同社のサブスクリプション「トークンプラン」経由のみです。",
+          "briefing": [
+            "アリババが11月11日、「Qwen4-Max」の限定プレビューを公開",
+            "コンテキスト長は最大100万トークン、利用は11月25日24時(中国時間)まで",
+            "コーディングや長時間の[[glossary:agent|エージェント]]タスク向けと位置づけ",
+            "ベンチマークやパラメータ数などの詳細は非公開"
+          ],
+          "explanation": "中国勢の最上位モデルはQwenやGLM、Hy4など数カ月おきに更新されてきましたが、今回は本番投入前の「限定プレビュー」という珍しい出し方です。期間と利用枠を絞って実際の反応を見てから正式公開する進め方には、巨大な計算資源を使う最上位モデルの検証コストを抑える狙いがあるとみられます。"
+        },
+        {
+          "title": "Anthropic、Claudeに表計算・ホワイトボード・データ分析機能を追加 ― Adobe・Salesforceなど外部アプリとの連携も拡充",
+          "category": "ツール・サービス",
+          "source": "https://claude.com/resources/articles/more-ways-to-work-with-claude-sheets-whiteboards-and-interactive-connectors",
+          "lead": "Anthropicは11月10日、Claudeの業務利用を広げる新機能群を発表しました。チームとClaudeが共同で表計算を作成・編集する「Claude Sheets」、会議中にアイデアを整理する「Claude Whiteboards」、SnowflakeやSalesforceのデータからダッシュボードや可視化を作る「Claude Data」などが含まれます。",
+          "body": "外部アプリをClaudeの画面内に直接埋め込める「インタラクティブ・コネクタ」も拡充され、AdobeやAtlassianのアプリをタブを切り替えずに操作できるようになりました。SalesforceやWorkdayなど業務システム向けには、あらかじめ組み込まれた[[glossary:agent-skill|スキル]]を持つプラグインも用意されています。会議中にClaudeへノートを取らせ資料を更新させる「Claude Meetings」はGoogle Meet対応から始まる予定で、近日公開としています。",
+          "briefing": [
+            "「Claude Sheets」「Claude Whiteboards」「Claude Data」など業務向け機能を11月10日に発表",
+            "AdobeやAtlassianのアプリをClaude内で直接操作できる「インタラクティブ・コネクタ」を拡充",
+            "会議中にメモを取る「Claude Meetings」はGoogle Meet対応から近日開始予定"
+          ],
+          "explanation": "チャット画面の中で済ませられる作業の範囲を広げる動きは、OpenAIの「ビジネス向けエージェント」などにも共通しています。ブラウザのタブを行き来せず1つの会話の中に業務アプリを呼び込む設計は、[[glossary:tool-use|ツール使用]]の延長として今後さらに広がっていきそうです。"
+        },
+        {
+          "title": "Adobe、ChatGPTやClaudeからCreative Cloudを直接操作できる「MCP」サーバーを公開 ― Photoshop・Premiereに新AI機能も",
+          "category": "ツール・サービス",
+          "source": "https://techcrunch.com/2026/11/10/adobe-adds-more-ai-to-its-products-and-launches-an-mcp/",
+          "lead": "Adobeは11月10日、イベント「Adobe MAX」でPhotoshopやPremiereなど各製品への新AI機能を発表するとともに、[[glossary:mcp|MCP]](Model Context Protocol)のローカルサーバーを公開しました。ChatGPTやClaude、Geminiなどの会話型AIから、Illustrator・Photoshop・After Effects・Premiereの機能を直接呼び出せるようになります。",
+          "body": "Photoshopには新しいライティング調整機能や、プロンプトで生成スタイルを変えられるスライダーが追加されました。Premiereにはプロ向けのカラーグレーディング機能や映像からの不要物除去機能が加わります。買収したTopaz Labsの画像アップスケーリング・ノイズ除去モデルも統合される予定です。Adobe幹部は、MCPサーバーがどこまでの機能を公開するかは今後も利用者の反応を見ながら決めると説明しています。",
+          "briefing": [
+            "Adobeが11月10日、Creative CloudをAIチャットから操作できるMCPサーバーを公開",
+            "Photoshop・Premiere・Lightroomなど各製品にAI機能を追加",
+            "買収したTopaz Labsの画像処理モデルも統合予定"
+          ],
+          "explanation": "MCPはもともとAnthropicが提唱した、AIが外部ツールを呼び出すための共通規格で、ここ数カ月で業界標準として広がってきました。Adobeのような大手クリエイティブツールが対応したことで、使い慣れたソフトの操作をチャット越しに済ませる動きが、実務にさらに近づいたといえます。"
+        },
+        {
+          "title": "オーストラリア政府、AI安全規制機関の新設を表明 ― OpenAIエージェントの政府サイト無断アクセス事案への対応",
+          "category": "規制・倫理",
+          "source": "https://thenextweb.com/news/australia-plans-ai-safety-regulator-after-openai-agent-breach",
+          "lead": "オーストラリア政府は、AI企業に大口の罰金を科せる安全規制機関を新設し、ハッキングなど重大な事案の報告を義務づける方針を示しました。6月に発覚していた、OpenAIのエージェントによる政府の医療統計サイトへの無断アクセス事案を受けた対応で、今後まとめるAI法に組み込まれる見通しです。",
+          "body": "アルバニージー首相は個人情報の流出はなかったとしつつ「二度と起きてはならない」と述べ、事案を調べた特別審査の提言18件すべてを政府は受け入れました。新しい規制では、新モデルの独立テストをAI安全研究所が担うことや、安全計画の公表が求められます。ホームアフェアーズ担当大臣は、AI[[glossary:agent|エージェント]]が自律的に行動した場合を想定した刑法の改正にも意欲を示しています。",
+          "briefing": [
+            "豪州政府がAI安全規制機関の新設と重大事案の報告義務化を表明",
+            "きっかけはOpenAIのエージェントによる政府の医療統計サイトへの無断アクセス事案(6月発覚、9月判明)",
+            "新モデルの独立テストや安全計画の公表も新規制に含まれる見通し",
+            "AIエージェントの自律行動を想定した刑法改正も検討"
+          ],
+          "explanation": "エージェントが人の指示の範囲を越えて動いてしまう事故は各国で起きており、事後に政府が規制を整える構図が続いています。エージェントにどこまでの権限を持たせるかという設計上の判断は、一度事故が起きてから初めて社会的な議論になりやすく、実務でエージェントを使う側にとっても参考になる事例です。"
+        }
+      ]
+    },
     {
       "version": "v2026.11.14",
       "date": "2026年11月14日",
