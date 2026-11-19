@@ -1,6 +1,56 @@
 {
-  "updated": "2026.11.19",
+  "updated": "2026.11.20",
   "issues": [
+    {
+      "version": "v2026.11.20",
+      "date": "2026年11月20日",
+      "updated": "2026.11.20",
+      "headline": "Google、新モデル「Gemini 4 Neon」を公開 ― コーディングと企業向けエージェント作業に特化",
+      "items": [
+        {
+          "title": "Google、新モデル「Gemini 4 Neon」を公開 ― コーディングと企業向けエージェント作業に特化",
+          "category": "新モデル",
+          "source": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/",
+          "lead": "Googleは11月18日、新しい大規模言語モデル「Gemini 4 Neon」を公開しました。複雑なソフトウェア開発や企業向けの分析業務を主な用途とし、[[glossary:context-window|コンテキストウィンドウ]](一度に読み込める文章量)は100万トークンに対応します。",
+          "body": "価格は入力100万トークンあたり3ドル、出力100万トークンあたり15ドルで、GoogleのAPIやGemini本体アプリなどを通じて段階的に提供が始まりました。Googleによれば、複数ファイルにまたがるコードのデバッグや、表・PDF・音声・動画など複数形式のデータをまとめて扱う作業を想定して調整されており、ベンチマーク「Artificial Analysis Intelligence Index」の最上位設定では総合3位に位置づけられているといいます。",
+          "briefing": [
+            "Google、新モデル「Gemini 4 Neon」を11月18日に公開",
+            "コンテキストウィンドウは100万トークン、価格は入力100万トークンあたり3ドル・出力15ドル",
+            "複数ファイルのコード修正や表・PDF・音声・動画の統合処理を想定",
+            "既存の上位モデル「Gemini 4 Carbon」と高速版「Hydrogen」の中間に位置づけ"
+          ],
+          "explanation": "Googleは用途に応じてモデルを使い分ける路線を明確にしており、Neonは実務で長時間動かし続けるエージェント作業を担う役割として位置づけられています。コーディング支援AIの実力はベンチマーク上の順位だけでなく実際の開発現場での使われ方で判断されるため、OpenAIやAnthropicの同種モデルとの比較が今後の指標になりそうです。"
+        },
+        {
+          "title": "Microsoft、「Copilot」を再構築 ― 自律型エージェント「Autopilot」の提供を開始",
+          "category": "ツール・サービス",
+          "source": "https://microsoft.com/en-us/copilot/blog/2026/11/17/copilot-at-microsoft-ignite-expanding-whats-possible-with-intelligence-built-for-work",
+          "lead": "Microsoftは11月17日、年次カンファレンス「Ignite 2026」で、業務用AIアシスタント「Copilot」を「Home」「Code」「Autopilot」の3本柱に再編したと発表しました。クラウド上で動作し続ける自律型[[glossary:agent|エージェント]]「Autopilot」は、企業向けの先行プログラム「Frontier」の顧客への提供を開始しています。",
+          "body": "Autopilotは、以前「Scout」の名称で呼ばれていた機能を土台にしており、ユーザーがオフラインの間も処理を継続できる点が特徴です。利用料金は実際に使った分だけ課金する方式を採用しました。Microsoftはあわせて、チャットと共同作業機能を統合した「Home」や、アプリをホスティングする「Copilot Managed Runtime」の一般提供も発表しています。",
+          "briefing": [
+            "Ignite 2026でCopilotを「Home」「Code」「Autopilot」の3本柱に再編",
+            "常時稼働の自律型エージェント「Autopilot」はFrontier顧客向けに提供開始",
+            "旧称「Scout」を土台に、オフライン中も処理を継続",
+            "課金は使用量ベース。「Copilot Managed Runtime」なども一般提供"
+          ],
+          "explanation": "常時稼働するAutopilotは、ユーザーの指示を待たずに業務を進める自律型エージェント路線への本格参入を意味します。Microsoft 365という既存の業務ツールに組み込まれる形で広く使われることになるため、企業の業務プロセスにAIエージェントが入り込む速度を左右する動きとして注目されます。"
+        },
+        {
+          "title": "Palo Alto Networks、AI企業「Applied Compute」を45億ドルで買収",
+          "category": "企業・業界",
+          "source": "https://www.sec.gov/Archives/edgar/data/0001327567/000132756726000030/ex992pressrelease_november.htm",
+          "lead": "セキュリティ大手Palo Alto Networksは11月18日、企業向けにAIモデルの学習・運用を支援するAI企業「Applied Compute」を、全株式交換方式で45億ドル規模で買収すると発表しました。",
+          "body": "Applied Computeは、企業が独自データを使ってAIモデルを訓練・提供・改善するのを支援する研究チームとして知られています。買収は通常の規制承認などを経て、2027会計年度第3四半期までの完了を見込んでいます。Applied Computeの共同創業者でCEOのYash Patil氏は、今回の統合でセキュリティを自社プロダクトの中心に据える考えを示しました。",
+          "briefing": [
+            "Palo Alto Networks、Applied Computeを全株式交換で45億ドル買収",
+            "Applied Computeは企業向けに独自AIモデルの学習・運用を支援する研究チーム",
+            "完了は2027会計年度第3四半期を予定、規制承認などが条件",
+            "同社によるAI関連スタートアップの買収としては今年に入り複数件目"
+          ],
+          "explanation": "セキュリティ企業がAIモデルの学習・運用そのものを担うチームを取り込む動きは、AIを守る事業からAIを育てる事業への染み出しを示しています。企業が自社データで専用モデルを作る動きが広がるほど、その学習・運用基盤をどの企業が握るかが競争の焦点になっていきます。"
+        }
+      ]
+    },
     {
       "version": "v2026.11.19",
       "date": "2026年11月19日",
