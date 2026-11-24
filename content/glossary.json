@@ -1,6 +1,19 @@
 {
-  "updated": "2026.11.12",
+  "updated": "2026.11.25",
   "terms": [
+    {
+      "slug": "perplexity",
+      "term": "パープレキシティ (困惑度)",
+      "reading": "ぱーぷれきしてぃ",
+      "category": "技術",
+      "definition": "LLMが次に来る[[glossary:token|トークン]]をどれだけ正確に予測できているかを表す指標。値が低いほど、モデルが文章の続きを的確に当てられていることを意味し、[[glossary:pretraining|事前学習]]がうまく進んでいるかを測る基本的な尺度として使われます。",
+      "context": "歴史的に、この指標が一定の水準を下回るたびに、対話の自然さや[[glossary:chain-of-thought|思考の連鎖]]による推論力など新しい能力が立ち上がってきたとされ、2026年11月にはOpenAIがAI開発各社の比較指標として共通化を提案しました。",
+      "related": [
+        "next-token-prediction",
+        "pretraining",
+        "scaling-laws"
+      ]
+    },
     {
       "slug": "tpu",
       "term": "TPU (Tensor Processing Unit)",
