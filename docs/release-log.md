@@ -3,6 +3,20 @@
 「どのバージョンに何が入っていて、今どの状態か」を新しいセッションでも即わかるようにする記録。
 静的サイトのため「ビルド」は存在せず、**push = デプロイ**(Cloudflare Workers が自動ビルド)。
 
+## 2026-11-25 v2026.11.25 定期更新(トレンド号)
+
+- **バージョン**: v2026.11.25 / **日付**: 2026年11月25日
+- **号のheadline**: OpenAI社員と起業家、CodexとAstraで系外惑星の候補を発見 ― ケプラー・TESSの公開データをAIエージェントが解析
+- **記事**: 3件(研究・論文1・ツール・サービス1・規制・倫理1)。既存の全97号の source/title と重複がないことを確認済み。
+  OpenAIのエンジニアKevin Bond氏とAstraを使った起業家Ethan Byrd氏が11/24、CodexとAstraでケプラー・TESSの公開データから系外惑星の候補信号を発見したと公表(Codexはケプラーデータ約10万恒星を解析し既知惑星10個含む200件超を検出、Astraは約1900万恒星を解析し49件を検出。SETI研究所などが独立検証中)・
+  OpenAIとCiscoが11/23、稼働中Linuxシステムを再起動せずに脆弱性を一時的に塞ぐオープンソース基盤「Shirudo」を公開(eBPFで「シールド」を適用、TPMで読み込み記録を保持。デモではCodex生成のシールドがJava4Shell攻撃からElasticsearchを防御)・
+  OpenAIのチーフサイエンティスト ジャクブ・パチョツキ氏が11/22、パープレキシティを業界共通の安全指標とする提案を公開(GPT-3.5・GPT-4の性能向上の節目をパープレキシティの低下と対応づけ、2027年にも進歩加速の可能性を指摘。監視手段が整うまでの「共通の限界」設定を提唱、自社データも公開)、
+  いずれも初出。
+- **用語追加**: `perplexity`(パープレキシティ/困惑度)をglossary.jsonとcontent-guide.mdの用語slug一覧に追加。
+- **主な更新ファイル**: `content/trends.json` / `content/glossary.json` / `.claude/docs/content-guide.md`
+- **配信**: Cloudflare Workers(push済み=自動デプロイ。コミット `5f7abf3`。content-guide.md更新は別コミット `6771bee`)。
+  完了メール送信済み(mri.benkyochannel@gmail.com / km.solo.developer@gmail.com)。
+
 ## 2026-11-24 v2026.11.24 定期更新(トレンド号)
 
 - **バージョン**: v2026.11.24 / **日付**: 2026年11月24日
