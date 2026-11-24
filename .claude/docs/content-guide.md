@@ -113,4 +113,4 @@ copyright-ai, eu-ai-act, ai-governance, deepfake,
 g-kentei, e-shikaku, world-model, continual-learning, agent-memory, ai-ethics,
 lost-in-the-middle, prompt-caching, idempotency,
 stateless, session, harness, in-context-learning, verifier, distillation, sandbox,
-decision-model
+decision-model, perplexity
